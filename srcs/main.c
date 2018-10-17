@@ -6,49 +6,53 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/17 14:01:15 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/17 15:39:26 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <X11/Xlib.h>
-#include "libft.h"
+#include "wolf3d.h"
 #include <stdio.h>
 
-int	main()
+/*
+**	Initialises X11 variables and opens up the game window
+*/
+void	init_window(t_data * d)
 {
-	Display	*dpy;
-	int 	scr;
-	Window	win;
-	GC		gc;
+	XEvent e;
 
-	/* open connection with the server */
-	dpy = XOpenDisplay(NULL);
-	if(dpy == NULL)
-	{
-		printf("Cannot open display\n");
-		exit(1);
-	}
-	scr = DefaultScreen(dpy);
-	/* create window */
-	win = XCreateSimpleWindow(dpy, DefaultRootWindow(dpy), 0, 0, 200, 200, 10, WhitePixel(dpy, scr), BlackPixel(dpy, scr));
-	/* map (show) the window */
-	XMapRaised(dpy, win);
-	/* create graphics context */
-	gc = XCreateGC(dpy, win, 0, NULL);
-	/* tell gc we're drawing with white */
-	XSetForeground(dpy, gc, WhitePixel(dpy, scr));
-	/* event loop */
+	d->dpy = XOpenDisplay(NULL);
+	if (d->dpy == NULL)
+		ft_error("wolf3d: Failed to open display");
+	d->scr = DefaultScreen(d->dpy);
+	d->black_color = BlackPixel(d->dpy, d->scr);
+	d->white_color = WhitePixel(d->dpy, d->scr);
+	d->win = XCreateSimpleWindow(d->dpy, DefaultRootWindow(d->dpy), 0, 0,
+								 480, 480, 0, d->black_color, d->black_color);
+	XMapWindow(d->dpy, d->win);
+	d->gc = XCreateGC(d->dpy, d->win, 0, NULL);
+	XSetForeground(d->dpy, d->gc, d->white_color);
 	while (1)
 	{
-		XEvent e;
-	    XNextEvent(dpy, &e);
-	    if (e.type == MapNotify)
+		XNextEvent(d->dpy, &e);
+		if (e.type == MapNotify)
 			break;
 	}
-	sleep(10);
-	/* destroy our window */
-	XDestroyWindow(dpy, win);
-	/* close connection to server */
-	XCloseDisplay(dpy);
+}
+
+/*
+** Duh
+*/
+int		main(void)
+{
+	t_data *d;
+
+	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
+		ft_error_unknown("wolf3d: ");
+	init_window(d);
+	/*
+	** TODO - Event loop
+	*/
+	XDestroyWindow(d->dpy, d->win);
+	XCloseDisplay(d->dpy);
 	return (0);
 }

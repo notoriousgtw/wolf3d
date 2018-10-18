@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:43 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/17 14:58:14 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/17 19:11:07 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define VECTOR_H
 
 # include "libft.h"
+
+typedef struct	s_vec2d_i
+{
+	int x;
+	int y;
+}				t_vec2d_i;
 
 typedef struct	s_vec2d
 {
@@ -31,5 +37,6 @@ typedef struct	s_vec3d
 double			kt_dotproduct2d(t_vec2d v0, t_vec2d v1);
 double			kt_dotproduct3d(t_vec3d v0, t_vec3d v1);
 double			kt_crossproduct(t_vec3d v0, t_vec3d v1);
+void			kt_vec2d_ftoi(t_vec2d v0, t_vec2d_i *v1, int r);
 
 #endif

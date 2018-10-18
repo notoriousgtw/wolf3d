@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/17 15:27:55 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/17 19:53:03 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <X11/Xlib.h>
 # include "libft.h"
+# include <math.h>
+# include "vector.h"
 
 typedef struct	s_data
 {
@@ -25,5 +27,7 @@ typedef struct	s_data
 	Window	win;
 	GC		gc;
 }				t_data;
+
+void		kt_drawline2d(t_data *d, t_vec2d p0, t_vec2d p1, int color);
 
 #endif

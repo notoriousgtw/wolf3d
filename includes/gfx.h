@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/18 12:50:19 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/17 14:46:43 by gwood             #+#    #+#             */
+/*   Updated: 2018/10/18 12:50:35 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_H
-# define WOLF3D_H
+#ifndef GFX_H
+# define GFX_H
 
-# include <X11/Xlib.h>
-# include "libft.h"
-# include <math.h>
-# include "vector.h"
-# include "gfx.h"
-
-typedef struct	s_data
+typedef struct	s_drawline2d
 {
-	Display *dpy;
-	int		scr;
-	int		black_color;
-	int		white_color;
-	Window	win;
-	GC		gc;
-}				t_data;
-
-void		kt_drawline2d(t_data *d, t_vec2d p0, t_vec2d p1, int color);
+	double	m;
+	int		step;
+	int		dx;
+	int		dy;
+}				t_drawline2d;
 
 #endif

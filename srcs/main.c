@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/17 19:57:27 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/18 13:14:32 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*
 **	Initialises X11 variables and opens up the game window
 */
-void	init_window(t_data * d)
+void	init_window(t_data *d)
 {
 	XEvent e;
 
@@ -27,8 +27,9 @@ void	init_window(t_data * d)
 	d->black_color = BlackPixel(d->dpy, d->scr);
 	d->white_color = WhitePixel(d->dpy, d->scr);
 	d->win = XCreateSimpleWindow(d->dpy, DefaultRootWindow(d->dpy), 0, 0,
-								 480, 480, 0, d->black_color, d->black_color);
+									480, 480, 0, d->black_color, d->black_color);
 	XStoreName(d->dpy, d->win, "wolf3d");
+	XSelectInput(d->dpy, d->win, StructureNotifyMask);
 	XMapWindow(d->dpy, d->win);
 	d->gc = XCreateGC(d->dpy, d->win, 0, NULL);
 	XSetForeground(d->dpy, d->gc, d->white_color);
@@ -57,10 +58,12 @@ int		main(void)
 	p1.x = 400;
 	p1.y = 400;
 	kt_drawline2d(d, p0, p1, d->white_color);
+	// XDrawLine(d->dpy, d->win, d->gc, 0, 0, 400, 400);
 	XFlush(d->dpy);
 	/*
 	** TODO - Event loop
 	*/
+	sleep(10);
 	XDestroyWindow(d->dpy, d->win);
 	XCloseDisplay(d->dpy);
 	return (0);

@@ -17,7 +17,7 @@
 # include "libft.h"
 # include <math.h>
 # include "vector.h"
-# include "gfx.h"
+# include "gfx_2d.h"
 
 typedef struct	s_data
 {

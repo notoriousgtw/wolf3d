@@ -44,8 +44,8 @@ double			kt_crossproduct(t_vec3d v0, t_vec3d v1);
 ** @param v1 output vector
 ** @param r rounding:
 **	0 floor
-++	1 normal
-++	2 ceiling
+**	1 normal
+**	2 ceiling
 */
 void			kt_vec2d_ftoi(t_vec2d v0, t_vec2d_i *v1, int r);
 

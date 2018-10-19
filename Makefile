@@ -27,6 +27,9 @@ LIBLINK	= -L./libft -lft
 
 X11LINK = -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
 
+X11INC_OSX = -I/usr/X11/include
+X11LINK_OSX = -L/opt/X11/lib -lX11 -lXext -lm
+
 SRCDIR	= ./srcs/
 INCDIR	= ./includes/
 OBJDIR	= ./objs/
@@ -39,7 +42,7 @@ obj:
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@echo $(NAME): Compiling $@
-	@$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(LIBINC) $(X11INC_OSX) -I $(INCDIR) -o $@ -c $<
 
 libft: $(LIBFT)
 
@@ -49,7 +52,7 @@ $(LIBFT):
 
 $(NAME): $(OBJ)
 	@echo $(NAME): Compiling $(NAME)
-	@$(CC) -o $(BINDIR)$(NAME) $(OBJ) $(LIBLINK) $(X11LINK)
+	@$(CC) -o $(BINDIR)$(NAME) $(OBJ) $(LIBLINK) $(X11LINK_OSX)
 
 clean:
 	@rm -rf $(OBJDIR)

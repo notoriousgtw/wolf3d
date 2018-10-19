@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/18 13:14:32 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/19 14:01:02 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,26 @@ void	init_window(t_data *d)
 	}
 }
 
+void	main_loop(t_data *d)
+{
+	Atom	wm_del_message;
+	t_bool	running;
+	XEvent	e;
+
+	wm_del_message = XInternAtom(d->dpy, "WM_DELETE_WINDOW", False);
+	XSetWMProtocols(d->dpy, d->win, &wm_del_message, 1);
+	while (1)
+	{
+		XNextEvent(d->dpy, &e);
+
+		if (e.type == ClientMessage)
+		{
+			if ((unsigned long) e.xclient.data.l[0] == wm_del_message)
+				running = false;
+			break;
+		}
+}
+
 /*
 ** Duh
 */
@@ -58,11 +78,11 @@ int		main(void)
 	p1.x = 400;
 	p1.y = 400;
 	kt_drawline2d(d, p0, p1, d->white_color);
-	// XDrawLine(d->dpy, d->win, d->gc, 0, 0, 400, 400);
 	XFlush(d->dpy);
 	/*
 	** TODO - Event loop
 	*/
+	main_loop(d);
 	sleep(10);
 	XDestroyWindow(d->dpy, d->win);
 	XCloseDisplay(d->dpy);

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/19 14:01:02 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/19 14:42:47 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ void	main_loop(t_data *d)
 	t_bool	running;
 	XEvent	e;
 
+	running = true;
 	wm_del_message = XInternAtom(d->dpy, "WM_DELETE_WINDOW", False);
 	XSetWMProtocols(d->dpy, d->win, &wm_del_message, 1);
-	while (1)
+	while (running)
 	{
 		XNextEvent(d->dpy, &e);
 
@@ -59,6 +60,7 @@ void	main_loop(t_data *d)
 				running = false;
 			break;
 		}
+	}
 }
 
 /*
@@ -83,7 +85,6 @@ int		main(void)
 	** TODO - Event loop
 	*/
 	main_loop(d);
-	sleep(10);
 	XDestroyWindow(d->dpy, d->win);
 	XCloseDisplay(d->dpy);
 	return (0);

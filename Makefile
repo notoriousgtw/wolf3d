@@ -52,7 +52,7 @@ $(LIBFT):
 
 $(NAME): $(OBJ)
 	@echo $(NAME): Compiling $(NAME)
-	@$(CC) -o $(BINDIR)$(NAME) $(OBJ) $(LIBLINK) $(X11LINK_OSX)
+	@$(CC) -o $(NAME) $(OBJ) $(LIBLINK) $(X11LINK_OSX)
 
 clean:
 	@rm -rf $(OBJDIR)

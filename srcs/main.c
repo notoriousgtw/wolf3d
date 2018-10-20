@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:47:42 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 16:51:31 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,32 @@ int		main(void)
 	init_window(d);
 	XSetForeground(d->dpy, d->gc, d->white_color);
 
-	t_vec2d p0;
-	t_vec2d p1;
-	p0.x = 0;
-	p0.y = 0;
-	p1.x = 300;
-	p1.y = 300;
+	t_vec3d p0, p1, p2, p3;
+	p0.x = -0.5;
+	p0.y = 0.5;
+	p0.z = 1.5;
 
-	double m[3][3];
-	kt_mat2d_identity(m);
-	kt_tr2d_scale(m, 0.5, 0.5);
-	kt_tr2d_translate(m, 300, 0);
-	kt_tr2d_rotate(m, 0.0872665);
-	kt_transform_vec2d(p0, m, &p0);
-	kt_transform_vec2d(p1, m, &p1);
+	p1.x = 0.5;
+	p1.y = 0.5;
+	p1.z = 1.5;
 
-	kt_drawline2d(d, p0, p1, d->white_color);
+	p2.x = -0.5;
+	p2.y = -0.5;
+	p2.z = 1;
+
+	p3.x = 0.5;
+	p3.y = -0.5;
+	p3.z = 1;
+
+	// double m[4][4];
+	// kt_mat3d_identity(m);
+	// kt_vec3d_transform(p0, m, &p0);
+	// kt_vec3d_transform(p1, m, &p1);
+
+	kt_drawline3d(d, p0, p1, d->white_color);
+	kt_drawline3d(d, p0, p2, d->white_color);
+	kt_drawline3d(d, p1, p3, d->white_color);
+	kt_drawline3d(d, p2, p3, d->white_color);
 	XFlush(d->dpy);
 	/*
 	** TODO - Event loop

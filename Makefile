@@ -6,17 +6,21 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/20 14:10:29 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/20 16:33:39 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= wolf3d
 
 SRC		= main.c \
-			draw.c \
 			vec2d.c \
 			mat2d.c \
-			mat2d_tr.c
+			mat2d_tr.c \
+			drawline2d.c \
+			vec3d.c \
+			mat3d.c \
+			mat3d_tr.c \
+			drawline3d.c
 
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   drawline2d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:31 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 11:29:23 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 16:34:51 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "vector.h"
 
-void		kt_swapvec2d(t_vec2d *v0, t_vec2d *v1)
-{
-	t_vec2d	swp;
-
-	swp = *v0;
-	*v0 = *v1;
-	*v1 = swp;
-
-	// swp.x = v0->x;
-	// v0->x = v1->x;
-	// v1->x = swp.x;
-
-	// swp.y = v0->y;
-	// v0->y = v1->y;
-	// v1->y = swp.y;
-}
-
-static void		kt_drawline2d_h(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline2d line)
+static void		kt_drawline2d_h(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline line)
 {
 	int	offset;
 	int	delta;
@@ -42,7 +25,7 @@ static void		kt_drawline2d_h(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline2d lin
 	thresh = abs(line.dx);
 	thresh_inc = abs(line.dx) * 2;
 	if (p1.x < p0.x)
-		kt_swapvec2d(&p0, &p1);
+		kt_vec2d_swap(&p0, &p1);
 	while ((int) p0.x <= (int) p1.x)
 	{
 		XDrawPoint(d->dpy, d->win, d->gc, (int) p0.x, (int) p0.y);
@@ -56,7 +39,7 @@ static void		kt_drawline2d_h(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline2d lin
 	}
 }
 
-static void		kt_drawline2d_v(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline2d line)
+static void		kt_drawline2d_v(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline line)
 {
 	int	offset;
 	int	delta;
@@ -68,7 +51,7 @@ static void		kt_drawline2d_v(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline2d lin
 	thresh = abs(line.dy);
 	thresh_inc = abs(line.dy) * 2;
 	if (p1.y < p0.y)
-		kt_swapvec2d(&p0, &p1);
+		kt_vec2d_swap(&p0, &p1);
 	while ((int) p0.y <= (int) p1.y)
 	{
 		XDrawPoint(d->dpy, d->win, d->gc, (int) p0.x, (int) p0.y);
@@ -84,7 +67,7 @@ static void		kt_drawline2d_v(t_data *d, t_vec2d p0, t_vec2d p1, t_drawline2d lin
 
 void			kt_drawline2d(t_data *d, t_vec2d p0, t_vec2d p1, int color)
 {
-	t_drawline2d	line;
+	t_drawline	line;
 
 	if ((int) p0.x < 0 || (int) p0.x > d->width
 		|| (int) p0.y < 0 || (int) p0.y > d->height)
@@ -95,7 +78,7 @@ void			kt_drawline2d(t_data *d, t_vec2d p0, t_vec2d p1, int color)
 	if (line.dx == 0)
 	{
 		if (p1.y < p0.y)
-			kt_swapvec2d(&p0, &p1);
+			kt_vec2d_swap(&p0, &p1);
 		while (p0.y <= p1.y)
 			XDrawPoint(d->dpy, d->win, d->gc, (int) p1.x, (int) p0.y++);
 	}

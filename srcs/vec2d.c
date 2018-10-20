@@ -6,12 +6,21 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:22 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:50:55 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 16:17:40 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include <math.h>
+
+void		kt_vec2d_swap(t_vec2d *v0, t_vec2d *v1)
+{
+	t_vec2d	swp;
+
+	swp = *v0;
+	*v0 = *v1;
+	*v1 = swp;
+}
 
 double		kt_vec2d_dotproduct(t_vec2d v0, t_vec2d v1)
 {

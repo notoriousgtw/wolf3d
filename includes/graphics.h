@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_2D_H
-# define GFX_2D_H
+#ifndef GRAPHICS_H
+# define GRAPHICS_H
 
-typedef struct	s_drawline2d
+typedef struct	s_drawline
 {
 	double	m;
 	int		step;
 	int		dx;
 	int		dy;
-}				t_drawline2d;
+}				t_drawline;
 
 #endif

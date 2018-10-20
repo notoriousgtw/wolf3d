@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:22:09 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 15:47:42 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int		main(void)
 	p1.y = 300;
 
 	double m[3][3];
-	kt_identity_mat2d(m);
-	// kt_tr2d_scale(m, 0.5, 0.5);
-	// kt_tr2d_translate(m, 300, 0);
+	kt_mat2d_identity(m);
+	kt_tr2d_scale(m, 0.5, 0.5);
+	kt_tr2d_translate(m, 300, 0);
 	kt_tr2d_rotate(m, 0.0872665);
 	kt_transform_vec2d(p0, m, &p0);
 	kt_transform_vec2d(p1, m, &p1);

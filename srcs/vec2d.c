@@ -6,19 +6,19 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:22 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:11:04 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 15:50:55 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include <math.h>
 
-double		kt_dotproduct2d(t_vec2d v0, t_vec2d v1)
+double		kt_vec2d_dotproduct(t_vec2d v0, t_vec2d v1)
 {
 	return (v0.x * v1.x + v0.y * v1.y);
 }
 
-void		kt_transform_vec2d(t_vec2d v0, double m[3][3], t_vec2d *v1)
+void		kt_vec2d_transform(t_vec2d v0, double m[3][3], t_vec2d *v1)
 {
 	v1->x = v0.x * m[0][0] + v0.y * m[1][0] + m[2][0];
 	v1->y = v0.x * m[0][1] + v0.y * m[1][1] + m[2][1];

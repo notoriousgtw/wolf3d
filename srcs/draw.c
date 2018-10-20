@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:31 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/18 13:01:11 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 11:29:23 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ void			kt_drawline2d(t_data *d, t_vec2d p0, t_vec2d p1, int color)
 {
 	t_drawline2d	line;
 
+	if ((int) p0.x < 0 || (int) p0.x > d->width
+		|| (int) p0.y < 0 || (int) p0.y > d->height)
+		return;
 	XSetForeground(d->dpy, d->gc, color);
 	line.dx = p1.x - p0.x;
 	line.dy = p1.y - p0.y;

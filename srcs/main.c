@@ -6,11 +6,12 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/19 14:42:47 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 14:42:15 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "matrix.h"
 #include <stdio.h>
 
 /*
@@ -26,8 +27,10 @@ void	init_window(t_data *d)
 	d->scr = DefaultScreen(d->dpy);
 	d->black_color = BlackPixel(d->dpy, d->scr);
 	d->white_color = WhitePixel(d->dpy, d->scr);
+	d->width = 600;
+	d->height = 600;
 	d->win = XCreateSimpleWindow(d->dpy, DefaultRootWindow(d->dpy), 0, 0,
-									480, 480, 0, d->black_color, d->black_color);
+									d->width, d->height, 0, d->black_color, d->black_color);
 	XStoreName(d->dpy, d->win, "wolf3d");
 	XSelectInput(d->dpy, d->win, StructureNotifyMask);
 	XMapWindow(d->dpy, d->win);
@@ -60,6 +63,7 @@ void	main_loop(t_data *d)
 				running = false;
 			break;
 		}
+
 	}
 }
 
@@ -73,12 +77,22 @@ int		main(void)
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
 	init_window(d);
+	XSetForeground(d->dpy, d->gc, d->white_color);
+
 	t_vec2d p0;
 	t_vec2d p1;
 	p0.x = 0;
 	p0.y = 0;
-	p1.x = 400;
-	p1.y = 400;
+	p1.x = 600;
+	p1.y = 600;
+
+	double m[3][3];
+	kt_identity_mat2d(m);
+	kt_tr2d_scale(m, 0.5, 0.5);
+	kt_tr2d_translate(m, 300, 0);
+	kt_transform_vec2d(p0, m, &p0);
+	kt_transform_vec2d(p1, m, &p1);
+
 	kt_drawline2d(d, p0, p1, d->white_color);
 	XFlush(d->dpy);
 	/*

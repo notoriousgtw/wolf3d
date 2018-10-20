@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/19 14:35:33 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/20 14:10:29 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME 	= wolf3d
 
 SRC		= main.c \
 			draw.c \
-			vec2d.c
+			vec2d.c \
+			mat2d.c \
+			mat2d_tr.c
+
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

@@ -1,5 +1,6 @@
 objs/
 bin/
+
 ._*
 .DS*
 # Prerequisites

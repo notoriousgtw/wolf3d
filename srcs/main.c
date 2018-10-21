@@ -6,12 +6,11 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 16:51:31 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 23:29:36 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include "matrix.h"
 #include <stdio.h>
 
 /*
@@ -21,24 +20,24 @@ void	init_window(t_data *d)
 {
 	XEvent e;
 
-	d->dpy = XOpenDisplay(NULL);
-	if (d->dpy == NULL)
+	d->x.dpy = XOpenDisplay(NULL);
+	if (d->x.dpy == NULL)
 		ft_error("wolf3d: Failed to open display");
-	d->scr = DefaultScreen(d->dpy);
-	d->black_color = BlackPixel(d->dpy, d->scr);
-	d->white_color = WhitePixel(d->dpy, d->scr);
-	d->width = 600;
-	d->height = 600;
-	d->win = XCreateSimpleWindow(d->dpy, DefaultRootWindow(d->dpy), 0, 0,
-									d->width, d->height, 0, d->black_color, d->black_color);
-	XStoreName(d->dpy, d->win, "wolf3d");
-	XSelectInput(d->dpy, d->win, StructureNotifyMask);
-	XMapWindow(d->dpy, d->win);
-	d->gc = XCreateGC(d->dpy, d->win, 0, NULL);
-	XSetForeground(d->dpy, d->gc, d->white_color);
+	d->x.scr = DefaultScreen(d->x.dpy);
+	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
+	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
+	d->x.width = 600;
+	d->x.height = 600;
+	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
+									d->x.width, d->x.height, 0, d->x.black_color, d->x.black_color);
+	XStoreName(d->x.dpy, d->x.win, "wolf3d");
+	XSelectInput(d->x.dpy, d->x.win, StructureNotifyMask);
+	XMapWindow(d->x.dpy, d->x.win);
+	d->x.gc = XCreateGC(d->x.dpy, d->x.win, 0, NULL);
+	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 	while (1)
 	{
-		XNextEvent(d->dpy, &e);
+		XNextEvent(d->x.dpy, &e);
 		if (e.type == MapNotify)
 			break;
 	}
@@ -51,11 +50,11 @@ void	main_loop(t_data *d)
 	XEvent	e;
 
 	running = true;
-	wm_del_message = XInternAtom(d->dpy, "WM_DELETE_WINDOW", False);
-	XSetWMProtocols(d->dpy, d->win, &wm_del_message, 1);
+	wm_del_message = XInternAtom(d->x.dpy, "WM_DELETE_WINDOW", False);
+	XSetWMProtocols(d->x.dpy, d->x.win, &wm_del_message, 1);
 	while (running)
 	{
-		XNextEvent(d->dpy, &e);
+		XNextEvent(d->x.dpy, &e);
 
 		if (e.type == ClientMessage)
 		{
@@ -77,7 +76,7 @@ int		main(void)
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
 	init_window(d);
-	XSetForeground(d->dpy, d->gc, d->white_color);
+	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 
 	t_vec3d p0, p1, p2, p3;
 	p0.x = -0.5;
@@ -96,21 +95,27 @@ int		main(void)
 	p3.y = -0.5;
 	p3.z = 1;
 
-	// double m[4][4];
-	// kt_mat3d_identity(m);
-	// kt_vec3d_transform(p0, m, &p0);
-	// kt_vec3d_transform(p1, m, &p1);
+	t_vertlist v;
+	kt_vertlist_init(&v);
+	kt_vertlist_app(&v, p0);
+	kt_vertlist_app(&v, p1);
+	kt_vertlist_app(&v, p2);
+	kt_vertlist_app(&v, p3);
 
-	kt_drawline3d(d, p0, p1, d->white_color);
-	kt_drawline3d(d, p0, p2, d->white_color);
-	kt_drawline3d(d, p1, p3, d->white_color);
-	kt_drawline3d(d, p2, p3, d->white_color);
-	XFlush(d->dpy);
+	t_linelist l;
+	kt_linelist_init(&l, &v);
+	kt_linelist_app(&l, 0, 1);
+	kt_linelist_app(&l, 0, 2);
+	kt_linelist_app(&l, 1, 3);
+	kt_linelist_app(&l, 2, 3);
+	kt_linelist_draw(&l, &d->x, d->x.white_color);
+
+	XFlush(d->x.dpy);
 	/*
 	** TODO - Event loop
 	*/
 	main_loop(d);
-	XDestroyWindow(d->dpy, d->win);
-	XCloseDisplay(d->dpy);
+	XDestroyWindow(d->x.dpy, d->x.win);
+	XCloseDisplay(d->x.dpy);
 	return (0);
 }

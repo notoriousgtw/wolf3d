@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:43 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 16:29:29 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/20 23:24:59 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 
+typedef struct	s_xvars t_xvars;
 typedef struct	s_vec2d_i
 {
 	int x;
@@ -43,5 +44,7 @@ void			kt_vec3d_swap(t_vec3d *v0, t_vec3d *v1);
 double			kt_vec3d_dotproduct(t_vec3d v0, t_vec3d v1);
 void			kt_vec3d_crossproduct(t_vec3d v0, t_vec3d v1, t_vec3d *v2);
 void			kt_vec3d_transform(t_vec3d v0, double m[4][4], t_vec3d *v1);
+
+void			kt_vec3d_screenify(t_xvars *x, t_vec3d *v);
 
 #endif

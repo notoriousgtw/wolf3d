@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/20 16:33:39 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/20 23:23:19 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ SRC		= main.c \
 			vec3d.c \
 			mat3d.c \
 			mat3d_tr.c \
-			drawline3d.c
+			drawline3d.c \
+			vertlist.c \
+			vertlist_add.c \
+			linelist.c \
+			linelist_add.c
 
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
@@ -46,7 +50,7 @@ obj:
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@echo $(NAME): Compiling $@
-	@$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) -I $(INCDIR) $(LIBINC) -o $@ -c $<
 
 libft: $(LIBFT)
 

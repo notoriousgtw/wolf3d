@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 23:11:31 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 15:18:27 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <math.h>
 # include "graphics.h"
+# include "keys.h"
 
 typedef struct	s_data
 {

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 15:09:43 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 15:17:48 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	init_window(t_data *d)
 {
 	XEvent e;
+	XSetWindowAttributes wa;
 
 	d->x.dpy = XOpenDisplay(NULL);
 	if (d->x.dpy == NULL)
@@ -31,7 +32,9 @@ void	init_window(t_data *d)
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
 									d->x.width, d->x.height, 0, d->x.black_color, d->x.black_color);
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
-	XSelectInput(d->x.dpy, d->x.win, StructureNotifyMask);
+	wa.event_mask = KeyPressMask | KeyReleaseMask | ButtonPressMask | ButtonReleaseMask | StructureNotifyMask | Button1MotionMask
+					| PointerMotionMask;
+	XSelectInput(d->x.dpy, d->x.win, wa.event_mask);
 	XMapWindow(d->x.dpy, d->x.win);
 	d->x.gc = XCreateGC(d->x.dpy, d->x.win, 0, NULL);
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
@@ -43,7 +46,7 @@ void	init_window(t_data *d)
 	}
 }
 
-void	main_loop(t_data *d)
+void	event_loop(t_data *d)
 {
 	Atom	wm_del_message;
 	t_bool	running;
@@ -62,7 +65,30 @@ void	main_loop(t_data *d)
 				running = false;
 			break;
 		}
-
+		if (e.type == MapNotify)
+			printf("MapNotify\n");
+		if (e.type == EnterNotify)
+			printf("EnterNotify\n");
+		if (e.type == MotionNotify)
+			printf("MotionNotify x,y = %d,%d\n", e.xmotion.x, e.xmotion.y);
+		if (e.type == KeyPress)
+		{
+			printf("KeyPress == %d\n", e.xkey.keycode);
+			if (e.xkey.keycode == KEY_ESC)
+				running = false;
+		}
+		else if (e.type == KeyRelease)
+		{
+			printf("KeyRelease\n");
+		}
+		if (e.type == ButtonPress)
+		{
+			printf("ButtonPress == %d\n", e.xkey.keycode);
+		}
+		else if (e.type == ButtonRelease)
+		{
+			printf("ButtonRelease\n");
+		}
 	}
 }
 
@@ -158,7 +184,7 @@ int		main(void)
 	/*
 	** TODO - Event loop
 	*/
-	main_loop(d);
+	event_loop(d);
 	XDestroyWindow(d->x.dpy, d->x.win);
 	XCloseDisplay(d->x.dpy);
 	return (0);

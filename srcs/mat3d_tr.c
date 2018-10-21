@@ -6,12 +6,11 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 12:13:27 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:48:19 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 14:54:39 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-#include <math.h>
 
 void	kt_tr3d_translate(double m[4][4], double tx, double ty, double tz)
 {

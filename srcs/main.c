@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 23:29:36 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 15:02:24 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,81 @@ void	main_loop(t_data *d)
 	}
 }
 
+void	draw_cube(t_xvars *x)
+{
+	t_vec3d		p0, p1, p2, p3, p4, p5, p6, p7;
+	t_vertlist	v;
+	t_trilist	t;
+
+	p0.x = -0.5;
+	p0.y = -0.5;
+	p0.z = -0.5;
+
+	p1.x = 0.5;
+	p1.y = -0.5;
+	p1.z = -0.5;
+
+	p2.x = -0.5;
+	p2.y = 0.5;
+	p2.z = -0.5;
+
+	p3.x = 0.5;
+	p3.y = 0.5;
+	p3.z = -0.5;
+
+	p4.x = -0.5;
+	p4.y = -0.5;
+	p4.z = 0.5;
+
+	p5.x = 0.5;
+	p5.y = -0.5;
+	p5.z = 0.5;
+
+	p6.x = -0.5;
+	p6.y = 0.5;
+	p6.z = 0.5;
+
+	p7.x = 0.5;
+	p7.y = 0.5;
+	p7.z = 0.5;
+
+	kt_vertlist_init(&v);
+	kt_vertlist_app(&v, p0);
+	kt_vertlist_app(&v, p1);
+	kt_vertlist_app(&v, p2);
+	kt_vertlist_app(&v, p3);
+	kt_vertlist_app(&v, p4);
+	kt_vertlist_app(&v, p5);
+	kt_vertlist_app(&v, p6);
+	kt_vertlist_app(&v, p7);
+	kt_vertlist_print(&v);
+
+	double m[4][4];
+	kt_mat3d_identity(m);
+	kt_tr3d_translate(m, 0, 0, 2);
+	// kt_tr3d_scale(m, 0.5, 0.5, 0.5);
+	kt_vertlist_transform(&v, m);
+	kt_vertlist_print(&v);
+	kt_vertlist_screenify(&v, x);
+
+	kt_trilist_init(&t, &v);
+	kt_trilist_add(&t, 0, 2, 1);
+	kt_trilist_add(&t, 2, 3, 1);
+	kt_trilist_add(&t, 1, 3, 5);
+	kt_trilist_add(&t, 3, 7, 5);
+	kt_trilist_add(&t, 2, 6, 3);
+	kt_trilist_add(&t, 3, 6, 7);
+	kt_trilist_add(&t, 4, 5, 7);
+	kt_trilist_add(&t, 4, 7, 6);
+	kt_trilist_add(&t, 0, 4, 2);
+	kt_trilist_add(&t, 2, 4, 6);
+	kt_trilist_add(&t, 0, 1, 4);
+	kt_trilist_add(&t, 1, 5, 4);
+	kt_trilist_color(&t, x->white_color);
+	kt_vertlist_print(t.verts);
+	kt_trilist_print(&t);
+	kt_trilist_draw(&t, x);
+}
 /*
 ** Duh
 */
@@ -78,38 +153,7 @@ int		main(void)
 	init_window(d);
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 
-	t_vec3d p0, p1, p2, p3;
-	p0.x = -0.5;
-	p0.y = 0.5;
-	p0.z = 1.5;
-
-	p1.x = 0.5;
-	p1.y = 0.5;
-	p1.z = 1.5;
-
-	p2.x = -0.5;
-	p2.y = -0.5;
-	p2.z = 1;
-
-	p3.x = 0.5;
-	p3.y = -0.5;
-	p3.z = 1;
-
-	t_vertlist v;
-	kt_vertlist_init(&v);
-	kt_vertlist_app(&v, p0);
-	kt_vertlist_app(&v, p1);
-	kt_vertlist_app(&v, p2);
-	kt_vertlist_app(&v, p3);
-
-	t_linelist l;
-	kt_linelist_init(&l, &v);
-	kt_linelist_app(&l, 0, 1);
-	kt_linelist_app(&l, 0, 2);
-	kt_linelist_app(&l, 1, 3);
-	kt_linelist_app(&l, 2, 3);
-	kt_linelist_draw(&l, &d->x, d->x.white_color);
-
+	draw_cube(&d->x);
 	XFlush(d->x.dpy);
 	/*
 	** TODO - Event loop

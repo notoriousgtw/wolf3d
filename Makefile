@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/20 23:23:19 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/21 11:35:26 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,18 @@ SRC		= main.c \
 			mat2d.c \
 			mat2d_tr.c \
 			drawline2d.c \
+			drawtri2d.c \
 			vec3d.c \
 			mat3d.c \
 			mat3d_tr.c \
 			drawline3d.c \
+			drawtri3d.c \
 			vertlist.c \
 			vertlist_add.c \
 			linelist.c \
-			linelist_add.c
+			linelist_add.c \
+			trilist.c \
+			trilist_add.c
 
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

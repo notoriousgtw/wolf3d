@@ -6,12 +6,11 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:22 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 16:17:40 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 00:21:17 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
-#include <math.h>
+#include "graphics.h"
 
 void		kt_vec2d_swap(t_vec2d *v0, t_vec2d *v1)
 {

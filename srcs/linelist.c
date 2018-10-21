@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 23:27:15 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 12:40:16 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@ void	kt_linelist_init(t_linelist *l, t_vertlist *v)
 	l->list_size = 0;
 }
 
-void	kt_linelist_draw(t_linelist *l, t_xvars *x, int color)
+void	kt_linelist_draw(t_linelist *l, t_xvars *x)
 {
 	int				i;
 
 	i = -1;
 	while (++i < l->list_size)
+	{
+		if (i > 0 && l->indices[i][2] != l->indices[i-1][2])
+			XSetForeground(x->dpy, x->gc, l->indices[i][2]);
 		kt_drawline3d(x, l->verts->data[l->indices[i][0]],
-					  l->verts->data[l->indices[i][1]], color);
+					  l->verts->data[l->indices[i][1]]);
+	}
 }

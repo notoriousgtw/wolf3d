@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/19 18:10:37 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:46:33 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 00:22:18 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MATRIX_H
 
 # include "libft.h"
+# include <math.h>
 
 void	kt_mat2d_bzero(double m[3][3]);
 void	kt_mat2d_identity(double m[3][3]);

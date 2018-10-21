@@ -1,51 +1,70 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vertlist.c                                         :+:      :+:    :+:   */
+/*   trilist.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:58:39 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 14:05:41 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
-#include "vertlist.h"
+#include "trilist.h"
 #include <stdio.h>
 
-void	kt_vertlist_init(t_vertlist *l)
+void	kt_tri_init(t_tri t, int p0, int p1, int p2)
 {
-	if (!(l->data = ft_memalloc(sizeof(t_vec3d) * 5)))
+	ft_bzero(t, sizeof(t_tri));
+	t[0] = p0;
+	t[1] = p1;
+	t[2] = p2;
+}
+
+void	kt_tri_color(t_tri t, int color)
+{
+	t[3] = color;
+}
+
+void	kt_trilist_init(t_trilist *l, t_vertlist *v)
+{
+	if (!(l->indices = ft_memalloc(sizeof(t_tri) * 5)))
 		ft_error_unknown("wolf3d: ");
+	l->verts = v;
 	l->arr_len = 5;
 	l->list_size = 0;
 }
 
-void	kt_vertlist_transform(t_vertlist *l, double m[4][4])
+void	kt_trilist_draw(t_trilist *l, t_xvars *x)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		kt_vec3d_transform(l->data[i], m, &(l->data[i]));
+	{
+		XSetForeground(x->dpy, x->gc, l->indices[i][3]);
+		kt_drawtri3d(x, l->verts->data[l->indices[i][0]],
+					  l->verts->data[l->indices[i][1]],
+					  l->verts->data[l->indices[i][2]]);
+	}
 }
 
-void	kt_vertlist_screenify(t_vertlist *l, t_xvars *x)
+void	kt_trilist_color(t_trilist *l, int color)
 {
-	int				i;
+	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		kt_vec3d_screenify(x, &(l->data[i]));
+		l->indices[i][3] = color;
 }
 
-void	kt_vertlist_print(t_vertlist *l)
+void	kt_trilist_print(t_trilist *l)
 {
-	int				i;
+	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		printf("%f, %f, %f\n", l->data[i].x, l->data[i].y, l->data[i].z);
+		printf("%d, %d, %d, %d\n", l->indices[i][0], l->indices[i][1], l->indices[i][2], l->indices[i][3]);
 	printf("\n");
 }

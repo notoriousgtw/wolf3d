@@ -6,12 +6,11 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:31 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 19:29:47 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 00:00:06 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-#include "vector.h"
+#include "graphics.h"
 
 static void		kt_drawline3d_h(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line)
 {
@@ -65,7 +64,7 @@ static void		kt_drawline3d_v(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line
 	}
 }
 
-void			kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1, int color)
+void			kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1)
 {
 	t_drawline	line;
 
@@ -74,7 +73,6 @@ void			kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1, int color)
 	if ((int) p0.x < 0 || (int) p0.x > x->width
 		|| (int) p0.y < 0 || (int) p0.y > x->height)
 		return;
-	XSetForeground(x->dpy, x->gc, color);
 	line.dx = p1.x - p0.x;
 	line.dy = p1.y - p0.y;
 	if (line.dx == 0)

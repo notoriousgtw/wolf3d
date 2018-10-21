@@ -6,13 +6,11 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:22 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 19:21:10 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/21 14:52:15 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
-#include "vector.h"
-#include <math.h>
 
 void		kt_vec3d_swap(t_vec3d *v0, t_vec3d *v1)
 {

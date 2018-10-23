@@ -16,7 +16,7 @@
 /*
 **	Initialises X11 variables and opens up the game window
 */
-void	init_window(t_data *d)
+void	create_window(t_data *d)
 {
 	XEvent e;
 	XSetWindowAttributes wa;
@@ -27,8 +27,8 @@ void	init_window(t_data *d)
 	d->x.scr = DefaultScreen(d->x.dpy);
 	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
 	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
-	d->x.width = 600;
-	d->x.height = 600;
+	d->x.width = 1200;
+	d->x.height = 1200;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
 									d->x.width, d->x.height, 0, d->x.black_color, d->x.black_color);
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
@@ -70,12 +70,18 @@ void	event_loop(t_data *d)
 		if (e.type == EnterNotify)
 			printf("EnterNotify\n");
 		if (e.type == MotionNotify)
-			printf("MotionNotify x,y = %d,%d\n", e.xmotion.x, e.xmotion.y);
+		{
+			if ((e.xmotion.x >= 77 && e.xmotion.x <= 154) &&
+				(e.xmotion.y >= 77 && e.xmotion.y <= 154))
+				printf("MotionNotify x,y = %d,%d\n", e.xmotion.x, e.xmotion.y);
+		}
 		if (e.type == KeyPress)
 		{
 			printf("KeyPress == %d\n", e.xkey.keycode);
 			if (e.xkey.keycode == KEY_ESC)
 				running = false;
+			if (e.xkey.keycode == KEY_SPACE)
+				restart(d);
 		}
 		else if (e.type == KeyRelease)
 		{
@@ -90,6 +96,16 @@ void	event_loop(t_data *d)
 			printf("ButtonRelease\n");
 		}
 	}
+}
+
+void			restart(t_data *d)
+{
+	XFlush(d->x.dpy);
+	XDestroyWindow(d->x.dpy, d->x.win);
+	XCloseDisplay(d->x.dpy);
+	init_pressed(d);
+	create_window(d);
+	draw_cube(&d->x);
 }
 
 void	draw_cube(t_xvars *x)
@@ -167,6 +183,7 @@ void	draw_cube(t_xvars *x)
 	kt_trilist_print(&t);
 	kt_trilist_draw(&t, x);
 }
+
 /*
 ** Duh
 */
@@ -176,9 +193,8 @@ int		main(void)
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
-	init_window(d);
-	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
-
+	init_pressed(d);
+	create_window(d);
 	draw_cube(&d->x);
 	XFlush(d->x.dpy);
 	/*

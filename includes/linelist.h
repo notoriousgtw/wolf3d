@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 21:58:36 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 12:22:28 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/22 12:59:29 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ typedef struct	s_linelist
 
 void			kt_linelist_init(t_linelist *l, t_vertlist *v);
 void			kt_linelist_draw(t_linelist *l, t_xvars *x);
-void			kt_linelist_app(t_linelist *l, t_line line);
-void			kt_linelist_add(t_linelist *l, t_line line, int index);
+void			kt_linelist_color(t_linelist *l, int color);
+void			kt_linelist_print(t_linelist *l);
+void			kt_linelist_add(t_linelist *l, int p0, int p1);
+void			kt_linelist_insert(t_linelist *l, int p0, int p1, int index);
 
 #endif

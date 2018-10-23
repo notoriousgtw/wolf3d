@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:22 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:52:15 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/22 12:51:15 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void		kt_vec3d_screenify(t_xvars *x, t_vec3d *v)
 {
 	const double	z_inv = 1.0 / v->z;
 
-	v->x = (v->x * z_inv + 1) * ((double) x->width / 2);
-	v->y = (-v->y * z_inv + 1) * ((double) x->height / 2);
+	v->x = (v->x * z_inv + 1) * ((double) x->width / 2.0);
+	v->y = (-v->y * z_inv + 1) * ((double) x->height / 2.0);
 }

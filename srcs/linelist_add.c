@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:14:08 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/22 13:03:36 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ static	int	kt_linelist_check_size(t_linelist *l)
 	return (l->arr_len == l->list_size);
 }
 
-void		kt_linelist_app(t_linelist *l, t_line line)
+void		kt_linelist_add(t_linelist *l, int p0, int p1)
 {
 	if (kt_linelist_check_size(l))
 		kt_linelist_resize(l);
-	l->indices[l->list_size][0] = line[0];
-	l->indices[l->list_size][1] = line[1];
+	l->indices[l->list_size][0] = p0;
+	l->indices[l->list_size][1] = p1;
 	l->list_size++;
 }
 
-void		kt_linelist_add(t_linelist *l, t_line line, int index)
+void		kt_linelist_insert(t_linelist *l, int p0, int p1, int index)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ void		kt_linelist_add(t_linelist *l, t_line line, int index)
 		l->indices[i + 1][0] = l->indices[i][0];
 		l->indices[i + 1][1] = l->indices[i][1];
 	}
-	l->indices[index][0] = line[0];
-	l->indices[index][1] = line[1];
+	l->indices[index][0] = p0;
+	l->indices[index][1] = p1;
 	l->list_size++;
 }

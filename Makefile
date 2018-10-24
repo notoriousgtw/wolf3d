@@ -56,7 +56,7 @@ else
 endif
 
 ifeq ($(DETECTED_OS), Darwin)
-	X11INC = -I/usr/X11/include
+	X11INC = -I/opt/X11/include
 	X11LINK = -L/opt/X11/lib -lX11 -lXext -lm
 endif
 

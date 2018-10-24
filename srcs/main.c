@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 15:17:48 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/22 13:14:14 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	event_loop(t_data *d)
 		if (e.type == KeyPress)
 		{
 			printf("KeyPress == %d\n", e.xkey.keycode);
-			if (e.xkey.keycode == KEY_ESC)
-				running = false;
+			if (e.xkey.keycode == KEY_ESC && !(running = false))
+				break;
 			if (e.xkey.keycode == KEY_SPACE)
 				restart(d);
 		}
@@ -112,6 +112,7 @@ void	draw_cube(t_xvars *x)
 {
 	t_vec3d		p0, p1, p2, p3, p4, p5, p6, p7;
 	t_vertlist	v;
+	t_linelist	l;
 	t_trilist	t;
 
 	p0.x = -0.5;
@@ -181,7 +182,24 @@ void	draw_cube(t_xvars *x)
 	kt_trilist_color(&t, x->white_color);
 	kt_vertlist_print(t.verts);
 	kt_trilist_print(&t);
-	kt_trilist_draw(&t, x);
+	// kt_trilist_draw(&t, x);
+
+	kt_linelist_init(&l, &v);
+	kt_linelist_add(&l, 0, 1);
+	kt_linelist_add(&l, 1, 3);
+	kt_linelist_add(&l, 3, 2);
+	kt_linelist_add(&l, 2, 0);
+	kt_linelist_add(&l, 0, 4);
+	kt_linelist_add(&l, 1, 5);
+	kt_linelist_add(&l, 3, 7);
+	kt_linelist_add(&l, 2, 6);
+	kt_linelist_add(&l, 4, 5);
+	kt_linelist_add(&l, 5, 7);
+	kt_linelist_add(&l, 7, 6);
+	kt_linelist_add(&l, 6, 4);
+	kt_linelist_color(&l, x->white_color);
+	kt_linelist_print(&l);
+	kt_linelist_draw(&l, x);
 }
 
 /*

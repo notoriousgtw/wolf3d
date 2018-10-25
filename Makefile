@@ -6,11 +6,11 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/24 21:04:13 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/24 22:02:14 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= wolf3d
+NAME	= wolf3d
 
 SRC		= main.c \
 			vec2d.c \
@@ -34,8 +34,8 @@ SRC		= main.c \
 			trilist_add.c \
 			mesh.c \
 			mesh_draw.c \
-			cube_init.c
-
+			cube_init.c \
+			init.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -46,21 +46,39 @@ LIBFT	= ./libft/libft.a
 LIBINC	= -I./libft/includes
 LIBLINK	= -L./libft -lft
 
-X11LINK = -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
-
 SRCDIR	= ./srcs/
 INCDIR	= ./includes/
 OBJDIR	= ./objs/
-BINDIR	= ./bin/
+BINDIR	= ./
+X11INC	=
 
-all: obj libft $(NAME)
+OS		:= $(shell uname)
+DETECTED_OS	=
+
+ifeq ($(OS), Windows_NT)
+	DETECTED_OS := Windows
+else
+	DETECTED_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+endif
+
+ifeq ($(DETECTED_OS), Darwin)
+	X11INC = -I/opt/X11/include
+	X11LINK = -L/opt/X11/lib -lX11 -lXext -lm
+endif
+
+ifeq ($(DETECTED_OS), Linux)
+	BINDIR = ./bin/
+	X11LINK = -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
+endif
+
+all: obj bin libft $(NAME)
 
 obj:
 	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@echo $(NAME): Compiling $@
-	@$(CC) $(CFLAGS) -I $(INCDIR) $(LIBINC) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(X11INC) $(LIBINC) -I $(INCDIR) -o $@ -c $<
 
 libft: $(LIBFT)
 

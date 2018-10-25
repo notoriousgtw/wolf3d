@@ -6,18 +6,19 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 20:35:43 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:05:45 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "shapes.h"
+#include "color.h"
 #include <stdio.h>
 
 /*
 **	Initialises X11 variables and opens up the game window
 */
-void	init_window(t_data *d)
+void	create_window(t_data *d)
 {
 	XEvent e;
 	XSetWindowAttributes wa;
@@ -28,8 +29,8 @@ void	init_window(t_data *d)
 	d->x.scr = DefaultScreen(d->x.dpy);
 	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
 	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
-	d->x.width = 600;
-	d->x.height = 600;
+	d->x.width = 1200;
+	d->x.height = 1200;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
 									d->x.width, d->x.height, 0, d->x.black_color, d->x.black_color);
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
@@ -77,6 +78,8 @@ void	event_loop(t_data *d)
 			printf("KeyPress == %d\n", e.xkey.keycode);
 			if (e.xkey.keycode == KEY_ESC && !(running = false))
 				break;
+			if (e.xkey.keycode == KEY_SPACE)
+				restart(d);
 		}
 		else if (e.type == KeyRelease)
 		{
@@ -102,7 +105,8 @@ int		main(void)
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
-	init_window(d);
+	init_pressed(d);
+	create_window(d);
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 
 	double m[4][4];

@@ -36,6 +36,7 @@ typedef struct	s_xvars
 	Window	win;
 	GC		gc;
 }				t_xvars;
+
 typedef struct	s_drawline
 {
 	double	m;

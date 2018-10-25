@@ -32,7 +32,7 @@ void	kt_linelist_draw(t_linelist *l, t_xvars *x)
 	{
 		XSetForeground(x->dpy, x->gc, l->indices[i][2]);
 		kt_drawline3d(x, l->verts->data[l->indices[i][0]],
-					  l->verts->data[l->indices[i][1]]);
+						l->verts->data[l->indices[i][1]]);
 	}
 }
 

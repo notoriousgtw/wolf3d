@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
+#include "wolf3d.h"
 #include "trilist.h"
 
 void	kt_trilist_init(t_trilist *l, t_vertlist *v)
@@ -31,8 +31,8 @@ void	kt_trilist_draw(t_trilist *l, t_xvars *x)
 	{
 		XSetForeground(x->dpy, x->gc, l->indices[i][3]);
 		kt_drawtri3d(x, l->verts->data[l->indices[i][0]],
-					  l->verts->data[l->indices[i][1]],
-					  l->verts->data[l->indices[i][2]]);
+						l->verts->data[l->indices[i][1]],
+						l->verts->data[l->indices[i][2]]);
 	}
 }
 

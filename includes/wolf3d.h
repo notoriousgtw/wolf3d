@@ -20,7 +20,14 @@
 
 typedef struct	s_data
 {
-	t_xvars	x;
+	int			changed:1;
+	t_keys		pressed;
+	t_xvars		x;
 }				t_data;
+
+void			draw_cube(t_xvars *x);
+void			restart(t_data *d);
+void			init_pressed(t_data *d);
+void			redraw(t_data *d);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfleisch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:40:52 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/10/24 16:40:52 by jfleisch         ###   ########.fr       */
+/*   Updated: 2018/10/24 22:14:52 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 typedef struct		s_color
 {
-	int				r;
-	int				g;
-	int				b;
+	u_int8_t		r;
+	u_int8_t		g;
+	u_int8_t		b;
 	int				color_nbr;
 }					t_color;
 

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 12:24:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/10/22 13:22:44 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:29:33 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@
 #  define KEY_SEMI 49
 #  define KEY_PLUS 77
 #  define KEY_MINUS 86
-#  define KEY_SPACE 57
-#  define KEY_ESC 61
+#  define KEY_SPACE 65
+#  define KEY_ESC 9
 #  define KEY_TAB 56
 #  define KEY_CAPS 65
 #  define KEY_SHIFT_L 64

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 22:05:45 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:22:06 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,34 @@ void	event_loop(t_data *d)
 	}
 }
 
+void				draw_cube(t_data *d)
+{
+	double m[4][4];
+	kt_mat3d_identity(m);
+	kt_tr3d_rotate(m, -45, -45, 0);
+	kt_tr3d_translate(m, 0, 0, 2);
+
+	t_cube c;
+	kt_cube_init(&c, &d->x, 1.5);
+	kt_mesh_color(&c.data, c.data.x->white_color);
+	kt_mesh_transform(&c.data, m);
+	printf("\n");
+	kt_mesh_print_data(&c.data);
+	printf("\n");
+	kt_mesh_draw_solid(&c.data);
+	kt_mesh_color(&c.data, c.data.x->black_color);
+	kt_mesh_draw_wire(&c.data);
+}
+
+void				restart(t_data *d)
+{
+	printf("restart");
+	XDestroyWindow(d->x.dpy, d->x.win);
+	XCloseDisplay(d->x.dpy);
+	init_pressed(d);
+	create_window(d);
+	draw_cube(d);
+}
 /*
 ** Duh
 */

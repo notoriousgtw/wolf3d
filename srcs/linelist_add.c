@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/22 13:03:36 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:11:21 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	kt_linelist_resize(t_linelist *l)
 {
 	t_line *tmp;
 
-	if (!(tmp = ft_memalloc(sizeof(t_line) * l->arr_len * 2)))
+	l->arr_len *= 2;
+	if (!(tmp = ft_memalloc(sizeof(t_line) * l->arr_len)))
 		ft_error_unknown("wolf3d: ");
 	ft_memcpy(tmp, l->indices, sizeof(t_line) * l->list_size);
 	free(l->indices);
 	l->indices = tmp;
-	l->arr_len *= 2;
 }
 
 static	int	kt_linelist_check_size(t_linelist *l)

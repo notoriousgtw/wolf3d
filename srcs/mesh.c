@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 12:49:35 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 21:02:07 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:34:11 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	kt_mesh_print_data(const t_meshdata *m)
 {
 	int i;
 
-	printf("verts:\n\t");
+	printf("verts:\n");
 	i = -1;
 	while (++i < m->n_verts)
 	{
@@ -46,7 +46,7 @@ void	kt_mesh_print_data(const t_meshdata *m)
 		kt_vert_print_data(m->verts[i]);
 		printf("\n");
 	}
-	printf("\nlines:\n\t");
+	printf("\nlines:\n");
 	i = -1;
 	while (++i < m->n_lines)
 	{
@@ -54,7 +54,7 @@ void	kt_mesh_print_data(const t_meshdata *m)
 		kt_line_print_data(m->lines[i]);
 		printf("\n");
 	}
-	printf("\ntris:\n\t");
+	printf("\ntris:\n");
 	i = -1;
 	while (++i < m->n_tris)
 	{

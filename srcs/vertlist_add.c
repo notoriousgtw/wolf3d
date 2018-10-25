@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:14:00 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:13:17 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	kt_vertlist_resize(t_vertlist *l)
 {
 	t_vec3d *tmp;
 
-	if (!(tmp = ft_memalloc(sizeof(t_vec3d) * l->arr_len * 2)))
+	l->arr_len *= 2;
+	if (!(tmp = ft_memalloc(sizeof(t_vec3d) * l->arr_len)))
 		ft_error_unknown("wolf3d: ");
 	ft_memcpy(tmp, l->data, sizeof(t_vec3d) * l->list_size);
 	free(l->data);
 	l->data = tmp;
-	l->arr_len *= 2;
 }
 
 static	int	kt_vertlist_check_size(t_vertlist *l)

@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/24 22:02:14 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/24 22:22:25 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,9 @@ all: obj bin libft $(NAME)
 
 obj:
 	@mkdir -p $(OBJDIR)
+
+bin:
+	@mkdir -p $(BINDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@echo $(NAME): Compiling $@

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:05:13 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 20:39:25 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 22:15:50 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	kt_mesh_draw_solid(t_meshdata *m)
 		{
 			XSetForeground(m->x->dpy, m->x->gc, m->tris[i][3]);
 			kt_drawtri3d(m->x, screen_verts[m->tris[i][0]],
-							   screen_verts[m->tris[i][1]],
-							   screen_verts[m->tris[i][2]]);
+								screen_verts[m->tris[i][1]],
+								screen_verts[m->tris[i][2]]);
 		}
 	}
 }
@@ -82,8 +82,8 @@ void	kt_mesh_draw_textured(t_meshdata *m)
 		{
 			XSetForeground(m->x->dpy, m->x->gc, m->tris[i][3]);
 			kt_drawtri3d(m->x, screen_verts[m->tris[i][0]],
-							   screen_verts[m->tris[i][1]],
-							   screen_verts[m->tris[i][2]]);
+								screen_verts[m->tris[i][1]],
+								screen_verts[m->tris[i][2]]);
 		}
 	}
 }

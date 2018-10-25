@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "color.h"
 #include <stdio.h>
 
 /*
@@ -114,6 +115,7 @@ void	draw_cube(t_xvars *x)
 	t_vertlist	v;
 	t_linelist	l;
 	t_trilist	t;
+	double m[4][4];
 
 	p0.x = -0.5;
 	p0.y = -0.5;
@@ -158,7 +160,6 @@ void	draw_cube(t_xvars *x)
 	kt_vertlist_app(&v, p7);
 	kt_vertlist_print(&v);
 
-	double m[4][4];
 	kt_mat3d_identity(m);
 	kt_tr3d_translate(m, 0, 0, 2);
 	// kt_tr3d_scale(m, 0.5, 0.5, 0.5);
@@ -179,10 +180,10 @@ void	draw_cube(t_xvars *x)
 	kt_trilist_add(&t, 2, 4, 6);
 	kt_trilist_add(&t, 0, 1, 4);
 	kt_trilist_add(&t, 1, 5, 4);
-	kt_trilist_color(&t, x->white_color);
+	kt_trilist_color(&t, AMETHYST);
 	kt_vertlist_print(t.verts);
 	kt_trilist_print(&t);
-	// kt_trilist_draw(&t, x);
+	kt_trilist_draw(&t, x);
 
 	kt_linelist_init(&l, &v);
 	kt_linelist_add(&l, 0, 1);
@@ -197,7 +198,7 @@ void	draw_cube(t_xvars *x)
 	kt_linelist_add(&l, 5, 7);
 	kt_linelist_add(&l, 7, 6);
 	kt_linelist_add(&l, 6, 4);
-	kt_linelist_color(&l, x->white_color);
+	kt_linelist_color(&l, RED);
 	kt_linelist_print(&l);
 	kt_linelist_draw(&l, x);
 }

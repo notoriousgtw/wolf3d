@@ -28,5 +28,6 @@ typedef struct	s_data
 void			draw_cube(t_xvars *x);
 void			restart(t_data *d);
 void			init_pressed(t_data *d);
+void			redraw(t_data *d);
 
 #endif

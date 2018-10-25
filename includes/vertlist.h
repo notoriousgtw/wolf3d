@@ -18,9 +18,9 @@
 
 typedef struct	s_vertlist
 {
-	t_vec3d			*data;
-	int				arr_len;
-	int				list_size;
+	t_vec3d		*data;
+	int			arr_len;
+	int			list_size;
 }				t_vertlist;
 
 void			kt_vertlist_init(t_vertlist *l);

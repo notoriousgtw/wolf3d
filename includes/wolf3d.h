@@ -13,19 +13,25 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include <math.h>
 # include "graphics.h"
 # include "keys.h"
+# include "color.h"
 
 typedef struct	s_data
 {
 	int			changed:1;
 	t_keys		pressed;
 	t_xvars		x;
+	t_color		*color;
 }				t_data;
 
-void			restart(t_data *d);
-void			init_pressed(t_data *d);
+void			bb_start(t_data *d);
+void			bb_close(t_data *d);
+void			bb_restart(t_data *d);
+void			bb_init_pressed(t_data *d);
+void			kt_create_window(t_data *d);
+void			bb_init_colors(t_data *data);
 
 #endif

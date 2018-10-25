@@ -53,20 +53,20 @@ BINDIR	= ./
 X11INC	=
 
 OS		:= $(shell uname)
-DETECTED_OS	=
+D_OS	=
 
 ifeq ($(OS), Windows_NT)
-	DETECTED_OS := Windows
+	D_OS := Windows
 else
-	DETECTED_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+	D_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
 endif
 
-ifeq ($(DETECTED_OS), Darwin)
+ifeq ($(D_OS), Darwin)
 	X11INC = -I/opt/X11/include
 	X11LINK = -L/opt/X11/lib -lX11 -lXext -lm
 endif
 
-ifeq ($(DETECTED_OS), Linux)
+ifeq ($(D_OS), Linux)
 	BINDIR = ./bin/
 	X11LINK = -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
 endif

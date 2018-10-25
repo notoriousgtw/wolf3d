@@ -14,9 +14,12 @@
 #include "trilist.h"
 #include <stdio.h>
 
-void	kt_tri_color(t_tri t, int color)
+void	bb_tri_color(t_tri t, int color)
 {
-	t[3] = color;
+	t_color		c;
+
+	bb_init_color_table(&c, color);
+	t[3] = c.color[3];
 }
 
 void	kt_tri_print_data(const t_tri t)

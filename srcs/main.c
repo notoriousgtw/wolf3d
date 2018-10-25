@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "../includes/wolf3d.h"
 #include "shapes.h"
 #include "color.h"
 #include <stdio.h>
@@ -18,7 +18,7 @@
 /*
 **	Initialises X11 variables and opens up the game window
 */
-void	create_window(t_data *d)
+void			kt_create_window(t_data *d)
 {
 	XEvent e;
 	XSetWindowAttributes wa;
@@ -48,7 +48,27 @@ void	create_window(t_data *d)
 	}
 }
 
-void	event_loop(t_data *d)
+void				kt_draw_cube(t_data *d)
+{
+	t_cube c;
+	double m[4][4];
+	
+	kt_mat3d_identity(m);
+	kt_tr3d_rotate(m, -45, -45, 0);
+	kt_tr3d_translate(m, 0, 0, 2);
+
+	kt_cube_init(&c, &d->x, 1.5);
+	kt_mesh_color(&c.data, c.data.x->white_color);
+	kt_mesh_transform(&c.data, m);
+	printf("\n");
+	kt_mesh_print_data(&c.data);
+	printf("\n");
+	kt_mesh_draw_solid(&c.data);
+	kt_mesh_color(&c.data, c.data.x->black_color);
+	kt_mesh_draw_wire(&c.data);
+}
+
+void			bb_event_loop(t_data *d)
 {
 	Atom	wm_del_message;
 	t_bool	running;
@@ -65,7 +85,7 @@ void	event_loop(t_data *d)
 		{
 			if ((unsigned long) e.xclient.data.l[0] == wm_del_message)
 				running = false;
-			break;
+			bb_close(d);
 		}
 		if (e.type == MapNotify)
 			printf("MapNotify\n");
@@ -77,53 +97,32 @@ void	event_loop(t_data *d)
 		{
 			printf("KeyPress == %d\n", e.xkey.keycode);
 			if (e.xkey.keycode == KEY_ESC && !(running = false))
-				break;
+				bb_close(d);
 			if (e.xkey.keycode == KEY_SPACE)
-				restart(d);
+			{
+				bb_restart(d);
+				kt_draw_cube(d);
+			}
+			if (e.xkey.keycode == KEY_I)
+				d->color->color_nbr++;
+			else if (e.xkey.keycode == KEY_O)
+				d->color->color_nbr--;
 		}
-		else if (e.type == KeyRelease)
-		{
-			printf("KeyRelease == %d\n", e.xkey.keycode);
-		}
+		// else if (e.type == KeyRelease)
+		// {
+		// 	printf("KeyRelease == %d\n", e.xkey.keycode);
+		// }
 		if (e.type == ButtonPress)
 		{
 			printf("ButtonPress == %d\n", e.xkey.keycode);
 		}
-		else if (e.type == ButtonRelease)
-		{
-			printf("ButtonRelease\n");
-		}
+		// else if (e.type == ButtonRelease)
+		// {
+		// 	printf("ButtonRelease\n");
+		// }
 	}
 }
 
-void				draw_cube(t_data *d)
-{
-	double m[4][4];
-	kt_mat3d_identity(m);
-	kt_tr3d_rotate(m, -45, -45, 0);
-	kt_tr3d_translate(m, 0, 0, 2);
-
-	t_cube c;
-	kt_cube_init(&c, &d->x, 1.5);
-	kt_mesh_color(&c.data, c.data.x->white_color);
-	kt_mesh_transform(&c.data, m);
-	printf("\n");
-	kt_mesh_print_data(&c.data);
-	printf("\n");
-	kt_mesh_draw_solid(&c.data);
-	kt_mesh_color(&c.data, c.data.x->black_color);
-	kt_mesh_draw_wire(&c.data);
-}
-
-void				restart(t_data *d)
-{
-	printf("restart");
-	XDestroyWindow(d->x.dpy, d->x.win);
-	XCloseDisplay(d->x.dpy);
-	init_pressed(d);
-	create_window(d);
-	draw_cube(d);
-}
 /*
 ** Duh
 */
@@ -133,32 +132,12 @@ int		main(void)
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
-	init_pressed(d);
-	create_window(d);
+	bb_start(d);
+	bb_init_colors(d);
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
-
-	double m[4][4];
-	kt_mat3d_identity(m);
-	kt_tr3d_rotate(m, -45, -45, 0);
-	kt_tr3d_translate(m, 0, 0, 2);
-
-	t_cube c;
-	kt_cube_init(&c, &d->x, 1.5);
-	kt_mesh_color(&c.data, c.data.x->white_color);
-	kt_mesh_transform(&c.data, m);
-	printf("\n");
-	kt_mesh_print_data(&c.data);
-	printf("\n");
-	kt_mesh_draw_solid(&c.data);
-	kt_mesh_color(&c.data, c.data.x->black_color);
-	kt_mesh_draw_wire(&c.data);
-
+	printf("kt_draw_cube");
+	kt_draw_cube(d);
 	XFlush(d->x.dpy);
-	/*
-	** TODO - Event loop
-	*/
-	event_loop(d);
-	XDestroyWindow(d->x.dpy, d->x.win);
-	XCloseDisplay(d->x.dpy);
+	bb_event_loop(d);
 	return (0);
 }

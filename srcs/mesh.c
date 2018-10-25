@@ -19,10 +19,10 @@ void	kt_mesh_color(t_meshdata *m, int color)
 
 	i = -1;
 	while (++i < m->n_lines)
-		kt_line_color(m->lines[i], color);
+		bb_line_color(m->lines[i], color);
 	i = -1;
 	while (++i < m->n_tris)
-		kt_tri_color(m->tris[i], color);
+		bb_tri_color(m->tris[i], color);
 }
 
 void	kt_mesh_transform(t_meshdata *m, double mat[4][4])

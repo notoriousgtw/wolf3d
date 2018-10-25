@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 18:50:40 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/23 12:16:22 by gwood             #+#    #+#             */
+/*   Updated: 2018/10/24 20:57:29 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_H
-# define WOLF3D_H
+#include "graphics.h"
+#include "linelist.h"
+#include <stdio.h>
 
-# include "libft.h"
-# include <math.h>
-# include "graphics.h"
-# include "keys.h"
-
-typedef struct	s_data
+void	kt_line_color(t_line t, int color)
 {
-	t_xvars	x;
-}				t_data;
+	t[2] = color;
+}
 
-#endif
+void	kt_line_print_data(const t_line t)
+{
+	printf("v%d, v%d color: %d", t[0], t[1], t[2]);
+}

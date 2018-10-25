@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 12:13:27 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:54:39 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/23 14:58:23 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	kt_tr3d_rotate(double m[4][4], double ax, double ay, double az)
 	double	mat1[4][4];
 	double	mat2[4][4];
 
+	ax *= 0.01745329252;
+	ay *= 0.01745329252;
+	az *= 0.01745329252;
 	kt_mat3d_identity(xmat);
 	kt_mat3d_identity(ymat);
 	kt_mat3d_identity(zmat);

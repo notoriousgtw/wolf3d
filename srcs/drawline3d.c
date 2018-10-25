@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:31 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 00:00:06 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:26:12 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void		kt_drawline3d_h(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line
 		kt_vec3d_swap(&p0, &p1);
 	while ((int) p0.x <= (int) p1.x)
 	{
-		XDrawPoint(x->dpy, x->win, x->gc, (int) p0.x, (int) p0.y);
+		if (p0.x >= 0 && p0.x <= x->width && p0.y >= 0 && p0.y <= x->height)
+			XDrawPoint(x->dpy, x->win, x->gc, (int) p0.x, (int) p0.y);
 		offset += delta;
 		if (offset >= thresh)
 		{
@@ -53,7 +54,8 @@ static void		kt_drawline3d_v(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line
 		kt_vec3d_swap(&p0, &p1);
 	while ((int) p0.y <= (int) p1.y)
 	{
-		XDrawPoint(x->dpy, x->win, x->gc, (int) p0.x, (int) p0.y);
+		if (p0.x >= 0 && p0.x <= x->width && p0.y >= 0 && p0.y <= x->height)
+			XDrawPoint(x->dpy, x->win, x->gc, (int) p0.x, (int) p0.y);
 		offset += delta;
 		if (offset >= thresh)
 		{
@@ -68,11 +70,11 @@ void			kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1)
 {
 	t_drawline	line;
 
-	kt_vec3d_screenify(x, &p0);
-	kt_vec3d_screenify(x, &p1);
-	if ((int) p0.x < 0 || (int) p0.x > x->width
-		|| (int) p0.y < 0 || (int) p0.y > x->height)
-		return;
+	// kt_vec3d_screenify(x, &p0);
+	// kt_vec3d_screenify(x, &p1);
+	// if ((int) p0.x < 0 || (int) p0.x > x->width
+	// 	|| (int) p0.y < 0 || (int) p0.y > x->height)
+	// 	return;
 	line.dx = p1.x - p0.x;
 	line.dy = p1.y - p0.y;
 	if (line.dx == 0)

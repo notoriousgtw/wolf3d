@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 13:49:48 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 17:32:00 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,22 @@
 
 static void	kt_trilist_resize(t_trilist *l)
 {
-	t_tri	*tmp;
+	t_tri	*tmp1;
+	t_bool	*tmp2;
 
-	if (!(tmp = ft_memalloc(sizeof(t_tri) * l->arr_len * 2)))
-		ft_error_unknown("wolf3d: ");
-	ft_memcpy(tmp, l->indices, sizeof(t_tri) * l->list_size);
-	free(l->indices);
-	l->indices = tmp;
 	l->arr_len *= 2;
+	if (!(tmp1 = ft_memalloc(sizeof(t_tri) * l->arr_len)))
+		ft_error_unknown("wolf3d: ");
+	ft_bzero(tmp1, sizeof(t_bool) * l->arr_len);
+	ft_memcpy(tmp1, l->indices, sizeof(t_tri) * l->list_size);
+	free(l->indices);
+	l->indices = tmp1;
+	if (!(tmp2 = ft_memalloc(sizeof(t_bool) * l->arr_len)))
+		ft_error_unknown("wolf3d: ");
+	ft_bzero(tmp2, sizeof(t_bool) * l->arr_len);
+	ft_memcpy(tmp2, l->cull_flags, sizeof(t_bool) * l->list_size);
+	free(l->cull_flags);
+	l->cull_flags = tmp2;
 }
 
 static	int	kt_trilist_check_size(t_trilist *l)

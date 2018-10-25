@@ -6,26 +6,12 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:05:41 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/23 14:40:59 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
 #include "trilist.h"
-#include <stdio.h>
-
-void	kt_tri_init(t_tri t, int p0, int p1, int p2)
-{
-	ft_bzero(t, sizeof(t_tri));
-	t[0] = p0;
-	t[1] = p1;
-	t[2] = p2;
-}
-
-void	kt_tri_color(t_tri t, int color)
-{
-	t[3] = color;
-}
 
 void	kt_trilist_init(t_trilist *l, t_vertlist *v)
 {
@@ -59,12 +45,11 @@ void	kt_trilist_color(t_trilist *l, int color)
 		l->indices[i][3] = color;
 }
 
-void	kt_trilist_print(t_trilist *l)
+void	kt_trilist_print_data(const t_trilist *l)
 {
 	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		printf("%d, %d, %d, %d\n", l->indices[i][0], l->indices[i][1], l->indices[i][2], l->indices[i][3]);
-	printf("\n");
+		kt_tri_print_data(l->indices[i]);
 }

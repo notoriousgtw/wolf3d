@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 18:50:40 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/23 22:37:25 by gwood             #+#    #+#             */
+/*   Updated: 2018/10/23 22:44:11 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_H
-# define WOLF3D_H
+#ifndef EVENTS_H
+# define EVENTS_H
 
-# include "libft.h"
-# include <math.h>
-# include "graphics.h"
-# include "keys.h"
-
-typedef struct	s_data
+typedef	enum	e_event_type
 {
-	t_xvars	x;
-}				t_data;
+	button_press,
+	button_release,
+	button_held
+}				t_event_type;
+
+typedef struct	s_event
+{
+	t_event_type	type;
+	t_event			*next;
+}				t_event;
 
 #endif

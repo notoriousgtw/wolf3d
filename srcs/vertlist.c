@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/21 14:58:39 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/23 14:40:50 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,18 @@ void	kt_vertlist_transform(t_vertlist *l, double m[4][4])
 
 void	kt_vertlist_screenify(t_vertlist *l, t_xvars *x)
 {
-	int				i;
+	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		kt_vec3d_screenify(x, &(l->data[i]));
+		kt_vec3d_screenify(x, l->data[i], &(l->data[i]));
 }
 
-void	kt_vertlist_print(t_vertlist *l)
+void	kt_vertlist_print_data(const t_vertlist *l)
 {
-	int				i;
+	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		printf("%f, %f, %f\n", l->data[i].x, l->data[i].y, l->data[i].z);
-	printf("\n");
+		kt_vec3d_print_data(l->data[i]);
 }

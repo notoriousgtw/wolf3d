@@ -6,11 +6,12 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/22 13:14:14 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/24 20:35:43 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "shapes.h"
 #include <stdio.h>
 
 /*
@@ -69,8 +70,8 @@ void	event_loop(t_data *d)
 			printf("MapNotify\n");
 		if (e.type == EnterNotify)
 			printf("EnterNotify\n");
-		if (e.type == MotionNotify)
-			printf("MotionNotify x,y = %d,%d\n", e.xmotion.x, e.xmotion.y);
+		// if (e.type == MotionNotify)
+		// 	printf("MotionNotify x,y = %d,%d\n", e.xmotion.x, e.xmotion.y);
 		if (e.type == KeyPress)
 		{
 			printf("KeyPress == %d\n", e.xkey.keycode);
@@ -79,7 +80,7 @@ void	event_loop(t_data *d)
 		}
 		else if (e.type == KeyRelease)
 		{
-			printf("KeyRelease\n");
+			printf("KeyRelease == %d\n", e.xkey.keycode);
 		}
 		if (e.type == ButtonPress)
 		{
@@ -92,99 +93,6 @@ void	event_loop(t_data *d)
 	}
 }
 
-void	draw_cube(t_xvars *x)
-{
-	t_vec3d		p0, p1, p2, p3, p4, p5, p6, p7;
-	t_vertlist	v;
-	t_linelist	l;
-	t_trilist	t;
-
-	p0.x = -0.5;
-	p0.y = -0.5;
-	p0.z = -0.5;
-
-	p1.x = 0.5;
-	p1.y = -0.5;
-	p1.z = -0.5;
-
-	p2.x = -0.5;
-	p2.y = 0.5;
-	p2.z = -0.5;
-
-	p3.x = 0.5;
-	p3.y = 0.5;
-	p3.z = -0.5;
-
-	p4.x = -0.5;
-	p4.y = -0.5;
-	p4.z = 0.5;
-
-	p5.x = 0.5;
-	p5.y = -0.5;
-	p5.z = 0.5;
-
-	p6.x = -0.5;
-	p6.y = 0.5;
-	p6.z = 0.5;
-
-	p7.x = 0.5;
-	p7.y = 0.5;
-	p7.z = 0.5;
-
-	kt_vertlist_init(&v);
-	kt_vertlist_app(&v, p0);
-	kt_vertlist_app(&v, p1);
-	kt_vertlist_app(&v, p2);
-	kt_vertlist_app(&v, p3);
-	kt_vertlist_app(&v, p4);
-	kt_vertlist_app(&v, p5);
-	kt_vertlist_app(&v, p6);
-	kt_vertlist_app(&v, p7);
-	kt_vertlist_print(&v);
-
-	double m[4][4];
-	kt_mat3d_identity(m);
-	kt_tr3d_translate(m, 0, 0, 2);
-	// kt_tr3d_scale(m, 0.5, 0.5, 0.5);
-	kt_vertlist_transform(&v, m);
-	kt_vertlist_print(&v);
-	kt_vertlist_screenify(&v, x);
-
-	kt_trilist_init(&t, &v);
-	kt_trilist_add(&t, 0, 2, 1);
-	kt_trilist_add(&t, 2, 3, 1);
-	kt_trilist_add(&t, 1, 3, 5);
-	kt_trilist_add(&t, 3, 7, 5);
-	kt_trilist_add(&t, 2, 6, 3);
-	kt_trilist_add(&t, 3, 6, 7);
-	kt_trilist_add(&t, 4, 5, 7);
-	kt_trilist_add(&t, 4, 7, 6);
-	kt_trilist_add(&t, 0, 4, 2);
-	kt_trilist_add(&t, 2, 4, 6);
-	kt_trilist_add(&t, 0, 1, 4);
-	kt_trilist_add(&t, 1, 5, 4);
-	kt_trilist_color(&t, x->white_color);
-	kt_vertlist_print(t.verts);
-	kt_trilist_print(&t);
-	// kt_trilist_draw(&t, x);
-
-	kt_linelist_init(&l, &v);
-	kt_linelist_add(&l, 0, 1);
-	kt_linelist_add(&l, 1, 3);
-	kt_linelist_add(&l, 3, 2);
-	kt_linelist_add(&l, 2, 0);
-	kt_linelist_add(&l, 0, 4);
-	kt_linelist_add(&l, 1, 5);
-	kt_linelist_add(&l, 3, 7);
-	kt_linelist_add(&l, 2, 6);
-	kt_linelist_add(&l, 4, 5);
-	kt_linelist_add(&l, 5, 7);
-	kt_linelist_add(&l, 7, 6);
-	kt_linelist_add(&l, 6, 4);
-	kt_linelist_color(&l, x->white_color);
-	kt_linelist_print(&l);
-	kt_linelist_draw(&l, x);
-}
 /*
 ** Duh
 */
@@ -197,7 +105,22 @@ int		main(void)
 	init_window(d);
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 
-	draw_cube(&d->x);
+	double m[4][4];
+	kt_mat3d_identity(m);
+	kt_tr3d_rotate(m, -45, -45, 0);
+	kt_tr3d_translate(m, 0, 0, 2);
+
+	t_cube c;
+	kt_cube_init(&c, &d->x, 1.5);
+	kt_mesh_color(&c.data, c.data.x->white_color);
+	kt_mesh_transform(&c.data, m);
+	printf("\n");
+	kt_mesh_print_data(&c.data);
+	printf("\n");
+	kt_mesh_draw_solid(&c.data);
+	kt_mesh_color(&c.data, c.data.x->black_color);
+	kt_mesh_draw_wire(&c.data);
+
 	XFlush(d->x.dpy);
 	/*
 	** TODO - Event loop

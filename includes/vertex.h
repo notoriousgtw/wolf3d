@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*   vertex.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 18:50:40 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/24 20:27:25 by gwood             #+#    #+#             */
+/*   Updated: 2018/10/24 21:02:32 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_H
-# define WOLF3D_H
+#ifndef VERTEX_H
+# define VERTEX_H
 
-# include "libft.h"
-# include <math.h>
 # include "graphics.h"
-# include "keys.h"
 
-typedef struct	s_data
+typedef struct	s_vert
 {
-	t_xvars	x;
-}				t_data;
+	t_vec3d	pos;
+	t_vec2d	tc;
+}				t_vert;
+
+void	kt_vert_print_data(t_vert v);
 
 #endif

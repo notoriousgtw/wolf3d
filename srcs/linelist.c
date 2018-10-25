@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/22 13:07:31 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/23 14:40:28 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ void	kt_linelist_color(t_linelist *l, int color)
 		l->indices[i][2] = color;
 }
 
-void	kt_linelist_print(t_linelist *l)
+void	kt_linelist_print_data(const t_linelist *l)
 {
 	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		printf("%d, %d, %d\n", l->indices[i][0], l->indices[i][1], l->indices[i][2]);
-	printf("\n");
+		kt_line_print_data(l->indices[i]);
 }

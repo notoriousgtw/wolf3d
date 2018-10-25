@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 12:13:27 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/20 15:48:04 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/23 14:58:52 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	kt_tr2d_rotate(double m[3][3], double a)
 {
 	double	rmat[3][3];
 
+	a *= 0.01745329252;
 	kt_mat2d_identity(rmat);
 	rmat[0][0] = cos(a);
 	rmat[0][1] = sin(a);

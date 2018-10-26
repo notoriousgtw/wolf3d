@@ -25,6 +25,7 @@
 # define B_ORCHID 0x1F45FC
 
 # include <math.h>
+# include <stdint.h>
 
 typedef struct		s_color
 {
@@ -38,8 +39,7 @@ typedef struct		s_color
 	int				color_nbr;
 }					t_color;
 
-void			bb_init_color_table(t_color *c, int color);
-void			bb_init_color_tab(t_color *c);
-
+void				bb_init_color_table(t_color *c, int color);
+void				bb_init_color_tab(t_color *c);
 
 #endif

@@ -17,10 +17,7 @@
 
 void	bb_line_color(t_line t, int color)
 {
-	t_color		c;
-
-	bb_init_color_table(&c, color);
-	t[2] = c.color[2];
+	t[2] = color;
 }
 
 void	kt_line_print_data(const t_line t)

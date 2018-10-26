@@ -31,7 +31,7 @@ typedef struct	s_xvars
 	int		scr;
 	int		black_color;
 	int		white_color;
-	t_color	*color;
+	t_color	*c;
 	int		width;
 	int		height;
 	Window	win;

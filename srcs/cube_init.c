@@ -40,22 +40,23 @@ static void	kt_cube_init_v(t_cube *c, double size)
 	c->verts[7].pos.z = size;
 }
 
-static void	kt_cube_init_l(t_cube *c)
+static void			kt_cube_init_line(t_cube *c)
 {
-	const int	white = c->data.x->white_color;
-	const t_line lines[12] =
+	// const int		white = c->data.x->white_color;
+	const int		color = c->data.x->c->color[2];
+	const t_line	lines[12] =
 	{
-		{0, 1, white}, {1, 3, white}, {3, 2, white}, {2, 0, white},
-		{0, 4, white}, {1, 5, white}, {3, 7, white}, {2, 6, white},
-		{4, 5, white}, {5, 7, white}, {7, 6, white}, {6, 4, white}
+		{0, 1, color}, {1, 3, color}, {3, 2, color}, {2, 0, color},
+		{0, 4, color}, {1, 5, color}, {3, 7, color}, {2, 6, color},
+		{4, 5, color}, {5, 7, color}, {7, 6, color}, {6, 4, color}
 	};
 	ft_memcpy(c->lines, &lines, sizeof(t_line) * 12);
 }
 
-static void	kt_cube_init_t(t_cube *c)
+static void 		kt_cube_init_tri(t_cube *c)
 {
-	const int	white = c->data.x->white_color;
-	const t_tri tris[12] =
+	const int		white = c->data.x->white_color;
+	const t_tri 	tris[12] =
 	{
 		{0, 2, 1, white}, {2, 3, 1, white},
 		{1, 3, 5, white}, {3, 7, 5, white},
@@ -67,7 +68,7 @@ static void	kt_cube_init_t(t_cube *c)
 	ft_memcpy(c->tris, &tris, sizeof(t_tri) * 12);
 }
 
-void		kt_cube_init(t_cube *c, t_xvars *x, double size)
+void				kt_cube_init(t_cube *c, t_xvars *x, double size)
 {
 	c->data.x = x;
 	c->data.n_verts = 8;
@@ -78,6 +79,6 @@ void		kt_cube_init(t_cube *c, t_xvars *x, double size)
 	c->data.tris = c->tris;
 	c->data.cull_flags = c->cull_flags;
 	kt_cube_init_v(c, size / 2);
-	kt_cube_init_l(c);
-	kt_cube_init_t(c);
+	kt_cube_init_line(c);
+	kt_cube_init_tri(c);
 }

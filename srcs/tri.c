@@ -16,10 +16,7 @@
 
 void	bb_tri_color(t_tri t, int color)
 {
-	t_color		c;
-
-	bb_init_color_table(&c, color);
-	t[3] = c.color[3];
+	t[3] = color;
 }
 
 void	kt_tri_print_data(const t_tri t)

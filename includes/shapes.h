@@ -25,6 +25,6 @@ typedef struct	s_cube
 	t_bool		cull_flags[12];
 }				t_cube;
 
-void	kt_cube_init(t_cube *c, t_xvars *x, double size);
+void			kt_cube_init(t_cube *c, t_xvars *x, double size);
 
 #endif

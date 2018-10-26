@@ -24,14 +24,16 @@ typedef struct	s_data
 	int			changed:1;
 	t_keys		pressed;
 	t_xvars		x;
-	t_color		*color;
 }				t_data;
 
 void			bb_start(t_data *d);
 void			bb_close(t_data *d);
 void			bb_restart(t_data *d);
 void			bb_init_pressed(t_data *d);
-void			kt_create_window(t_data *d);
 void			bb_init_colors(t_data *data);
+void			bb_redraw(t_data *d, int solid);
+
+void			kt_create_window(t_data *d);
+void			kt_draw_cube(t_data *d);
 
 #endif

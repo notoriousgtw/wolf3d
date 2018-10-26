@@ -18,7 +18,6 @@
 
 typedef int		t_tri[4];
 
-
 typedef struct	s_trilist
 {
 	t_vertlist	*verts;

@@ -29,8 +29,8 @@ void			kt_create_window(t_data *d)
 	d->x.scr = DefaultScreen(d->x.dpy);
 	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
 	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
-	d->x.width = 1200;
-	d->x.height = 1200;
+	d->x.width = 1000;
+	d->x.height = 1000;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
 									d->x.width, d->x.height, 0, d->x.black_color, d->x.black_color);
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
@@ -52,7 +52,7 @@ void				kt_draw_cube(t_data *d)
 {
 	t_cube c;
 	double m[4][4];
-	
+
 	kt_mat3d_identity(m);
 	kt_tr3d_rotate(m, -45, -45, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
@@ -103,10 +103,18 @@ void			bb_event_loop(t_data *d)
 				bb_restart(d);
 				kt_draw_cube(d);
 			}
-			if (e.xkey.keycode == KEY_I)
-				d->color->color_nbr++;
-			else if (e.xkey.keycode == KEY_O)
-				d->color->color_nbr--;
+			if (e.xkey.keycode == KEY_1)
+				bb_redraw(d, RED);
+			if (e.xkey.keycode == KEY_2)
+				bb_redraw(d, AMETHYST);
+			if (e.xkey.keycode == KEY_3)
+				bb_redraw(d, GREEN);
+			if (e.xkey.keycode == KEY_4)
+				bb_redraw(d, BLUE);
+			// if (e.xkey.keycode == KEY_I)
+			// 	d->x.c->color_nbr++;
+			// else if (e.xkey.keycode == KEY_O)
+			// 	d->x.c->color_nbr--;
 		}
 		// else if (e.type == KeyRelease)
 		// {
@@ -133,7 +141,6 @@ int		main(void)
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
 	bb_start(d);
-	bb_init_colors(d);
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 	printf("kt_draw_cube");
 	kt_draw_cube(d);

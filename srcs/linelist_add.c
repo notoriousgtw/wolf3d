@@ -35,6 +35,7 @@ void		kt_linelist_add(t_linelist *l, int p0, int p1)
 		kt_linelist_resize(l);
 	l->indices[l->list_size][0] = p0;
 	l->indices[l->list_size][1] = p1;
+	l->indices[l->list_size][2] = 0;
 	l->list_size++;
 }
 
@@ -49,8 +50,10 @@ void		kt_linelist_insert(t_linelist *l, int p0, int p1, int index)
 	{
 		l->indices[i + 1][0] = l->indices[i][0];
 		l->indices[i + 1][1] = l->indices[i][1];
+		l->indices[i + 1][2] = l->indices[i][2];
 	}
 	l->indices[index][0] = p0;
 	l->indices[index][1] = p1;
+	l->indices[index][2] = 0;
 	l->list_size++;
 }

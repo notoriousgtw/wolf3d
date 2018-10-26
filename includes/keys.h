@@ -83,6 +83,16 @@ typedef struct	s_mouse
 #  define KEY_ALT_R 69
 #  define KEY_ENTER 44
 #  define KEY_BACKSPACE 59
+#  define KEY_1 26
+#  define KEY_2 27
+#  define KEY_3 28
+#  define KEY_4 29
+#  define KEY_5 31
+#  define KEY_6 30
+#  define KEY_7 34
+#  define KEY_8 36
+#  define KEY_9 33
+#  define KEY_0 37
 # elif __linux__
 #  define KEY_A 38
 #  define KEY_B 56
@@ -129,5 +139,18 @@ typedef struct	s_mouse
 #  define KEY_ALT_R 108
 #  define KEY_ENTER 36
 #  define KEY_BACKSPACE 22
+/*
+**	TODO:
+#  define KEY_1 26
+#  define KEY_2 27
+#  define KEY_3 28
+#  define KEY_4 29
+#  define KEY_5 31
+#  define KEY_6 30
+#  define KEY_7 34
+#  define KEY_8 36
+#  define KEY_9 33
+#  define KEY_0 37
+*/
 
 #endif

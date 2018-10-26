@@ -39,12 +39,11 @@ void	kt_linelist_draw(t_linelist *l, t_xvars *x)
 void	bb_linelist_color(t_linelist *l, int color)
 {
 	int	i;
-	t_color		c;
 
 	i = -1;
-	bb_init_color_table(&c, color);
+	bb_init_color_table(l->c, color);
 	while (++i < l->list_size)
-		l->indices[i][3] = c.color[c.color_nbr];
+		l->indices[i][2] = l->c->color[i];
 }
 
 void	kt_linelist_print_data(const t_linelist *l)

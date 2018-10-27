@@ -26,6 +26,13 @@ typedef struct	s_data
 	t_xvars		x;
 }				t_data;
 
+typedef struct	s_map
+{
+	int			w;
+	int			h;
+	int			**map;
+}				t_map;
+
 void			bb_start(t_data *d);
 void			bb_close(t_data *d);
 void			bb_restart(t_data *d);

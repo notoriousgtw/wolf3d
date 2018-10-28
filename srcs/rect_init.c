@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube_init.c                                        :+:      :+:    :+:   */
+/*   rect_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
+/*   By: jfleisch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 18:51:49 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 21:03:46 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/27 15:40:29 by jfleisch          #+#    #+#             */
+/*   Updated: 2018/10/27 15:40:30 by jfleisch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shapes.h"
 
-static void	kt_cube_init_v(t_cube *c, double size)
+static void	bb_rect_init_v(t_cube *c, double size)
 {
 	c->verts[0].pos.x = -size;
 	c->verts[0].pos.y = -size;
@@ -40,7 +40,7 @@ static void	kt_cube_init_v(t_cube *c, double size)
 	c->verts[7].pos.z = size;
 }
 
-static void			kt_cube_init_line(t_cube *c)
+static void			bb_rect_init_line(t_cube *c)
 {
 	const int		white = c->data.x->white_color;
 	// const int		color = c->data.x->c->color[2];
@@ -53,7 +53,7 @@ static void			kt_cube_init_line(t_cube *c)
 	ft_memcpy(c->lines, &lines, sizeof(t_line) * 12);
 }
 
-static void 		kt_cube_init_tri(t_cube *c)
+static void 		bb_rect_init_tri(t_cube *c)
 {
 	const int		white = c->data.x->white_color;
 	const t_tri 	tris[12] =
@@ -68,7 +68,7 @@ static void 		kt_cube_init_tri(t_cube *c)
 	ft_memcpy(c->tris, &tris, sizeof(t_tri) * 12);
 }
 
-void				kt_cube_init(t_cube *c, t_xvars *x, double size)
+void				bb_rect_init(t_cube *c, t_xvars *x, double size)
 {
 	c->data.x = x;
 	c->data.n_verts = 8;
@@ -78,7 +78,7 @@ void				kt_cube_init(t_cube *c, t_xvars *x, double size)
 	c->data.lines = c->lines;
 	c->data.tris = c->tris;
 	c->data.cull_flags = c->cull_flags;
-	kt_cube_init_v(c, size / 2);
-	kt_cube_init_line(c);
-	kt_cube_init_tri(c);
+	bb_rect_init_v(c, size / 2);
+	bb_rect_init_line(c);
+	bb_rect_init_tri(c);
 }

@@ -26,5 +26,6 @@ typedef struct	s_cube
 }				t_cube;
 
 void			kt_cube_init(t_cube *c, t_xvars *x, double size);
+void			bb_rect_init(t_cube *c, t_xvars *x, double size);
 
 #endif

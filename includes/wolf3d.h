@@ -19,19 +19,20 @@
 # include "keys.h"
 # include "color.h"
 
+typedef struct	s_map
+{
+	int			w;
+	int			h;
+	int			**cell;
+}				t_map;
+
 typedef struct	s_data
 {
 	int			changed:1;
 	t_keys		pressed;
 	t_xvars		x;
+	t_map		map;
 }				t_data;
-
-typedef struct	s_map
-{
-	int			w;
-	int			h;
-	int			**map;
-}				t_map;
 
 void			bb_start(t_data *d);
 void			bb_close(t_data *d);
@@ -39,6 +40,10 @@ void			bb_restart(t_data *d);
 void			bb_init_pressed(t_data *d);
 void			bb_init_colors(t_data *data);
 void			bb_redraw(t_data *d, int solid);
+void			bb_draw_rect(t_data *d);
+void			bb_menu(t_data *d);
+t_map			bb_parse_map(const char *file);
+void			bb_free_map(t_map *map);
 
 void			kt_create_window(t_data *d);
 void			kt_draw_cube(t_data *d);

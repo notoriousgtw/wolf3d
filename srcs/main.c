@@ -48,6 +48,26 @@ void			kt_create_window(t_data *d)
 	}
 }
 
+void				bb_draw_rect(t_data *d)
+{
+	t_cube			c;
+	double			m[4][4];
+
+	kt_mat3d_identity(m);
+	kt_tr3d_rotate(m, 0, 0, 0);
+	kt_tr3d_translate(m, 0.3, 0.3, 7);
+
+	bb_rect_init(&c, &d->x, 1.5);
+	kt_mesh_color(&c.data, AMETHYST);
+	kt_mesh_transform(&c.data, m);
+	printf("\n");
+	kt_mesh_print_data(&c.data);
+	printf("\n");
+	kt_mesh_draw_solid(&c.data);
+	kt_mesh_color(&c.data, c.data.x->black_color);
+	kt_mesh_draw_wire(&c.data);
+}
+
 void				kt_draw_cube(t_data *d)
 {
 	t_cube c;
@@ -103,6 +123,8 @@ void			bb_event_loop(t_data *d)
 				bb_restart(d);
 				kt_draw_cube(d);
 			}
+			if (e.xkey.keycode == KEY_R)
+				bb_menu(d);
 			if (e.xkey.keycode == KEY_1)
 				bb_redraw(d, RED);
 			if (e.xkey.keycode == KEY_2)
@@ -141,6 +163,7 @@ int		main(void)
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
 	bb_start(d);
+	d->map = bb_parse_map("../maps/basic_room.map");
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 	printf("kt_draw_cube");
 	kt_draw_cube(d);

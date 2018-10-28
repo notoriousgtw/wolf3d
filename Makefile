@@ -29,6 +29,8 @@ SRC		= main.c \
 			line.c \
 			linelist.c \
 			linelist_add.c \
+			parser.c \
+			rect_init.c \
 			tri.c \
 			trilist.c \
 			trilist_add.c \

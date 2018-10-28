@@ -107,10 +107,10 @@ void			bb_event_loop(t_data *d)
 				running = false;
 			bb_close(d);
 		}
-		if (e.type == MapNotify)
-			printf("MapNotify\n");
-		if (e.type == EnterNotify)
-			printf("EnterNotify\n");
+		// if (e.type == MapNotify)
+		// 	printf("MapNotify\n");
+		// if (e.type == EnterNotify)
+		// 	printf("EnterNotify\n");
 		// if (e.type == MotionNotify)
 		// 	printf("MotionNotify x,y = %d,%d\n", e.xmotion.x, e.xmotion.y);
 		if (e.type == KeyPress)

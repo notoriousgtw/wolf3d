@@ -124,7 +124,10 @@ void			bb_event_loop(t_data *d)
 				kt_draw_cube(d);
 			}
 			if (e.xkey.keycode == KEY_R)
-				bb_menu(d);
+			{
+				XClearWindow(d->x.dpy, d->x.win);
+				bb_draw_rect(d);
+			}
 			if (e.xkey.keycode == KEY_1)
 				bb_redraw(d, RED);
 			if (e.xkey.keycode == KEY_2)

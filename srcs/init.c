@@ -113,7 +113,7 @@ void				bb_init_colors(t_data *data)
 {
 	int				color;
 
-	color = 255;
+	color = 64;
 	if (!(data->x.c = (t_color*)ft_memalloc(sizeof(t_color) * color)))
 		ft_error_unknown("wolf3d: ");
 	bb_init_color_table(data->x.c, color);

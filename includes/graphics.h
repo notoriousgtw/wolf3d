@@ -24,35 +24,34 @@
 # include "triangle.h"
 # include "effect.h"
 # include "mesh.h"
-// # include "shapes.h"
+# include "shapes.h"
 # include <math.h>
 
 typedef struct	s_xvars
 {
-	Display *dpy;
-	int		scr;
-	int		black_color;
-	int		white_color;
-	t_color	*c;
-	int		width;
-	int		height;
-	Window	win;
-	GC		gc;
+	Display 	*dpy;
+	int			scr;
+	int			black_color;
+	int			white_color;
+	t_color		*c;
+	int			width;
+	int			height;
+	Window		win;
+	GC			gc;
 }				t_xvars;
 
 typedef struct	s_drawline
 {
-	double	m;
-	int		step;
-	int		dx;
-	int		dy;
+	double		m;
+	int			step;
+	int			dx;
+	int			dy;
 }				t_drawline;
 
-
-void		kt_drawline2d(t_xvars *x, t_vec2d p0, t_vec2d p1);
-void		kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1);
-void		kt_drawtri2d(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2);
-void		kt_drawtri3d(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2);
+void			kt_drawline2d(t_xvars *x, t_vec2d p0, t_vec2d p1);
+void			kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1);
+void			kt_drawtri2d(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2);
+void			kt_drawtri3d(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2);
 
 // void			kt_vec3d_screenify(t_xvars *x, t_vec3d *v);
 

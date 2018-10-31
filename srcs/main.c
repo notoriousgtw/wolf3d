@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 20:52:07 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/30 22:37:09 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void				kt_draw_cube(t_data *d)
 	kt_tr3d_translate(m, 0, 0, 2);
 
 	kt_cube_init(&c, &d->x, 1.5);
-	kt_mesh_color(&c.data, c.data.x->white_color);
 	kt_mesh_transform(&c.data, m);
 	printf("\n");
 	kt_mesh_print_data(&c.data);

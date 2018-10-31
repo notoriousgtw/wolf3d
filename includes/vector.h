@@ -16,23 +16,24 @@
 # include "libft.h"
 
 typedef struct	s_xvars t_xvars;
+
 typedef struct	s_vec2d_i
 {
-	int x;
-	int y;
+	int			x;
+	int			y;
 }				t_vec2d_i;
 
 typedef struct	s_vec2d
 {
-	double x;
-	double y;
+	double		x;
+	double		y;
 }				t_vec2d;
 
 typedef struct	s_vec3d
 {
-	double x;
-	double y;
-	double z;
+	double		x;
+	double		y;
+	double		z;
 }				t_vec3d;
 
 void			kt_vec2d_swap(t_vec2d *v0, t_vec2d *v1);

@@ -1,20 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mesh.c                                             :+:      :+:    :+:   */
+/*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
+/*   By: jfleisch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 12:49:35 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 21:46:51 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/30 17:43:37 by jfleisch          #+#    #+#             */
+/*   Updated: 2018/10/30 17:43:38 by jfleisch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mesh.h"
-#include <stdio.h>
+#include "../includes/wolf3d.h"
 
-void	kt_mesh_print_data(const t_meshdata *m)
-{
-	kt_indexlist_print_data(&m->indices);
-	kt_vertlist_print_data(&m->indices);
-}

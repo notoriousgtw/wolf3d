@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfleisch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 12:24:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/09/05 12:24:30 by jfleisch         ###   ########.fr       */
+/*   Updated: 2018/10/25 19:24:22 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,18 +139,15 @@ typedef struct	s_mouse
 #  define KEY_ALT_R 108
 #  define KEY_ENTER 36
 #  define KEY_BACKSPACE 22
-/*
-**	TODO:
-#  define KEY_1 26
-#  define KEY_2 27
-#  define KEY_3 28
-#  define KEY_4 29
-#  define KEY_5 31
-#  define KEY_6 30
-#  define KEY_7 34
-#  define KEY_8 36
-#  define KEY_9 33
-#  define KEY_0 37
-*/
+#  define KEY_1 10
+#  define KEY_2 11
+#  define KEY_3 12
+#  define KEY_4 13
+#  define KEY_5 14
+#  define KEY_6 15
+#  define KEY_7 16
+#  define KEY_8 17
+#  define KEY_9 18
+#  define KEY_0 19
 
 #endif

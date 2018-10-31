@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/10/24 22:22:25 by gwood            ###   ########.fr        #
+#    Updated: 2018/10/30 15:17:50 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,12 @@ SRC		= main.c \
 			vertex.c \
 			vertlist.c \
 			vertlist_add.c \
-			line.c \
-			linelist.c \
-			linelist_add.c \
 			parser.c \
 			rect_init.c \
-			tri.c \
+			indexlist.c \
+			indexlist_add.c \
 			trilist.c \
 			trilist_add.c \
-			mesh.c \
-			mesh_draw.c \
 			cube_init.c \
 			init.c
 

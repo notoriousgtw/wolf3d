@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 22:22:06 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/30 20:52:07 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,6 @@ void			kt_create_window(t_data *d)
 		if (e.type == MapNotify)
 			break;
 	}
-}
-
-void				bb_draw_rect(t_data *d)
-{
-	t_cube			c;
-	double			m[4][4];
-
-	kt_mat3d_identity(m);
-	kt_tr3d_rotate(m, 0, 0, 0);
-	kt_tr3d_translate(m, 0.3, 0.3, 7);
-
-	bb_rect_init(&c, &d->x, 1.5);
-	kt_mesh_color(&c.data, AMETHYST);
-	kt_mesh_transform(&c.data, m);
-	printf("\n");
-	kt_mesh_print_data(&c.data);
-	printf("\n");
-	kt_mesh_draw_solid(&c.data);
-	kt_mesh_color(&c.data, c.data.x->black_color);
-	kt_mesh_draw_wire(&c.data);
 }
 
 void				kt_draw_cube(t_data *d)

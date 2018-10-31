@@ -1,56 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linelist.c                                         :+:      :+:    :+:   */
+/*   indexlist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/23 14:40:28 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/30 14:27:42 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
-#include "linelist.h"
+#include "wolf3d.h"
+#include "indexlist.h"
 #include <stdio.h>
 
-void	kt_linelist_init(t_linelist *l, t_vertlist *v)
+void	kt_indexlist_init(t_indexlist *l, size_t index_count)
 {
-	if (!(l->indices = ft_memalloc(sizeof(t_line) * 5)))
+	if (index_count < 1)
+		return ;
+	if (!(l->data = ft_memalloc(sizeof(size_t) * 5 * index_count)))
 		ft_error_unknown("wolf3d: ");
-	l->verts = v;
-	l->arr_len = 5;
+	l->index_count = index_count;
+	l->arr_len = 15;
 	l->list_size = 0;
 }
 
-void	kt_linelist_draw(t_linelist *l, t_xvars *x)
-{
-	int				i;
-
-	i = -1;
-	while (++i < l->list_size)
-	{
-		XSetForeground(x->dpy, x->gc, l->indices[i][2]);
-		kt_drawline3d(x, l->verts->data[l->indices[i][0]],
-						l->verts->data[l->indices[i][1]]);
-	}
-}
-
-void	bb_linelist_color(t_linelist *l, int color)
-{
-	int	i;
-
-	i = -1;
-	bb_init_color_table(l->c, color);
-	while (++i < l->list_size)
-		l->indices[i][2] = l->c->color[i];
-}
-
-void	kt_linelist_print_data(const t_linelist *l)
+void	kt_indexlist_print_data(const t_indexlist *l)
 {
 	int	i;
 
 	i = -1;
 	while (++i < l->list_size)
-		kt_line_print_data(l->indices[i]);
+		printf("v%d, v%d, v%d\n", l->data[i * l->index_count],
+					 l->data[i * l->index_count + 1],
+					 l->data[i * l->index_count + 2]);
 }

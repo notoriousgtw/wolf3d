@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rect_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfleisch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 15:40:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/10/27 15:40:30 by jfleisch         ###   ########.fr       */
+/*   Updated: 2018/10/29 22:06:14 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void			bb_rect_init_line(t_cube *c)
 static void 		bb_rect_init_tri(t_cube *c)
 {
 	const int		white = c->data.x->white_color;
-	const t_tri 	tris[12] =
+	const t_indexlist	tris[12] =
 	{
 		{0, 2, 1, white}, {2, 3, 1, white},
 		{1, 3, 5, white}, {3, 7, 5, white},
@@ -65,7 +65,7 @@ static void 		bb_rect_init_tri(t_cube *c)
 		{0, 4, 2, white}, {2, 4, 6, white},
 		{0, 1, 4, white}, {1, 5, 4, white}
 	};
-	ft_memcpy(c->tris, &tris, sizeof(t_tri) * 12);
+	ft_memcpy(c->tris, &tris, sizeof(t_indexlist) * 12);
 }
 
 void				bb_rect_init(t_cube *c, t_xvars *x, double size)

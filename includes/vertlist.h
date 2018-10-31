@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:20:01 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/23 12:14:12 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/30 14:37:58 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_vertlist
 }				t_vertlist;
 
 void			kt_vertlist_init(t_vertlist *l);
+void			kt_vertlist_dup(const t_vertlist *l0, t_vertlist *l1);
 void			kt_vertlist_transform(t_vertlist *l, double m[4][4]);
 void			kt_vertlist_screenify(t_vertlist *l, t_xvars *x);
 void			kt_vertlist_print_data(const t_vertlist *l);

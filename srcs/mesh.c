@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 12:49:35 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 22:34:11 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/29 22:02:33 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	kt_mesh_print_data(const t_meshdata *m)
 	while (++i < m->n_tris)
 	{
 		printf("\tt%d: ", i);
-		kt_tri_print_data(m->tris[i]);
+		kt_indexlist_print_data(m->tris[i]);
 		printf("\n");
 	}
 }

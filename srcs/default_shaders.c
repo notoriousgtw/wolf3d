@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tri.c                                              :+:      :+:    :+:   */
+/*   default_shaders.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 12:07:10 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 21:01:58 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/30 17:16:09 by gwood             #+#    #+#             */
+/*   Updated: 2018/10/30 20:51:55 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
-#include "trilist.h"
-#include <stdio.h>
+#include "effect.h"
 
-void	bb_tri_color(t_tri t, int color)
+void	kt_vs_default(t_vert *v)
 {
-	t[3] = color;
-}
 
-void	kt_tri_print_data(const t_tri t)
-{
-	printf("v%d, v%d, v%d color: %d", t[0], t[1], t[2], t[3]);
 }

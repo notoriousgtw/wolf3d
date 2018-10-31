@@ -19,14 +19,15 @@ typedef struct s_vert	t_vert;
 
 typedef struct			s_meshdata
 {
-	t_xvars	*x;
-	int		n_verts;
-	int		n_lines;
-	int		n_tris;
-	t_vert	*verts;
-	t_line	*lines;
-	t_tri	*tris;
-	t_bool	*cull_flags;
+	t_xvars				*x;
+	int					n_verts;
+	int					n_lines;
+	int					n_tris;
+	t_vert				*verts;
+	t_line				*lines;
+	t_tri				*tris;
+	t_bool				*cull_flags;
+	t_transform			*t;
 }						t_meshdata;
 
 void					kt_mesh_color(t_meshdata *m, int color);

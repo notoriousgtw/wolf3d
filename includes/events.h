@@ -13,17 +13,17 @@
 #ifndef EVENTS_H
 # define EVENTS_H
 
-typedef	enum	e_event_type
+typedef	enum		e_event_type
 {
 	button_press,
 	button_release,
 	button_held
-}				t_event_type;
+}					t_event_type;
 
-typedef struct	s_event
+typedef struct		s_event
 {
 	t_event_type	type;
 	t_event			*next;
-}				t_event;
+}					t_event;
 
 #endif

@@ -43,7 +43,6 @@ static void	kt_cube_init_v(t_cube *c, double size)
 static void			kt_cube_init_line(t_cube *c)
 {
 	const int		white = c->data.x->white_color;
-	// const int		color = c->data.x->c->color[2];
 	const t_line	lines[12] =
 	{
 		{0, 1, white}, {1, 3, white}, {3, 2, white}, {2, 0, white},

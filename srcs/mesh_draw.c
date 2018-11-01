@@ -12,9 +12,9 @@
 
 #include "mesh.h"
 
-void	kt_mesh_draw_wire(const t_meshdata *m)
+void			kt_mesh_draw_wire(const t_meshdata *m)
 {
-	int		i;
+	int			i;
 	t_vec3d	screen_verts[m->n_verts];
 
 	ft_bzero(screen_verts, sizeof(t_vec3d) * m->n_verts);
@@ -34,9 +34,9 @@ void	kt_mesh_draw_wire(const t_meshdata *m)
 	}
 }
 
-void	kt_mesh_draw_solid(t_meshdata *m)
+void			kt_mesh_draw_solid(t_meshdata *m)
 {
-	int		i;
+	int			i;
 	t_vec3d	screen_verts[m->n_verts];
 
 	kt_mesh_cull(m);
@@ -61,9 +61,9 @@ void	kt_mesh_draw_solid(t_meshdata *m)
 	}
 }
 
-void	kt_mesh_draw_textured(t_meshdata *m)
+void			kt_mesh_draw_textured(t_meshdata *m)
 {
-	int		i;
+	int			i;
 	t_vec3d	screen_verts[m->n_verts];
 
 	kt_mesh_cull(m);

@@ -14,13 +14,13 @@
 #include "trilist.h"
 #include <stdio.h>
 
-void	kt_trilist_init(t_trilist *l, t_vertlist *v)
+void			kt_trilist_init(t_trilist *l, t_vertlist *v)
 {
 	l->verts = v;
 }
 
-void	kt_trilist_print_data(const t_trilist *l)
+void			kt_trilist_print_data(const t_trilist *l)
 {
 	kt_vertlist_print_data(l->verts);
-	kt_indexlist_print_data()
+	kt_indexlist_print_data();
 }

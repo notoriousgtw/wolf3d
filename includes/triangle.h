@@ -17,11 +17,11 @@
 
 typedef struct	s_tri
 {
-	t_vert	v0;
-	t_vert	v1;
-	t_vert	v2;
+	t_vert		v0;
+	t_vert		v1;
+	t_vert		v2;
 }				t_tri;
 
-void	kt_tri_init(t_vert *v0, t_vert *v1, t_vert *v2);
+void			kt_tri_init(t_vert *v0, t_vert *v1, t_vert *v2);
 
 #endif

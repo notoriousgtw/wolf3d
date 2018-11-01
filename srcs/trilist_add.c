@@ -13,9 +13,9 @@
 #include "trilist.h"
 #include <stdarg.h>
 
-static void	kt_trilist_resize(t_trilist *l)
+static void			kt_trilist_resize(t_trilist *l)
 {
-	size_t	*tmp;
+	size_t			*tmp;
 
 	l->arr_len *= 2;
 	if (!(tmp = ft_memalloc(sizeof(size_t) * l->arr_len)))
@@ -26,12 +26,12 @@ static void	kt_trilist_resize(t_trilist *l)
 	l->indices = tmp;
 }
 
-static	int	kt_trilist_check_size(t_trilist *l)
+static int			kt_trilist_check_size(t_trilist *l)
 {
 	return (l->list_size * 3 - l->arr_len < 3);
 }
 
-void		kt_trilist_add(t_trilist *l, size_t p0, size_t p1, size_t p2)
+void				kt_trilist_add(t_trilist *l, size_t p0, size_t p1, size_t p2)
 {
 	if (kt_trilist_check_size(l))
 		kt_trilist_resize(l);
@@ -41,11 +41,11 @@ void		kt_trilist_add(t_trilist *l, size_t p0, size_t p1, size_t p2)
 	l->list_size++;
 }
 
-void		kt_trilist_insert(t_trilist *l, size_t p0, size_t p1, size_t p2, ...)
+void				kt_trilist_insert(t_trilist *l, size_t p0, size_t p1, size_t p2, ...)
 {
-	int		i;
-	int		index;
-	va_list	args;
+	int				i;
+	int				index;
+	va_list			args;
 
 	va_start(args, p2);
 	index = va_arg(args, int);

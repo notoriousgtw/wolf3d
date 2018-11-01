@@ -13,9 +13,9 @@
 #include "matrix.h"
 #include <math.h>
 
-void	kt_tr2d_translate(double m[3][3], double tx, double ty)
+void			kt_tr2d_translate(double m[3][3], double tx, double ty)
 {
-	double	tmat[3][3];
+	double		tmat[3][3];
 
 	kt_mat2d_identity(tmat);
 	tmat[2][0] = tx;
@@ -23,9 +23,9 @@ void	kt_tr2d_translate(double m[3][3], double tx, double ty)
 	kt_mat2d_mult(m, tmat, m);
 }
 
-void	kt_tr2d_scale(double m[3][3], double sx, double sy)
+void			kt_tr2d_scale(double m[3][3], double sx, double sy)
 {
-	double	smat[3][3];
+	double		smat[3][3];
 
 	kt_mat2d_bzero(smat);
 	smat[0][0] = sx;
@@ -34,9 +34,9 @@ void	kt_tr2d_scale(double m[3][3], double sx, double sy)
 	kt_mat2d_mult(m, smat, m);
 }
 
-void	kt_tr2d_rotate(double m[3][3], double a)
+void			kt_tr2d_rotate(double m[3][3], double a)
 {
-	double	rmat[3][3];
+	double		rmat[3][3];
 
 	a *= 0.01745329252;
 	kt_mat2d_identity(rmat);

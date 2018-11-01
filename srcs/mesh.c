@@ -13,7 +13,7 @@
 #include "mesh.h"
 #include <stdio.h>
 
-void	kt_mesh_print_data(const t_meshdata *m)
+void			kt_mesh_print_data(const t_meshdata *m)
 {
 	kt_indexlist_print_data(&m->indices);
 	kt_vertlist_print_data(&m->indices);

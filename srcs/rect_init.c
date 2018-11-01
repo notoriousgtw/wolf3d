@@ -12,7 +12,7 @@
 
 #include "shapes.h"
 
-static void	bb_rect_init_v(t_cube *c, double size)
+static void				bb_rect_init_v(t_cube *c, double size)
 {
 	c->verts[0].pos.x = -size;
 	c->verts[0].pos.y = -size;
@@ -40,11 +40,11 @@ static void	bb_rect_init_v(t_cube *c, double size)
 	c->verts[7].pos.z = size;
 }
 
-static void			bb_rect_init_line(t_cube *c)
+static void				bb_rect_init_line(t_cube *c)
 {
-	const int		white = c->data.x->white_color;
+	const int			white = c->data.x->white_color;
 	// const int		color = c->data.x->c->color[2];
-	const t_line	lines[12] =
+	const t_line		lines[12] =
 	{
 		{0, 1, white}, {1, 3, white}, {3, 2, white}, {2, 0, white},
 		{0, 4, white}, {1, 5, white}, {3, 7, white}, {2, 6, white},
@@ -53,9 +53,9 @@ static void			bb_rect_init_line(t_cube *c)
 	ft_memcpy(c->lines, &lines, sizeof(t_line) * 12);
 }
 
-static void 		bb_rect_init_tri(t_cube *c)
+static void 			bb_rect_init_tri(t_cube *c)
 {
-	const int		white = c->data.x->white_color;
+	const int			white = c->data.x->white_color;
 	const t_indexlist	tris[12] =
 	{
 		{0, 2, 1, white}, {2, 3, 1, white},
@@ -68,7 +68,7 @@ static void 		bb_rect_init_tri(t_cube *c)
 	ft_memcpy(c->tris, &tris, sizeof(t_indexlist) * 12);
 }
 
-void				bb_rect_init(t_cube *c, t_xvars *x, double size)
+void					bb_rect_init(t_cube *c, t_xvars *x, double size)
 {
 	c->data.x = x;
 	c->data.n_verts = 8;

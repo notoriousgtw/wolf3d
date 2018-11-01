@@ -12,9 +12,9 @@
 
 #include "vertlist.h"
 
-static void	kt_vertlist_resize(t_vertlist *l)
+static void			kt_vertlist_resize(t_vertlist *l)
 {
-	t_vec3d *tmp;
+	t_vec3d 		*tmp;
 
 	l->arr_len *= 2;
 	if (!(tmp = ft_memalloc(sizeof(t_vec3d) * l->arr_len)))
@@ -24,12 +24,12 @@ static void	kt_vertlist_resize(t_vertlist *l)
 	l->data = tmp;
 }
 
-static	int	kt_vertlist_check_size(t_vertlist *l)
+static int			kt_vertlist_check_size(t_vertlist *l)
 {
 	return (l->arr_len == l->list_size);
 }
 
-void		kt_vertlist_app(t_vertlist *l, t_vec3d v)
+void				kt_vertlist_app(t_vertlist *l, t_vec3d v)
 {
 	if (kt_vertlist_check_size(l))
 		kt_vertlist_resize(l);
@@ -37,9 +37,9 @@ void		kt_vertlist_app(t_vertlist *l, t_vec3d v)
 	l->list_size++;
 }
 
-void		kt_vertlist_add(t_vertlist *l, t_vec3d v, int index)
+void				kt_vertlist_add(t_vertlist *l, t_vec3d v, int index)
 {
-	int	i;
+	int				i;
 
 	if (kt_vertlist_check_size(l))
 		kt_vertlist_resize(l);

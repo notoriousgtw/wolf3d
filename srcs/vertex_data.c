@@ -12,13 +12,13 @@
 
 #include "vertex.h"
 
-void	kt_vert_bind_data(t_vert *v, void *data, size_t data_size)
+void				kt_vert_bind_data(t_vert *v, void *data, size_t data_size)
 {
 	v->data = data;
 	v->data_size = data_size;
 }
 
-void	kt_vert_bind_data_funcs(t_vert *v,
+void				kt_vert_bind_data_funcs(t_vert *v,
 								t_vert_data_interpolate interpolate,
 								t_vert_data_print print,
 								t_vert_data_free free_data)
@@ -28,7 +28,7 @@ void	kt_vert_bind_data_funcs(t_vert *v,
 	v->free_data = free_data;
 }
 
-void	kt_vert_unbind_data(t_vert *v)
+void				kt_vert_unbind_data(t_vert *v)
 {
 	if (v->free_data != NULL)
 		v->free_data(v->data);

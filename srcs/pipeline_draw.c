@@ -29,7 +29,7 @@ void			kt_pipeline_process_verts(t_pipeline *p,
 
 static t_bool	kt_cull_tri(t_vec3d v0, t_vec3d v1, t_vec3d v2)
 {
-	t_vec3d norm;
+	t_vec3d 	norm;
 
 	v1.x -= v0.x;
 	v1.y -= v0.y;
@@ -48,11 +48,11 @@ void			kt_pipeline_assemble_tris(t_pipeline *p,
 										  const t_vertlist *verts,
 										  const t_indexlist *indices)
 {
-	int		i;
-	t_vert	v0;
-	t_vert	v1;
-	t_vert	v2;
-	t_vert	tmp;
+	int			i;
+	t_vert		v0;
+	t_vert		v1;
+	t_vert		v2;
+	t_vert		tmp;
 
 	i = -1;
 	while (++i < indices->list_size)
@@ -68,8 +68,8 @@ void			kt_pipeline_assemble_tris(t_pipeline *p,
 void			kt_pipeline_process_tri(t_pipeline *p, t_vert *v0, t_vert *v1,
 										t_vert *v2, ...)
 {
-	t_tri	tri;
-	va_list	ap;
+	t_tri		tri;
+	va_list		ap;
 
 	va_start(ap, v2);
 	p->effect.gs(&tri, v0, v1, v2, va_arg(ap, size_t));

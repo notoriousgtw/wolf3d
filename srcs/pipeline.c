@@ -14,21 +14,21 @@ static void 		kt_cube_init_tri(t_cube *c)/* ************************************
 
 #include "pipeline.h"
 
-void	kt_pipeline_init(t_pipeline *p, t_xvars *x)
+void			kt_pipeline_init(t_pipeline *p, t_xvars *x)
 {
 	p->x = x;
 }
 
-void	kt_pipeline_bind_shaders(t_pipeline *p, t_vertex_shader_fnc vs,
-						 t_geometry_shader_fnc gs,
-						 t_pixel_shader_fnc ps)
+void			kt_pipeline_bind_shaders(t_pipeline *p, t_vertex_shader_fnc vs,
+									t_geometry_shader_fnc gs,
+									t_pixel_shader_fnc ps)
 {
 	p->effect.vs = vs;
 	p->effect.gs = gs;
 	p->effect.ps = ps;
 }
 
-void	kt_pipeline_draw(t_pipeline *p, const t_meshdata *m)
+void			kt_pipeline_draw(t_pipeline *p, const t_meshdata *m)
 {
 	kt_pipeline_process_verts(p, m->verts, m->indices);
 }

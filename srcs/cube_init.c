@@ -12,7 +12,7 @@
 
 #include "shapes.h"
 
-static void	kt_cube_init_plain(double size, t_meshdata *m)
+static void		kt_cube_init_plain(double size, t_meshdata *m)
 {
 	size /= 2;
 	kt_vertlist_init(&m->verts);

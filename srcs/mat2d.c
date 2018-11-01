@@ -12,14 +12,14 @@
 
 #include "matrix.h"
 
-void	kt_mat2d_bzero(double m[3][3])
+void			kt_mat2d_bzero(double m[3][3])
 {
 	ft_bzero(m[0], sizeof(double) * 3);
 	ft_bzero(m[1], sizeof(double) * 3);
 	ft_bzero(m[2], sizeof(double) * 3);
 }
 
-void	kt_mat2d_identity(double m[3][3])
+void			kt_mat2d_identity(double m[3][3])
 {
 	kt_mat2d_bzero(m);
 	m[0][0] = 1;
@@ -27,7 +27,7 @@ void	kt_mat2d_identity(double m[3][3])
 	m[2][2] = 1;
 }
 
-void	kt_mat2d_mult(double m0[3][3], double m1[3][3], double m2[3][3])
+void			kt_mat2d_mult(double m0[3][3], double m1[3][3], double m2[3][3])
 {
 	int i;
 	int j;
@@ -43,7 +43,7 @@ void	kt_mat2d_mult(double m0[3][3], double m1[3][3], double m2[3][3])
 	}
 }
 
-void	kt_mat2d_copy(double m0[3][3], double m1[3][3])
+void			kt_mat2d_copy(double m0[3][3], double m1[3][3])
 {
 	int i;
 	int j;

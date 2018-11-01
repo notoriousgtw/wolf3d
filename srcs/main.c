@@ -20,7 +20,7 @@
 */
 void			kt_create_window(t_data *d)
 {
-	XEvent e;
+	XEvent		e;
 	XSetWindowAttributes wa;
 
 	d->x.dpy = XOpenDisplay(NULL);
@@ -48,10 +48,10 @@ void			kt_create_window(t_data *d)
 	}
 }
 
-void				kt_draw_cube(t_data *d)
+void			kt_draw_cube(t_data *d)
 {
-	t_cube c;
-	double m[4][4];
+	t_cube		c;
+	double		m[4][4];
 
 	kt_mat3d_identity(m);
 	kt_tr3d_rotate(m, -45, -45, 0);
@@ -69,9 +69,9 @@ void				kt_draw_cube(t_data *d)
 
 void			bb_event_loop(t_data *d)
 {
-	Atom	wm_del_message;
-	t_bool	running;
-	XEvent	e;
+	Atom		wm_del_message;
+	t_bool		running;
+	XEvent		e;
 
 	running = true;
 	wm_del_message = XInternAtom(d->x.dpy, "WM_DELETE_WINDOW", False);
@@ -138,9 +138,9 @@ void			bb_event_loop(t_data *d)
 /*
 ** Duh
 */
-int		main(void)
+int				main(void)
 {
-	t_data *d;
+	t_data		*d;
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");

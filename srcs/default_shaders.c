@@ -12,7 +12,7 @@
 
 #include "effect.h"
 
-void	kt_vs_default(t_vert *v)
+void			kt_vs_default(t_vert *v)
 {
 
 }

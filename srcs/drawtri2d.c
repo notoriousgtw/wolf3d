@@ -12,7 +12,7 @@
 
 #include "graphics.h"
 
-static void	kt_drawtri2d_up(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
+static void		kt_drawtri2d_up(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
 {
 	int			x;
 	int			y;
@@ -35,7 +35,7 @@ static void	kt_drawtri2d_up(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
 	}
 }
 
-static void	kt_drawtri2d_down(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
+static void		kt_drawtri2d_down(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
 {
 	int			x;
 	int			y;
@@ -58,10 +58,10 @@ static void	kt_drawtri2d_down(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
 	}
 }
 
-void	kt_drawtri2d(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
+void			kt_drawtri2d(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
 {
-	double	alpha_split;
-	t_vec2d	vi;
+	double		alpha_split;
+	t_vec2d		vi;
 
 	if (p1.y < p0.y)
 		kt_vec2d_swap(&p0, &p1);

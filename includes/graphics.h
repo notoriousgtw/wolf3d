@@ -20,11 +20,13 @@
 # include "vertex.h"
 # include "vertlist.h"
 # include "indexlist.h"
+# include "primitive.h"
 # include "trilist.h"
 # include "triangle.h"
-# include "effect.h"
 # include "mesh.h"
 # include "shapes.h"
+# include "effect.h"
+# include "pipeline.h"
 # include <math.h>
 
 typedef struct	s_xvars

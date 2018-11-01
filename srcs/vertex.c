@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:44:40 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 01:01:51 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/31 20:58:00 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	kt_vert_init(t_vert *v, double x, double y, double z)
 	v->interpolate_data = NULL;
 	v->print_data = NULL;
 	v->free_data = NULL;
+}
+
+void	kt_vert_dup(const t_vert *v0, t_vert *v1)
+{
+	v1->pos = v0->pos;
+	ft_memcpy(v1->data, v0->data, v0->data_size);
+	v1->data_size = v0->data_size;
+	v1->interpolate_data = v0->interpolate_data;
+	v1->print_data = v0->print_data;
+	v1->free_data = v0->free_data;
 }
 
 void	kt_vert_interpolate(t_vert v0, t_vert v1, double alpha, t_vert *v2)

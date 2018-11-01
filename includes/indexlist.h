@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 21:58:36 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 15:48:48 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/31 21:31:23 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct	s_indexlist
 }				t_indexlist;
 
 void			kt_indexlist_init(t_indexlist *l, size_t index_count);
+void			kt_indexlist_dup(const t_indexlist *l0, t_indexlist *l1);
 void			kt_indexlist_print_data(const t_indexlist *l);
 void			kt_indexlist_add(t_indexlist *l, ...);
 void			kt_indexlist_insert(t_indexlist *l, size_t index, ...);
+void			kt_indexlist_free(t_indexlist *l);
 
 #endif

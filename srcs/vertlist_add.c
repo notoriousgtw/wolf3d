@@ -6,11 +6,12 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 22:13:17 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/30 22:42:19 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vertlist.h"
+#include <stdarg.h>
 
 static void	kt_vertlist_resize(t_vertlist *l)
 {
@@ -29,23 +30,32 @@ static	int	kt_vertlist_check_size(t_vertlist *l)
 	return (l->arr_len == l->list_size);
 }
 
-void		kt_vertlist_app(t_vertlist *l, t_vec3d v)
+void		kt_vertlist_app(t_vertlist *l, double x, double y, double z)
 {
 	if (kt_vertlist_check_size(l))
 		kt_vertlist_resize(l);
-	l->data[l->list_size] = v;
+	kt_vert_init(&(l->data[l->list_size]), x, y, z);
 	l->list_size++;
 }
 
-void		kt_vertlist_add(t_vertlist *l, t_vec3d v, int index)
+void		kt_vertlist_add(t_vertlist *l, size_t index, ...)
 {
-	int	i;
+	int		i;
+	va_list	ap;
+	double	x;
+	double	y;
+	double	z;
 
+	va_start(ap, index);
+	x = va_arg(ap, double);
+	y = va_arg(ap, double);
+	z = va_arg(ap, double);
+	va_end(ap);
 	if (kt_vertlist_check_size(l))
 		kt_vertlist_resize(l);
 	i = l->list_size;
 	while (--i >= index)
 		l->data[i + 1] = l->data[i];
-	l->data[index] = v;
+	kt_vert_init(&(l->data[index]), x, y, z);
 	l->list_size++;
 }

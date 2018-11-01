@@ -12,7 +12,7 @@
 
 #include "matrix.h"
 
-void	kt_mat3d_bzero(double m[4][4])
+void			kt_mat3d_bzero(double m[4][4])
 {
 	ft_bzero(m[0], sizeof(double) * 4);
 	ft_bzero(m[1], sizeof(double) * 4);
@@ -20,7 +20,7 @@ void	kt_mat3d_bzero(double m[4][4])
 	ft_bzero(m[3], sizeof(double) * 4);
 }
 
-void	kt_mat3d_identity(double m[4][4])
+void			kt_mat3d_identity(double m[4][4])
 {
 	kt_mat3d_bzero(m);
 	m[0][0] = 1;
@@ -29,10 +29,10 @@ void	kt_mat3d_identity(double m[4][4])
 	m[3][3] = 1;
 }
 
-void	kt_mat3d_mult(double m0[4][4], double m1[4][4], double m2[4][4])
+void			kt_mat3d_mult(double m0[4][4], double m1[4][4], double m2[4][4])
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
 
 	i = -1;
 	while (++i < 4)
@@ -46,10 +46,10 @@ void	kt_mat3d_mult(double m0[4][4], double m1[4][4], double m2[4][4])
 	}
 }
 
-void	kt_mat3d_copy(double m0[4][4], double m1[4][4])
+void			kt_mat3d_copy(double m0[4][4], double m1[4][4])
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
 
 	i = -1;
 	while (++i < 4)

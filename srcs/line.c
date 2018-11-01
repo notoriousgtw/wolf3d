@@ -15,12 +15,12 @@
 #include "color.h"
 #include <stdio.h>
 
-void	bb_line_color(t_line t, int color)
+void			bb_line_color(t_line t, int color)
 {
 	t[2] = color;
 }
 
-void	kt_line_print_data(const t_line t)
+void			kt_line_print_data(const t_line t)
 {
 	printf("v%d, v%d color: %d", t[0], t[1], t[2]);
 }

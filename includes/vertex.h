@@ -18,7 +18,8 @@
 typedef void	(*t_vert_data_interpolate)(void *d0, void* d1, void *d2);
 typedef void	(*t_vert_data_print)(void *data);
 typedef void	(*t_vert_data_free)(void *data);
-typedef struct	s_vert
+
+typedef struct				s_vert
 {
 	t_vec3d					pos;
 	void					*data;
@@ -26,15 +27,15 @@ typedef struct	s_vert
 	t_vert_data_interpolate	interpolate_data;
 	t_vert_data_print		print_data;
 	t_vert_data_free		free_data;
-}				t_vert;
+}							t_vert;
 
 void			kt_vert_init(t_vert *v, double x, double y, double z);
 void			kt_vert_dup(const t_vert *v0, t_vert *v1);
 void			kt_vert_bind_data(t_vert *v, void *data, size_t data_size);
 void			kt_vert_bind_data_funcs(t_vert *v,
-										t_vert_data_interpolate interpolate,
-										t_vert_data_print print,
-										t_vert_data_free free);
+							t_vert_data_interpolate interpolate,
+							t_vert_data_print print,
+							t_vert_data_free free);
 void			kt_vert_print(const t_vert *v);
 t_bool			kt_vert_comp_type(const t_vert *v0, const t_vert *v1);
 

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 22:46:04 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/31 22:54:30 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 */
 void			kt_create_window(t_data *d)
 {
-	XEvent e;
+	XEvent		e;
 	XSetWindowAttributes wa;
 
 	d->x.dpy = XOpenDisplay(NULL);
@@ -48,7 +48,7 @@ void			kt_create_window(t_data *d)
 	}
 }
 
-void				kt_draw_cube(t_data *d)
+void			kt_draw_cube(t_data *d)
 {
 	t_meshdata	cube;
 	t_pipeline	p;
@@ -63,9 +63,9 @@ void				kt_draw_cube(t_data *d)
 
 void			bb_event_loop(t_data *d)
 {
-	Atom	wm_del_message;
-	t_bool	running;
-	XEvent	e;
+	Atom		wm_del_message;
+	t_bool		running;
+	XEvent		e;
 
 	running = true;
 	wm_del_message = XInternAtom(d->x.dpy, "WM_DELETE_WINDOW", False);
@@ -132,9 +132,9 @@ void			bb_event_loop(t_data *d)
 /*
 ** Duh
 */
-int		main(void)
+int				main(void)
 {
-	t_data *d;
+	t_data		*d;
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");

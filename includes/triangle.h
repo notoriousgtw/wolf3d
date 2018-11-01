@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 22:08:12 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 22:39:30 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/31 22:53:35 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct	s_tri
 {
-	t_vert	v0;
-	t_vert	v1;
-	t_vert	v2;
+	t_vert		v0;
+	t_vert		v1;
+	t_vert		v2;
 }				t_tri;
 
 void	kt_tri_init(t_tri *tri, t_vert *v0, t_vert *v1, t_vert *v2);

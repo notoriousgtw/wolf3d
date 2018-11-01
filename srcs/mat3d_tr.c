@@ -12,9 +12,9 @@
 
 #include "matrix.h"
 
-void	kt_tr3d_translate(double m[4][4], double tx, double ty, double tz)
+void			kt_tr3d_translate(double m[4][4], double tx, double ty, double tz)
 {
-	double	tmat[4][4];
+	double		tmat[4][4];
 
 	kt_mat3d_identity(tmat);
 	tmat[3][0] = tx;
@@ -23,9 +23,9 @@ void	kt_tr3d_translate(double m[4][4], double tx, double ty, double tz)
 	kt_mat3d_mult(m, tmat, m);
 }
 
-void	kt_tr3d_scale(double m[4][4], double sx, double sy, double sz)
+void			kt_tr3d_scale(double m[4][4], double sx, double sy, double sz)
 {
-	double	smat[4][4];
+	double		smat[4][4];
 
 	kt_mat3d_bzero(smat);
 	smat[0][0] = sx;
@@ -35,13 +35,13 @@ void	kt_tr3d_scale(double m[4][4], double sx, double sy, double sz)
 	kt_mat3d_mult(m, smat, m);
 }
 
-void	kt_tr3d_rotate(double m[4][4], double ax, double ay, double az)
+void			kt_tr3d_rotate(double m[4][4], double ax, double ay, double az)
 {
-	double	xmat[4][4];
-	double	ymat[4][4];
-	double	zmat[4][4];
-	double	mat1[4][4];
-	double	mat2[4][4];
+	double		xmat[4][4];
+	double		ymat[4][4];
+	double		zmat[4][4];
+	double		mat1[4][4];
+	double		mat2[4][4];
 
 	ax *= 0.01745329252;
 	ay *= 0.01745329252;

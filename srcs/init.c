@@ -14,16 +14,16 @@
 #include <math.h>
 #include <stdio.h>
 
-void				bb_menu(t_data *d)
+void			bb_menu(t_data *d)
 {
 	XClearWindow(d->x.dpy, d->x.win);
 	bb_draw_rect(d);
 }
 
-void				bb_init_color_table(t_color *color, int color_nbr)
+void			bb_init_color_table(t_color *color, int color_nbr)
 {
-	int				i;
-	float			f;
+	int			i;
+	float		f;
 
 	color->color = (u_int8_t*)ft_memalloc(sizeof(u_int8_t) * color_nbr);
 	f = 0;
@@ -39,21 +39,21 @@ void				bb_init_color_table(t_color *color, int color_nbr)
 	color->color_nbr = color_nbr;
 }
 
-void				bb_restart(t_data *d)
+void			bb_restart(t_data *d)
 {
 	ft_putendl("restart");
 	bb_close(d);
 	bb_start(d);
 }
 
-void				bb_close(t_data *d)
+void			bb_close(t_data *d)
 {
 	ft_putendl("close");
 	XDestroyWindow(d->x.dpy, d->x.win);
 	XCloseDisplay(d->x.dpy);
 }
 
-void				bb_start(t_data *d)
+void			bb_start(t_data *d)
 {
 	ft_putendl("start");
 	bb_init_pressed(d);
@@ -61,7 +61,7 @@ void				bb_start(t_data *d)
 	kt_create_window(d);
 }
 
-void				bb_init_pressed(t_data *d)
+void			bb_init_pressed(t_data *d)
 {
 	d->changed = 1;
 	d->pressed.w = 0;
@@ -76,7 +76,7 @@ void				bb_init_pressed(t_data *d)
 	d->pressed.space = 0;
 }
 
-void				bb_redraw(t_data *d, int solid)//, int wire)
+void			bb_redraw(t_data *d, int solid)//, int wire)
 {
 	XClearWindow(d->x.dpy, d->x.win);
 	d->x.white_color = solid;
@@ -85,9 +85,9 @@ void				bb_redraw(t_data *d, int solid)//, int wire)
 }
 
 
-void				bb_init_color_tab(t_color *color)
+void			bb_init_color_tab(t_color *color)
 {
-	int				i;
+	int			i;
 
 	color->color = (u_int8_t*)ft_memalloc(sizeof(u_int8_t) * 255);
 	color->r = ((u_int8_t*)ft_memalloc(sizeof(u_int8_t) * 4));
@@ -109,9 +109,9 @@ void				bb_init_color_tab(t_color *color)
 	}
 }
 
-void				bb_init_colors(t_data *data)
+void			bb_init_colors(t_data *data)
 {
-	int				color;
+	int			color;
 
 	color = 64;
 	if (!(data->x.c = (t_color*)ft_memalloc(sizeof(t_color) * color)))

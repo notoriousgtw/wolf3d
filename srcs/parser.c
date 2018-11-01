@@ -31,9 +31,9 @@
 */
 #include <stdlib.h>
 
-void				bb_free_map(t_map *map)
+void			bb_free_map(t_map *map)
 {
-	int				i;
+	int			i;
 
 	i = -1;
 	while (++i < map->h)
@@ -41,11 +41,11 @@ void				bb_free_map(t_map *map)
 	free(map);
 }
 
-static t_map		bb_parser(t_map *map, char **lines, char **cur)
+static t_map	bb_parser(t_map *map, char **lines, char **cur)
 {
-	int				r;
-	int				c;
-	int				c_size;
+	int			r;
+	int			c;
+	int			c_size;
 
 	map->cell = (int**)ft_memalloc(sizeof(int*) * map->h);
 	c_size = map->w;
@@ -60,13 +60,13 @@ static t_map		bb_parser(t_map *map, char **lines, char **cur)
 	}
 	return (*map);
 }
-t_map				bb_parse_map(const char *file)
+t_map			bb_parse_map(const char *file)
 {
-	char			buf[4097];
-	t_map			map;
-	int				fd;
-	char			**lines;
-	char			**cur;
+	char		buf[4097];
+	t_map		map;
+	int			fd;
+	char		**lines;
+	char		**cur;
 
 	map.h = 0;
 	while (map.h < 4097)

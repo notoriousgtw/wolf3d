@@ -14,7 +14,7 @@
 #include "indexlist.h"
 #include <stdio.h>
 
-void	kt_indexlist_init(t_indexlist *l, size_t index_count)
+void			kt_indexlist_init(t_indexlist *l, size_t index_count)
 {
 	if (index_count < 1)
 		return ;
@@ -25,9 +25,9 @@ void	kt_indexlist_init(t_indexlist *l, size_t index_count)
 	l->list_size = 0;
 }
 
-void	kt_indexlist_print_data(const t_indexlist *l)
+void			kt_indexlist_print_data(const t_indexlist *l)
 {
-	int	i;
+	int			i;
 
 	i = -1;
 	while (++i < l->list_size)

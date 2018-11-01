@@ -14,10 +14,10 @@
 
 static void		kt_drawline3d_h(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line)
 {
-	int	offset;
-	int	delta;
-	int	thresh;
-	int	thresh_inc;
+	int			offset;
+	int			delta;
+	int			thresh;
+	int			thresh_inc;
 
 	offset = 0;
 	delta = abs(line.dy) * 2;
@@ -41,10 +41,10 @@ static void		kt_drawline3d_h(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line
 
 static void		kt_drawline3d_v(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line)
 {
-	int	offset;
-	int	delta;
-	int	thresh;
-	int	thresh_inc;
+	int			offset;
+	int			delta;
+	int			thresh;
+	int			thresh_inc;
 
 	offset = 0;
 	delta = abs(line.dx) * 2;

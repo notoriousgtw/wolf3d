@@ -14,7 +14,7 @@
 #include "vertlist.h"
 #include <stdio.h>
 
-void	kt_vertlist_init(t_vertlist *l)
+void			kt_vertlist_init(t_vertlist *l)
 {
 	if (l->data)
 		free(l->data);
@@ -24,9 +24,9 @@ void	kt_vertlist_init(t_vertlist *l)
 	l->list_size = 0;
 }
 
-void	kt_vertlist_dup(const t_vertlist *l0, t_vertlist *l1)
+void			kt_vertlist_dup(const t_vertlist *l0, t_vertlist *l1)
 {
-	int i;
+	int			i;
 
 	kt_vertlist_init(l1);
 	i = -1;
@@ -42,9 +42,9 @@ void	kt_vertlist_dup(const t_vertlist *l0, t_vertlist *l1)
 
 }
 
-void	kt_vertlist_print(const t_vertlist *l)
+void			kt_vertlist_print(const t_vertlist *l)
 {
-	int	i;
+	int			i;
 
 	i = -1;
 	while (++i < l->list_size)

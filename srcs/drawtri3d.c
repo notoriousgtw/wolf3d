@@ -12,7 +12,7 @@
 
 #include "graphics.h"
 
-static void	kt_drawtri3d_up(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
+static void			kt_drawtri3d_up(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
 {
 	int				x;
 	int				y;
@@ -35,7 +35,7 @@ static void	kt_drawtri3d_up(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
 	}
 }
 
-static void	kt_drawtri3d_down(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
+static void			kt_drawtri3d_down(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
 {
 	int				x;
 	int				y;
@@ -58,10 +58,10 @@ static void	kt_drawtri3d_down(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
 	}
 }
 
-void	kt_drawtri3d(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
+void				kt_drawtri3d(t_xvars *d, t_vec3d p0, t_vec3d p1, t_vec3d p2)
 {
-	double	alpha_split;
-	t_vec3d	vi;
+	double			alpha_split;
+	t_vec3d			vi;
 
 	if (p1.y < p0.y)
 		kt_vec3d_swap(&p0, &p1);

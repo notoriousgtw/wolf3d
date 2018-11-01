@@ -6,16 +6,16 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 17:26:47 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 22:42:19 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/31 22:55:48 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vertlist.h"
 #include <stdarg.h>
 
-static void	kt_vertlist_resize(t_vertlist *l)
+static void			kt_vertlist_resize(t_vertlist *l)
 {
-	t_vec3d *tmp;
+	t_vec3d 		*tmp;
 
 	l->arr_len *= 2;
 	if (!(tmp = ft_memalloc(sizeof(t_vec3d) * l->arr_len)))
@@ -25,12 +25,12 @@ static void	kt_vertlist_resize(t_vertlist *l)
 	l->data = tmp;
 }
 
-static	int	kt_vertlist_check_size(t_vertlist *l)
+static int			kt_vertlist_check_size(t_vertlist *l)
 {
 	return (l->arr_len == l->list_size);
 }
 
-void		kt_vertlist_app(t_vertlist *l, double x, double y, double z)
+void		kt_vertlist_add(t_vertlist *l, double x, double y, double z)
 {
 	if (kt_vertlist_check_size(l))
 		kt_vertlist_resize(l);
@@ -38,7 +38,7 @@ void		kt_vertlist_app(t_vertlist *l, double x, double y, double z)
 	l->list_size++;
 }
 
-void		kt_vertlist_add(t_vertlist *l, size_t index, ...)
+void		kt_vertlist_insert(t_vertlist *l, size_t index, ...)
 {
 	int		i;
 	va_list	ap;

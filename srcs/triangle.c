@@ -12,7 +12,7 @@
 
 #include "triangle.h"
 
-void	kt_tri_init(t_tri *t, const t_vert *v0, const t_vert *v1,
+void			kt_tri_init(t_tri *t, const t_vert *v0, const t_vert *v1,
 					const t_vert *v2)
 {
 	if (!kt_vert_comp_type(v0, v1) || !kt_vert_comp_type(v0, v2))

@@ -13,9 +13,9 @@
 #include "indexlist.h"
 #include <stdarg.h>
 
-static void	kt_indexlist_resize(t_indexlist *l)
+static void		kt_indexlist_resize(t_indexlist *l)
 {
-	size_t	*tmp;
+	size_t		*tmp;
 
 	l->arr_len *= 2;
 	if (!(tmp = ft_memalloc(sizeof(size_t) * l->arr_len)))
@@ -26,15 +26,15 @@ static void	kt_indexlist_resize(t_indexlist *l)
 	l->data = tmp;
 }
 
-static	int	kt_indexlist_check_size(t_indexlist *l)
+static int		kt_indexlist_check_size(t_indexlist *l)
 {
 	return (l->list_size * l->index_count - l->arr_len < l->index_count);
 }
 
-void		kt_indexlist_add(t_indexlist *l, ...)
+void			kt_indexlist_add(t_indexlist *l, ...)
 {
-	int		i;
-	va_list	ap;
+	int			i;
+	va_list		ap;
 
 	if (kt_indexlist_check_size(l))
 		kt_indexlist_resize(l);
@@ -45,10 +45,10 @@ void		kt_indexlist_add(t_indexlist *l, ...)
 	l->list_size++;
 }
 
-void		kt_indexlist_insert(t_indexlist *l, size_t index, ...)
+void			kt_indexlist_insert(t_indexlist *l, size_t index, ...)
 {
-	int		i;
-	va_list	ap;
+	int			i;
+	va_list		ap;
 
 	va_start(ap, index);
 	if (kt_indexlist_check_size(l))

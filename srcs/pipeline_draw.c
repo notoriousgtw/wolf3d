@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   triangle.h                                         :+:      :+:    :+:   */
+/*   pipeline_draw.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 22:08:12 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 23:53:32 by gwood            ###   ########.fr       */
+/*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
+/*   Updated: 2018/10/31 23:41:37 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRIANGLE_H
-# define TRIANGLE_H
+#include "pipeline.h"
 
-# include "graphics.h"
-
-typedef struct	s_tri
+void	kt_pipeline_drawtriangle(t_pipeline *p, t_tri *tri)
 {
-	t_vert		v0;
-	t_vert		v1;
-	t_vert		v2;
-}				t_tri;
-
-void	kt_tri_init(t_tri *tri, t_vert v0, t_vert v1, t_vert v2);
-
-#endif
+	;
+}

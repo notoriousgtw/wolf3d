@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 21:21:51 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 22:29:08 by gwood            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:52:30 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void			kt_pipeline_process_verts(t_pipeline *p,
 	kt_vertlist_dup(verts, &verts_out);
 	i = -1;
 	while (++i < verts_out.list_size)
-		p->effect.vs(&(verts_out.data[i]));
-	kt_pipeline_assemble_tris(p, &verts_out, indices);
+		p->effect.vs.fnc(&(p->effect.ps), &(verts_out.data[i]));
+	kt_pipeline_assemble_prims(p, verts, indices);
 }
 
 void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
@@ -59,5 +59,5 @@ void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
 	}
 	else
 		return ;
-	kt_pipeline_assemble_tris(p, verts, indices);
+	kt_pipeline_assemble_tris(p, &prim);
 }

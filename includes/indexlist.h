@@ -6,15 +6,14 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 21:58:36 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 21:31:23 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 04:50:39 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INDEXLIST_H
 # define INDEXLIST_H
 
-# include "graphics.h"
-
+# include "libft.h"
 typedef struct	s_indexlist
 {
 	size_t		*data;

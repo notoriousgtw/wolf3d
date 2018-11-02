@@ -6,46 +6,54 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 01:13:00 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 22:52:56 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 04:52:44 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EFFECT_H
 # define EFFECT_H
 
-# include "graphics.h"
+# include "vertex.h"
+# include "primitive.h"
 
-typedef struct	s_vs
+typedef struct		s_vs
 {
-	t_vs_fnc	fnc;
-	double		mat[4][4];
-	void		*data;
-}				t_vs;
+	void	(*fnc)(struct s_vs *vs, t_vert *vert);
+	double	mat[4][4];
+	void	*data;
+}					t_vs;
 
-typedef struct	s_gs
+typedef struct		s_gs
 {
-	t_gs_fnc	fnc;
-	void		*data;
-}				t_gs;
+	void	(*fnc)(struct s_gs *gs, t_prim *prim, size_t index, t_vert *verts);
+	void	*data;
+}					t_gs;
 
-typedef struct	s_ps
+typedef struct		s_ps
 {
-	t_ps_fnc	fnc;
-	void		*data;
-}				t_ps;
-typedef struct	s_effect
+	int		(*fnc)(struct s_ps *ps, const t_vert *attr);
+	void	*data;
+}					t_ps;
+
+typedef struct		s_effect
 {
 	t_vs	vs;
 	t_gs	gs;
 	t_ps	ps;
-}				t_effect;
+	void	*data;
+}					t_effect;
 
-typedef void	(*t_vs_fnc)(t_vs *vs, t_vert *vert);
-typedef void	(*t_gs_fnc)(t_gs *gs, t_prim *prim, size_t index, ...);
-typedef void	(*t_ps_fnc)(void *d);
+typedef void		(*t_vs_fnc)(t_vs *vs, t_vert *vert);
+typedef void		(*t_gs_fnc)(t_gs *gs, t_prim *prim, size_t index,
+								t_vert *verts);
+typedef int			(*t_ps_fnc)(t_ps *ps, const t_vert *attr);
 
-void			kt_vs_default_init(t_vs *vs, t_vs_fnc *fnc, double mat[4][4]);
-void			kt_vs_default_fnc(t_vs *vs, t_vert *v);
-void			kt_gs_default_fnc(t_gs *gs, t_prim *prim, size_t index, ...);
-void			kt_ps_default_fnc(void *d);
+void				kt_gs_default_init(t_gs *gs);
+void				kt_gs_default_fnc(t_gs *gs, t_prim *prim, size_t index,
+									  t_vert *verts);
+
+void				kt_vs_color_init(t_vs *vs, double mat[4][4], int color);
+void				kt_vs_color_fnc(t_vs *vs, t_vert *vert);
+void				kt_ps_color_init(t_ps *ps);
+int					kt_ps_color_fnc(t_ps *ps, const t_vert *attr);
 #endif

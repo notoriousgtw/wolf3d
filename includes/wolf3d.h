@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 22:21:35 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 05:04:57 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "graphics.h"
 # include "keys.h"
 # include "color.h"
+# include "pipeline.h"
 
 typedef struct	s_map
 {

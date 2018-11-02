@@ -6,13 +6,12 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 22:54:30 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 05:09:27 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 #include "shapes.h"
-#include "color.h"
 #include <stdio.h>
 
 /*
@@ -52,6 +51,7 @@ void			kt_draw_cube(t_data *d)
 {
 	t_meshdata	cube;
 	t_pipeline	p;
+	t_effect	e;
 	double m[4][4];
 
 	kt_cube_init_plain(1, &cube);
@@ -59,6 +59,14 @@ void			kt_draw_cube(t_data *d)
 	kt_mat3d_identity(m);
 	kt_tr3d_rotate(m, -45, -45, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
+
+	kt_vs_color_init(&e.vs, m, WHITE);
+	kt_gs_default_init(&e.gs);
+	kt_ps_color_init(&e.ps);
+
+	kt_pipeline_init(&p, &d->x);
+	kt_pipeline_bind_effect(&p, &e);
+	kt_pipeline_draw(&p, &cube);
 }
 
 void			bb_event_loop(t_data *d)

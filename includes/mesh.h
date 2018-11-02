@@ -6,16 +6,15 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 12:43:44 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 21:46:26 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 04:49:13 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MESH_H
 # define MESH_H
 
-# include "graphics.h"
-
-typedef struct s_vert	t_vert;
+# include "vertlist.h"
+# include "indexlist.h"
 
 typedef struct			s_meshdata
 {

@@ -6,14 +6,23 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 17:16:09 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 22:53:42 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 02:53:06 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "effect.h"
+#include <stdarg.h>
 
-void	kt_vs_default_init(t_vs *vs, t_vs_fnc *fnc, double mat[4][4])
+void	kt_gs_default_init(t_gs *gs)
 {
-	vs->fnc = fnc;
-	ft_memcpy(vs->mat, mat, sizeof(double) * 4);
+	gs->fnc = kt_gs_default_fnc;
+}
+
+void	kt_gs_default_fnc(t_gs *gs, t_prim *prim, size_t index, t_vert *verts)
+{
+	int		i;
+
+	i = -1;
+	while (++i < (int) prim->vert_count)
+		kt_vert_dup(&verts[i], &prim->verts[i]);
 }

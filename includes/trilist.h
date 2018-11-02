@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 21:58:36 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/30 01:36:04 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/01 04:46:27 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TRILIST_H
 
 # include "vertlist.h"
-# include "color.h"
+# include "indexlist.h"
 
 typedef struct	s_trilist
 {

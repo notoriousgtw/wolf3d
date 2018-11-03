@@ -48,13 +48,13 @@ void			kt_create_window(t_data *d)
 	}
 }
 
-void			kt_draw_cube(t_data *d, double tr[4][4])
+void			kt_draw_cube(t_data *d, double tr[4][4];)
 {
 	t_meshdata	cube;
 	t_pipeline	p;
 	t_effect	e;
 
-	printf("kt_draw_cube\n");
+	printf("draw_cube\n\n");
 	kt_cube_init_plain(1, &cube);
 
 	kt_vs_color_init(&e.vs, tr, WHITE);

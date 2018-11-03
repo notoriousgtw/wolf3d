@@ -16,6 +16,7 @@
 # include "../libft/includes/libft.h"
 # include <math.h>
 # include "graphics.h"
+# include "matrix.h"
 # include "keys.h"
 # include "color.h"
 # include "pipeline.h"
@@ -29,7 +30,6 @@ typedef struct	s_map
 
 typedef struct	s_data
 {
-	int			changed:1;
 	t_keys		pressed;
 	t_xvars		x;
 	t_map		map;

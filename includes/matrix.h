@@ -13,20 +13,8 @@
 #ifndef MATRIX_H
 # define MATRIX_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include <math.h>
-
-typedef struct	s_transform
-{
-	double		rx;
-	double		ry;
-	double		rz;
-	double		tx;
-	double		ty;
-	double		sx;
-	double		sy;
-	double		sz;
-}				t_transform;
 
 void			kt_mat2d_bzero(double m[3][3]);
 void			kt_mat2d_identity(double m[3][3]);

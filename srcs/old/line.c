@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
-#include "linelist.h"
-#include "color.h"
+#include "../includes/graphics.h"
+#include "../includes/color.h"
 #include <stdio.h>
 
 void			bb_line_color(t_line t, int color)

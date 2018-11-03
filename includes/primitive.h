@@ -14,13 +14,14 @@
 # define PRIMITIVE_H
 
 # include "vertex.h"
+
 typedef struct	s_prim
 {
-	t_vert	*verts;
-	size_t	vert_count;
+	t_vert		*verts;
+	size_t		vert_count;
 }				t_prim;
 
-void	kt_prim_init(t_prim *prim, ssize_t vert_count, t_vert *verts);
-void	kt_prim_free(t_prim *prim);
+void			kt_prim_init(t_prim *prim, size_t vert_count, t_vert *verts);
+void			kt_prim_free(t_prim *prim);
 
 #endif

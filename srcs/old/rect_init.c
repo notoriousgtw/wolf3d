@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shapes.h"
+#include "../includes/shapes.h"
 
 static void				bb_rect_init_v(t_cube *c, double size)
 {

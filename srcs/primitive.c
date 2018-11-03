@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "primitive.h"
+#include "../includes/primitive.h"
 
 void	kt_prim_init(t_prim *prim, size_t vert_count, t_vert *verts)
 {
@@ -39,7 +39,7 @@ void	kt_prim_free(t_prim *prim)
 	int	i;
 
 	i = -1;
-	while (++i < prim->vert_count)
+	while (++i < (int) prim->vert_count)
 		if (prim->verts[i].free_attr != NULL)
 			prim->verts[i].free_attr(prim->verts[i].attr);
 	free(prim->verts);

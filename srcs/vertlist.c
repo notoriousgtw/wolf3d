@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
-#include "vertlist.h"
+#include "../includes/graphics.h"
+#include "../includes/vertlist.h"
 #include <stdio.h>
 
 void			kt_vertlist_init(t_vertlist *l)
 {
-	if (l->data)
-		free(l->data);
 	if (!(l->data = ft_memalloc(sizeof(t_vec3d) * 5)))
 		ft_error_unknown("wolf3d: ");
 	l->arr_len = 5;

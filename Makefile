@@ -13,29 +13,36 @@
 NAME	= wolf3d
 
 SRC		= main.c \
-			vec2d.c \
-			mat2d.c \
-			mat2d_tr.c \
-			drawline2d.c \
-			drawtri2d.c \
-			vec3d.c \
-			mat3d.c \
-			mat3d_tr.c \
-			drawline3d.c \
-			vertex.c \
-			vertlist.c \
-			vertlist_add.c \
-			parser.c \
-			rect_init.c \
+			cube_init.c \
+			default_shaders.c \
 			indexlist.c \
 			indexlist_add.c \
-			primitive.c \
-			cube_init.c \
+			init.c \
+			mat2d.c \
+			mat2d_tr.c \
+			mat3d.c \
+			mat3d_tr.c \
+			mesh.c \
+			parser.c \
 			pipeline.c \
-			pipeline_process_verts.c \
-			pipeline_process_tris.c \
 			pipeline_draw.c \
-			init.c
+			pipeline_process_tris.c \
+			pipeline_process_verts.c \
+			primitive.c \
+			solid_effect.c \
+			triangle.c \
+			vec2d.c \
+			vec3d.c \
+			vertex.c \
+			vertex_attr.c \
+			vertlist.c \
+			vertlist_add.c
+
+#			drawtri2d.c \
+			drawline2d.c \
+			drawline3d.c \
+			trilist.c \
+			trilist_add.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

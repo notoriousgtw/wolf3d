@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipeline.h"
+#include "../includes/pipeline.h"
 #include <stdarg.h>
 
 void			kt_pipeline_process_verts(t_pipeline *p,
-										  const t_vertlist *verts,
-										  const t_indexlist *indices)
+											const t_vertlist *verts,
+											const t_indexlist *indices)
 {
 	int			i;
 	t_vertlist	verts_out;
@@ -23,15 +23,15 @@ void			kt_pipeline_process_verts(t_pipeline *p,
 	kt_vertlist_dup(verts, &verts_out);
 	i = -1;
 	while (++i < verts_out.list_size)
-		p->effect->vs.fnc(&(p->effect->ps), &(verts_out.data[i]));
-	kt_pipeline_assemble_prims(p, verts, indices);
+		p->effect->vs.fnc(&(p->effect->vs), &(verts_out.data[i]));
+	kt_pipeline_process_prims(p, verts, indices);
 }
 
 void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
-										  t_indexlist *indices)
+											const t_indexlist *indices)
 {
-	int		i;
-	t_prim	prim;
+	int			i;
+	t_prim		prim;
 
 	i = indices->list_size;
 	if (indices->index_count == 3)

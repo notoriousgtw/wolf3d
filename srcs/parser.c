@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-#include "libft.h"
+#include "../includes/wolf3d.h"
+#include "../includes/libft.h"
 
 /*
 ** imports for read

@@ -1,6 +1,4 @@
-// }
-
-static void 		kt_cube_init_tri(t_cube *c)/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pipeline.c                                         :+:      :+:    :+:   */
@@ -12,23 +10,22 @@ static void 		kt_cube_init_tri(t_cube *c)/* ************************************
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipeline.h"
+#include "../includes/pipeline.h"
 
 void			kt_pipeline_init(t_pipeline *p, t_xvars *x)
 {
 	p->x = x;
 }
 
-void			kt_pipeline_bind_shaders(t_pipeline *p, t_vertex_shader_fnc vs,
-									t_geometry_shader_fnc gs,
-									t_pixel_shader_fnc ps)
+void			kt_pipeline_bind_effect(t_pipeline *p, t_vs_fnc vs,
+											t_gs_fnc gs, t_ps_fnc ps)
 {
-	p->effect.vs = vs;
-	p->effect.gs = gs;
-	p->effect.ps = ps;
+	p->effect->vs.fnc = vs;
+	p->effect->gs.fnc = gs;
+	p->effect->ps.fnc = ps;
 }
 
 void			kt_pipeline_draw(t_pipeline *p, const t_meshdata *m)
 {
-	kt_pipeline_process_verts(p, m->verts, m->indices);
+	kt_pipeline_process_verts(p, &m->verts, &m->indices);
 }

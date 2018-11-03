@@ -10,7 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
+#include "../../includes/graphics.h"
+#include "../../includes/vertlist.h"
+
+
+
+/*
+**	TODO: replace t_drawline
+*/
+
+
 
 static void		kt_drawline2d_h(t_xvars *x, t_vec2d p0, t_vec2d p1, t_drawline line)
 {

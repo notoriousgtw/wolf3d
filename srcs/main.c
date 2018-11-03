@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-#include "shapes.h"
+#include "../includes/wolf3d.h"
+#include "../includes/shapes.h"
+#include "../includes/pipeline.h"
 #include <stdio.h>
 
 /*
@@ -52,7 +53,7 @@ void			kt_draw_cube(t_data *d)
 	t_meshdata	cube;
 	t_pipeline	p;
 	t_effect	e;
-	double m[4][4];
+	double		m[4][4];
 
 	kt_cube_init_plain(1, &cube);
 
@@ -65,7 +66,7 @@ void			kt_draw_cube(t_data *d)
 	kt_ps_color_init(&e.ps);
 
 	kt_pipeline_init(&p, &d->x);
-	kt_pipeline_bind_effect(&p, &e);
+	// p.effect = &e;
 	kt_pipeline_draw(&p, &cube);
 }
 
@@ -104,11 +105,11 @@ void			bb_event_loop(t_data *d)
 				bb_restart(d);
 				kt_draw_cube(d);
 			}
-			if (e.xkey.keycode == KEY_R)
-			{
-				XClearWindow(d->x.dpy, d->x.win);
-				bb_draw_rect(d);
-			}
+			// if (e.xkey.keycode == KEY_R)
+			// {
+			// 	XClearWindow(d->x.dpy, d->x.win);
+			// 	bb_draw_rect(d);
+			// }
 			if (e.xkey.keycode == KEY_1)
 				bb_redraw(d, RED);
 			if (e.xkey.keycode == KEY_2)

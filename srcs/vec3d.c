@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
+#include "../includes/graphics.h"
+#include "../includes/vertlist.h"
 #include <stdio.h>
 
 void				kt_vec3d_swap(t_vec3d *v0, t_vec3d *v1)

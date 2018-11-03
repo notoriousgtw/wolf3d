@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "effect.h"
-#include <stdarg.h>
+#include "../includes/effect.h"
 
 void	kt_gs_default_init(t_gs *gs)
 {
@@ -22,6 +21,9 @@ void	kt_gs_default_fnc(t_gs *gs, t_prim *prim, size_t index, t_vert *verts)
 {
 	int		i;
 
+	i = (int) index;
+	if (!(gs))
+		ft_error_unknown("wolf3d: ");
 	i = -1;
 	while (++i < (int) prim->vert_count)
 		kt_vert_dup(&verts[i], &prim->verts[i]);

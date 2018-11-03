@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-#include "indexlist.h"
+#include "../includes/wolf3d.h"
+#include "../includes/indexlist.h"
 #include <stdio.h>
 
 void			kt_indexlist_init(t_indexlist *l, size_t index_count)
@@ -31,7 +31,7 @@ void			kt_indexlist_print_data(const t_indexlist *l)
 
 	i = -1;
 	while (++i < l->list_size)
-		printf("v%d, v%d, v%d\n", l->data[i * l->index_count],
+		printf("v%zu, v%zu, v%zu\n", l->data[i * l->index_count],
 					 l->data[i * l->index_count + 1],
 					 l->data[i * l->index_count + 2]);
 }

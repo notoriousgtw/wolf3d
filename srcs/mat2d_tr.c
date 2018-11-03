@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "matrix.h"
+#include "../includes/matrix.h"
 #include <math.h>
 
 void			kt_tr2d_translate(double m[3][3], double tx, double ty)

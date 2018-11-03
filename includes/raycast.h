@@ -13,9 +13,9 @@
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-# include "wolf3d.h"
+# include "mesh.h"
 
-typedef struct s_raycast
+typedef struct	s_raycast
 {
 	int			map_x;
 	int			map_y;

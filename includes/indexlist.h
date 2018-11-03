@@ -13,7 +13,8 @@
 #ifndef INDEXLIST_H
 # define INDEXLIST_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
+
 typedef struct	s_indexlist
 {
 	size_t		*data;

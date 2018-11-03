@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipeline.h"
+#include "../includes/pipeline.h"
 #include <stdarg.h>
 
 static t_bool	kt_pipeline_cull_tri(t_tri tri)
 {
-	t_vec3d norm;
+	t_vec3d 	norm;
 
 	tri.v1.pos.x -= tri.v0.pos.x;
 	tri.v1.pos.y -= tri.v0.pos.y;
@@ -32,10 +32,11 @@ static t_bool	kt_pipeline_cull_tri(t_tri tri)
 
 void			kt_pipeline_assemble_tris(t_pipeline *p, t_prim *prim)
 {
-	int		i;
-	int		tri_count;
-	t_tri	*tris;
+	int			i;
+	int			tri_count;
+	t_tri		*tris;
 
+	tri_count = 0;
 	if (prim->vert_count == 3)
 	{
 		tri_count = 1;
@@ -62,5 +63,5 @@ void			kt_pipeline_process_tri(t_pipeline *p, t_tri *tri)
 	kt_vec3d_screenify(p->x, tri->v0.pos, &(tri->v0.pos));
 	kt_vec3d_screenify(p->x, tri->v1.pos, &(tri->v1.pos));
 	kt_vec3d_screenify(p->x, tri->v2.pos, &(tri->v2.pos));
-	kt_pipeline_drawtriangle(p, tri);
+	kt_pipeline_draw_tri(p, tri);
 }

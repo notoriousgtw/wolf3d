@@ -14,6 +14,7 @@
 # define VERTLIST_H
 
 # include "vertex.h"
+
 typedef struct	s_vertlist
 {
 	t_vert		*data;

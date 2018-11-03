@@ -10,35 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "trilist.h"
+#include "../includes/trilist.h"
 #include <stdarg.h>
 
 static void			kt_trilist_resize(t_trilist *l)
 {
 	size_t			*tmp;
 
-	l->arr_len *= 2;
-	if (!(tmp = ft_memalloc(sizeof(size_t) * l->arr_len)))
+	l->indices->arr_len *= 2;
+	if (!(tmp = ft_memalloc(sizeof(size_t) * l->indices->arr_len)))
 		ft_error_unknown("wolf3d: ");
-	ft_bzero(tmp, sizeof(size_t) * l->arr_len);
-	ft_memcpy(tmp, l->indices, sizeof(size_t) * l->list_size * 3);
+	ft_bzero(tmp, sizeof(size_t) * l->indices->arr_len);
+	ft_memcpy(tmp, l->indices, sizeof(size_t) * l->indices->list_size * 3);
 	free(l->indices);
 	l->indices = tmp;
 }
 
 static int			kt_trilist_check_size(t_trilist *l)
 {
-	return (l->list_size * 3 - l->arr_len < 3);
+	return (l->indices->list_size * 3 - l->indices->arr_len < 3);
 }
 
 void				kt_trilist_add(t_trilist *l, size_t p0, size_t p1, size_t p2)
 {
 	if (kt_trilist_check_size(l))
 		kt_trilist_resize(l);
-	l->indices[l->list_size * 3] = p0;
-	l->indices[l->list_size * 3 + 1] = p1;
-	l->indices[l->list_size * 3 + 2] = p2;
-	l->list_size++;
+	l->indices[l->indices->list_size * 3] = p0;
+	l->indices[l->indices->list_size * 3 + 1] = p1;
+	l->indices[l->indices->list_size * 3 + 2] = p2;
+	l->indices->list_size++;
 }
 
 void				kt_trilist_insert(t_trilist *l, size_t p0, size_t p1, size_t p2, ...)
@@ -52,11 +52,11 @@ void				kt_trilist_insert(t_trilist *l, size_t p0, size_t p1, size_t p2, ...)
 	va_end(args);
 	if (kt_trilist_check_size(l))
 		kt_trilist_resize(l);
-	i = l->list_size * 3;
+	i = l->indices->list_size * 3;
 	while (--i >= index)
 		l->indices[i + 1] = l->indices[i];
 	l->indices[index * 3] = p0;
 	l->indices[index * 3 + 1] = p1;
 	l->indices[index * 3 + 2] = p2;
-	l->list_size++;
+	l->indices->list_size++;
 }

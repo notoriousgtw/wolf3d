@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vertex.h"
+#include "../includes/vertex.h"
 #include <stdio.h>
 
 void			kt_vert_init(t_vert *v, double x, double y, double z)

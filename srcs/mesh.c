@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mesh.h"
+#include "../includes/mesh.h"
 #include <stdio.h>
 
 void			kt_mesh_print_data(const t_meshdata *m)
 {
+	kt_vertlist_print(&m->verts);
 	kt_indexlist_print_data(&m->indices);
-	kt_vertlist_print_data(&m->indices);
 }

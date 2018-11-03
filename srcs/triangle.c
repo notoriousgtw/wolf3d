@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "triangle.h"
+#include "../includes/triangle.h"
 
 void			kt_tri_init(t_tri *t, const t_vert *v0, const t_vert *v1,
 					const t_vert *v2)

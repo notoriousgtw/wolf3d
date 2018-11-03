@@ -10,7 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
+#include "../../includes/graphics.h"
+#include "../../includes/pipeline.h"
+
+
+
+/*
+**	TODO: replace t_drawtri
+*/
+
+
 
 static void		kt_drawtri2d_up(t_xvars *d, t_vec2d p0, t_vec2d p1, t_vec2d p2)
 {

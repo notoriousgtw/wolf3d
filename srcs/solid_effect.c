@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "effect.h"
+#include "../includes/effect.h"
+#include "../includes/vertex.h"
+#include "../includes/vector.h"
 
 void	kt_vs_color_init(t_vs *vs, double mat[4][4], int color)
 {
@@ -27,7 +29,7 @@ void	kt_vs_color_init(t_vs *vs, double mat[4][4], int color)
 void	kt_vs_color_fnc(t_vs *vs, t_vert *vert)
 {
 	vert->attr = vs->data;
-	kt_vert_transform(vert, vs->mat);
+	kt_vec3d_transform(vert->pos, vs->mat, &vert->pos);
 }
 
 void	kt_ps_color_init(t_ps *ps)
@@ -37,5 +39,7 @@ void	kt_ps_color_init(t_ps *ps)
 
 int		kt_ps_color_fnc(t_ps *ps, const t_vert *attr)
 {
-	return (*(int *)attr->attr);
+	if (!(ps))
+		ft_error_unknown("wolf3d: ");
+	return (*(int*) attr->attr);
 }

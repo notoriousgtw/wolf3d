@@ -10,31 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vertex.h"
+#include "../includes/vertex.h"
 
 void				kt_vert_bind_data(t_vert *v, void *data, size_t data_size)
 {
-	v->data = data;
-	v->data_size = data_size;
+	v->attr = data;
+	v->attr_size= data_size;
 }
 
 void				kt_vert_bind_data_funcs(t_vert *v,
-								t_vert_data_interpolate interpolate,
-								t_vert_data_print print,
-								t_vert_data_free free_data)
+								t_vert_attr_interpolate interpolate,
+								t_vert_attr_print print,
+								t_vert_attr_free free_attr)
 {
-	v->interpolate_data = interpolate;
-	v->print_data = print;
-	v->free_data = free_data;
+	v->interpolate_attr = interpolate;
+	v->print_attr = print;
+	v->free_attr = free_attr;
 }
 
 void				kt_vert_unbind_data(t_vert *v)
 {
-	if (v->free_data != NULL)
-		v->free_data(v->data);
-	v->data = NULL;
-	v->data_size = 0;
-	v->interpolate_data = NULL;
-	v->print_data = NULL;
-	v->free_data = NULL;
+	if (v->free_attr != NULL)
+		v->free_attr(v->attr);
+	v->attr = NULL;
+	v->attr_size = 0;
+	v->interpolate_attr = NULL;
+	v->print_attr = NULL;
+	v->free_attr = NULL;
 }

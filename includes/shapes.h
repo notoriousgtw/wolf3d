@@ -14,6 +14,7 @@
 # define SHAPES_H
 
 # include "mesh.h"
+# include "triangle.h"
 // typedef struct	s_meshdata	t_meshdata;
 
 void			kt_cube_init_plain(double size, t_meshdata *m);

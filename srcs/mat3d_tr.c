@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "matrix.h"
+#include "../includes/matrix.h"
 
 void			kt_tr3d_translate(double m[4][4], double tx, double ty, double tz)
 {

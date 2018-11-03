@@ -15,6 +15,7 @@
 
 # include <X11/Xlib.h>
 # include "color.h"
+
 typedef struct	s_xvars
 {
 	Display 	*dpy;

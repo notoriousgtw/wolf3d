@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-#include "trilist.h"
+#include "../includes/wolf3d.h"
+#include "../includes/trilist.h"
 #include <stdio.h>
 
 void			kt_trilist_init(t_trilist *l, t_vertlist *v)
@@ -21,6 +21,6 @@ void			kt_trilist_init(t_trilist *l, t_vertlist *v)
 
 void			kt_trilist_print_data(const t_trilist *l)
 {
-	kt_vertlist_print_data(l->verts);
-	kt_indexlist_print_data();
+	kt_vertlist_print(l->verts);
+	kt_indexlist_print_data(l->indices);
 }

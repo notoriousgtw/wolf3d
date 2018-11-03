@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "indexlist.h"
+#include "../includes/indexlist.h"
 #include <stdarg.h>
 
 static void		kt_indexlist_resize(t_indexlist *l)
@@ -54,7 +54,7 @@ void			kt_indexlist_insert(t_indexlist *l, size_t index, ...)
 	if (kt_indexlist_check_size(l))
 		kt_indexlist_resize(l);
 	i = l->list_size * l->index_count;
-	while (--i >= index)
+	while (--i >= (int) index)
 		l->data[i + 1] = l->data[i];
 	i = -1;
 	while (++i < (int) l->index_count)

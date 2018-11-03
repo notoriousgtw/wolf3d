@@ -16,12 +16,12 @@
 # include "vertlist.h"
 # include "indexlist.h"
 
-typedef struct			s_meshdata
+typedef struct		s_meshdata
 {
-	t_vertlist			verts;
-	t_indexlist			indices;
-}						t_meshdata;
+	t_vertlist		verts;
+	t_indexlist		indices;
+}					t_meshdata;
 
-void					kt_mesh_print_data(const t_meshdata *m)
+void				kt_mesh_print_data(const t_meshdata *m);
 
 #endif

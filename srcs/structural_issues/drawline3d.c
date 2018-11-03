@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
+#include "../includes/graphics.h"
+#include "../includes/vertlist.h"
+
+
+/*
+**	TODO: replace t_drawline
+*/
+
 
 static void		kt_drawline3d_h(t_xvars *x, t_vec3d p0, t_vec3d p1, t_drawline line)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "matrix.h"
+#include "../includes/matrix.h"
 
 void			kt_mat3d_bzero(double m[4][4])
 {

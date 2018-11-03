@@ -54,6 +54,7 @@ void			kt_draw_cube(t_data *d, double tr[4][4])
 	t_pipeline	p;
 	t_effect	e;
 
+	printf("kt_draw_cube\n");
 	kt_cube_init_plain(1, &cube);
 
 	kt_vs_color_init(&e.vs, tr, WHITE);
@@ -144,9 +145,8 @@ int				main(void)
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
 	bb_start(d);
-	// d->map = bb_parse_map("../maps/basic_room.map");
+	d->map = bb_parse_map("../maps/basic_room.map");
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
-	printf("kt_draw_cube\n");
 	kt_draw_cube(d);
 	XFlush(d->x.dpy);
 	bb_event_loop(d);

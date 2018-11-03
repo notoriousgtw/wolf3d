@@ -47,6 +47,6 @@ t_map			bb_parse_map(const char *file);
 void			bb_free_map(t_map *map);
 
 void			kt_create_window(t_data *d);
-void			kt_draw_cube(t_data *d);
+void			kt_draw_cube(t_data *d, double tr[4][4]);
 
 #endif

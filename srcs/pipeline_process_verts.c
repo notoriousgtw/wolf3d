@@ -29,7 +29,8 @@ void			kt_pipeline_process_verts(t_pipeline *p,
 	kt_pipeline_process_prims(p, &verts_out, indices);
 }
 
-void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
+void			kt_pipeline_process_prims(t_pipeline *p, 
+											const t_vertlist *verts,
 											const t_indexlist *indices)
 {
 	int			i;
@@ -44,9 +45,9 @@ void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
 		{
 			kt_prim_init(&prim, 3, NULL);
 			p->effect->gs.fnc(&p->effect->gs, &prim, i,
-							  verts->data[indices->data[i]],
-							  verts->data[indices->data[i + 1]],
-							  verts->data[indices->data[i + 2]]);
+								&verts->data[indices->data[i]],
+								&verts->data[indices->data[i + 1]],
+								&verts->data[indices->data[i + 2]]);
 			kt_pipeline_assemble_tris(p, &prim);
 		}
 	}
@@ -56,10 +57,10 @@ void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
 		{
 			kt_prim_init(&prim, 4, NULL);
 			p->effect->gs.fnc(&p->effect->gs, &prim, i,
-							  &verts->data[indices->data[i]],
-							  &verts->data[indices->data[i + 1]],
-							  &verts->data[indices->data[i + 2]],
-							  &verts->data[indices->data[i + 3]]);
+								&verts->data[indices->data[i]],
+								&verts->data[indices->data[i + 1]],
+								&verts->data[indices->data[i + 2]],
+								&verts->data[indices->data[i + 3]]);
 			kt_pipeline_assemble_tris(p, &prim);
 		}
 	}

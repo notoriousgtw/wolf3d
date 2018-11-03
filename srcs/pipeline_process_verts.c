@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 21:21:51 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 03:19:57 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 14:42:19 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void			kt_pipeline_process_verts(t_pipeline *p,
 	i = -1;
 	while (++i < verts_out.list_size)
 		p->effect->vs.fnc(&(p->effect->vs), &(verts_out.data[i]));
-	kt_pipeline_process_prims(p, verts, indices);
+	// kt_vertlist_print(verts);
+	kt_pipeline_process_prims(p, &verts_out, indices);
 }
 
 void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
@@ -33,23 +34,27 @@ void			kt_pipeline_process_prims(t_pipeline *p, const t_vertlist *verts,
 	int			i;
 	t_prim		prim;
 
-	i = indices->list_size;
+	prim.vert_count = 0;
+	prim.verts = NULL;
+	i = 0;
 	if (indices->index_count == 3)
 	{
-		while (--i >= 0)
+		while (i < indices->list_size)
 		{
 			kt_prim_init(&prim, 3, NULL);
-			p->effect->gs.fnc(&p->effect->gs, &prim, i, &verts->data[i * 3]);
+			p->effect->gs.fnc(&p->effect->gs, &prim, i, &(verts->data[i]));
 			kt_pipeline_assemble_tris(p, &prim);
+			i += indices->index_count;
 		}
 	}
 	else if (indices->index_count == 4)
 	{
-		while (--i >= 0)
+		while (i < indices->list_size)
 		{
 			kt_prim_init(&prim, 4, NULL);
-			p->effect->gs.fnc(&p->effect->gs, &prim, i, &verts->data[i * 4]);
+			p->effect->gs.fnc(&p->effect->gs, &prim, i, &(verts->data[i]));
 			kt_pipeline_assemble_tris(p, &prim);
+			i += indices->index_count;
 		}
 	}
 }

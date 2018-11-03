@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 02:47:07 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 03:01:12 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 13:52:49 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	kt_vs_color_init(t_vs *vs, double mat[4][4], int color)
 	int	*c;
 
 	vs->fnc = kt_vs_color_fnc;
-	ft_memcpy(vs->mat, mat, sizeof(double) * 4);
+	ft_memcpy(vs->mat, mat, sizeof(double) * 4 * 4);
 	if (!(c = ft_memalloc(sizeof(int))))
 		return ;
 	*c = color;

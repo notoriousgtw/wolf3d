@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:22 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/24 21:22:15 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 13:49:28 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ void				kt_vec3d_interpolate(t_vec3d v0, t_vec3d v1, double alpha,
 
 void				kt_vec3d_transform(t_vec3d v0, double m[4][4], t_vec3d *v1)
 {
+	t_vec3d	tmp;
+
+	if (&v0 == v1)
+	{
+		tmp.x = v0.x * m[0][0] + v0.y * m[1][0] + v0.z * m[2][0] + m[3][0];
+		tmp.y = v0.x * m[0][1] + v0.y * m[1][1] + v0.z * m[2][1] + m[3][1];
+		tmp.z = v0.x * m[0][2] + v0.y * m[1][2] + v0.z * m[2][2] + m[3][2];
+		v1->x = tmp.x;
+		v1->y = tmp.y;
+		v1->z = tmp.z;
+		return ;
+	}
 	v1->x = v0.x * m[0][0] + v0.y * m[1][0] + v0.z * m[2][0] + m[3][0];
 	v1->y = v0.x * m[0][1] + v0.y * m[1][1] + v0.z * m[2][1] + m[3][1];
 	v1->z = v0.x * m[0][2] + v0.y * m[1][2] + v0.z * m[2][2] + m[3][2];

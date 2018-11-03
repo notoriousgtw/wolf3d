@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 14:43:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/31 22:49:32 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 14:41:45 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void			kt_pipeline_assemble_tris(t_pipeline *p, t_prim *prim)
 		tri_count = 2;
 		if (!(tris = (t_tri *) ft_memalloc(sizeof(t_tri) * tri_count)))
 			return ;
+		kt_prim_print(prim);
 		kt_tri_init(tris, &prim->verts[0], &prim->verts[1], &prim->verts[2]);
 		kt_tri_init(&tris[1], &prim->verts[0], &prim->verts[2],
 					&prim->verts[3]);

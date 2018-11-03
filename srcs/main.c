@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 05:09:27 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 14:30:13 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ void			kt_draw_cube(t_data *d)
 	kt_vs_color_init(&e.vs, m, WHITE);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
+	e.data = NULL;
 
 	kt_pipeline_init(&p, &d->x);
-	// p.effect = &e;
+	p.effect = &e;
 	kt_pipeline_draw(&p, &cube);
 }
 
@@ -148,9 +149,9 @@ int				main(void)
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
 	bb_start(d);
-	d->map = bb_parse_map("../maps/basic_room.map");
+	// d->map = bb_parse_map("../maps/basic_room.map");
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
-	printf("kt_draw_cube");
+	printf("kt_draw_cube\n");
 	kt_draw_cube(d);
 	XFlush(d->x.dpy);
 	bb_event_loop(d);

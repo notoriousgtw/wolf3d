@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 14:30:13 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 15:59:50 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,15 @@ void			kt_create_window(t_data *d)
 	}
 }
 
-void			kt_draw_cube(t_data *d)
+void			kt_draw_cube(t_data *d, double tr[4][4])
 {
 	t_meshdata	cube;
 	t_pipeline	p;
 	t_effect	e;
-	double		m[4][4];
 
 	kt_cube_init_plain(1, &cube);
 
-	kt_mat3d_identity(m);
-	kt_tr3d_rotate(m, -45, -45, 0);
-	kt_tr3d_translate(m, 0, 0, 2);
-
-	kt_vs_color_init(&e.vs, m, WHITE);
+	kt_vs_color_init(&e.vs, tr, WHITE);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
 	e.data = NULL;

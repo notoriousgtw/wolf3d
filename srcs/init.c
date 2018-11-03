@@ -41,21 +41,27 @@ void			bb_init_color_table(t_color *color, int color_nbr)
 
 void			bb_restart(t_data *d)
 {
-	ft_putendl("restart");
-	bb_close(d);
-	bb_start(d);
+	printf("\n* * * * * * *\n*\t    *\n*  ");
+	printf("Restart  *\n*\t    *\n* * * * * * *\n\n");
+	XDestroyWindow(d->x.dpy, d->x.win);
+	XCloseDisplay(d->x.dpy);
+	bb_init_pressed(d);
+	bb_init_colors(d);
+	kt_create_window(d);
 }
 
 void			bb_close(t_data *d)
 {
-	ft_putendl("close");
+	printf("\n* * * * * * *\n*\t    *\n*   ");
+	printf("Close   *\n*\t    *\n* * * * * * *\n");
 	XDestroyWindow(d->x.dpy, d->x.win);
 	XCloseDisplay(d->x.dpy);
 }
 
 void			bb_start(t_data *d)
 {
-	ft_putendl("start");
+	printf("\n* * * * * * *\n*\t    *\n*   ");
+	printf("Start   *\n*\t    *\n* * * * * * *\n\n");
 	bb_init_pressed(d);
 	bb_init_colors(d);
 	kt_create_window(d);

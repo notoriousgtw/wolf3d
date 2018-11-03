@@ -6,13 +6,14 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 02:47:07 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 13:52:49 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 15:45:47 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/effect.h"
 #include "../includes/vertex.h"
 #include "../includes/vector.h"
+#include <stdio.h>
 
 void	kt_vs_color_init(t_vs *vs, double mat[4][4], int color)
 {
@@ -28,8 +29,11 @@ void	kt_vs_color_init(t_vs *vs, double mat[4][4], int color)
 
 void	kt_vs_color_fnc(t_vs *vs, t_vert *vert)
 {
-	vert->attr = vs->data;
+	kt_vert_bind_data(vert, vs->data, sizeof(vs->data));
+	vert->print_attr = (t_vert_attr_print) kt_vert_color_print;
 	kt_vec3d_transform(vert->pos, vs->mat, &vert->pos);
+	kt_vert_print(vert);
+	printf("\n");
 }
 
 void	kt_ps_color_init(t_ps *ps)

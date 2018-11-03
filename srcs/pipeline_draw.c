@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 03:36:07 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 15:55:53 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	kt_pipeline_draw_flat_tri(t_pipeline *p, t_drawtri *dt)
 	int	y;
 	int	y_end;
 
-	kt_vert_dup(dt->it0, &dt->it_edge1);
+	kt_vert_dup(dt->it0, &dt->it_edge0);
 	y = (int) ceil(dt->it0->pos.y - 0.5);
 	y_end = (int) ceil(dt->it2->pos.y - 0.5);
 	dt->it_edge0.pos.x += dt->dit0.pos.x * ((double) y + 0.5 - dt->it0->pos.y);

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:44:40 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 01:29:29 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 15:43:22 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void			kt_vert_init(t_vert *v, double x, double y, double z)
 void			kt_vert_dup(const t_vert *v0, t_vert *v1)
 {
 	v1->pos = v0->pos;
+	if (!(v1->attr = ft_memalloc(v0->attr_size)))
+		return ;
 	ft_memcpy(v1->attr, v0->attr, v0->attr_size);
 	v1->attr_size = v0->attr_size;
 	v1->interpolate_attr = v0->interpolate_attr;

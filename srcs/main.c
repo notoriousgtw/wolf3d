@@ -149,8 +149,9 @@ int				main(void)
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
+	bb_splash();
 	bb_start(d);
-	// d->map = bb_parse_map("../maps/kt.map");
+	// d->map = bb_parse_map("../maps/gj_mod2_f1.map");
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
 	kt_draw_cube(d);
 	XFlush(d->x.dpy);

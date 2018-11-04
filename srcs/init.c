@@ -60,7 +60,6 @@ void			bb_close(t_data *d)
 
 void			bb_start(t_data *d)
 {
-	bb_splash_print();
 	printf("\n* * * * * * *\n*\t    *\n*   ");
 	printf("Start   *\n*\t    *\n* * * * * * *\n\n");
 	bb_init_pressed(d);

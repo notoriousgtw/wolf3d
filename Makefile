@@ -31,6 +31,7 @@ SRC		= main.c \
 			primitive.c \
 			solid_effect.c \
 			solid_effect_vertex.c \
+			splash.c \
 			triangle.c \
 			vec2d.c \
 			vec3d.c \

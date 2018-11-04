@@ -12,8 +12,9 @@
 
 #include "../includes/vertlist.h"
 #include <stdarg.h>
+#include <stdio.h>
 
-static void			kt_vertlist_resize(t_vertlist *l)
+static void		kt_vertlist_resize(t_vertlist *l)
 {
 	t_vert 		*tmp;
 
@@ -24,12 +25,12 @@ static void			kt_vertlist_resize(t_vertlist *l)
 	l->data = tmp;
 }
 
-static int			kt_vertlist_check_size(t_vertlist *l)
+static int		kt_vertlist_check_size(t_vertlist *l)
 {
 	return (l->arr_len == l->list_size);
 }
 
-void		kt_vertlist_add(t_vertlist *l, double x, double y, double z)
+void			kt_vertlist_add(t_vertlist *l, double x, double y, double z)
 {
 	if (kt_vertlist_check_size(l))
 		kt_vertlist_resize(l);
@@ -37,13 +38,13 @@ void		kt_vertlist_add(t_vertlist *l, double x, double y, double z)
 	l->list_size++;
 }
 
-void		kt_vertlist_insert(t_vertlist *l, size_t index, ...)
+void			kt_vertlist_insert(t_vertlist *l, size_t index, ...)
 {
-	int		i;
-	va_list	ap;
-	double	x;
-	double	y;
-	double	z;
+	int			i;
+	va_list		ap;
+	double		x;
+	double		y;
+	double		z;
 
 	va_start(ap, index);
 	x = va_arg(ap, double);

@@ -32,7 +32,7 @@ void			kt_tri_init(t_tri *t, const t_vert *v0, const t_vert *v1,
 	}
 }
 
-void	kt_tri_print(const t_tri *tri)
+void			kt_tri_print(const t_tri *tri)
 {
 		kt_vert_print(&tri->v0);
 		printf("\n");

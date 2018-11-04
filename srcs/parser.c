@@ -31,6 +31,38 @@
 */
 #include <stdlib.h>
 
+void			bb_splash_print(t_data *d)
+{
+	int			h;
+
+	h = 0;
+	while (h < d->map.h)
+		printf("%s", d->map.cell[h]);
+	// printf(" _________    _________________________________");
+	// printf("| \\_______\\  |\\ _______________________________\\");
+	// printf("| |       |  | | //       /                    |");
+	// printf("| |       |  | |//       /                     |");
+	// printf("| |       |   \\//       /__         ___________|");
+    // printf("| |       |   //       /  ||       |");
+    // printf("| |       |  //       /   ||       |");
+    // printf("| |       | //       /    ||       |");
+    // printf("| |       |//       /     ||       |");
+    // printf("| |       |/       /      ||       |");
+    // printf("| |               /       ||       |");
+    // printf("| |              /        ||       |");
+    // printf("| |             |         ||       |");
+    // printf("| |			     \\        ||       |");
+    // printf("| |				  \\       ||       |");
+    // printf("| |		  |\\       \\      ||       |");
+    // printf("| |       | \\       \\     ||       |");
+    // printf("| |		  |\\  \\      \\    ||       |");
+    // printf("| |		  | \\  \\      \\   ||       |");
+    // printf("| |       |  \\  \\      \\  ||       |");
+    // printf("| |       |	  \\  \\      \\ ||       |");
+    // printf("| |       |    \\  \\      \\||       |");
+    // printf(" \\|_______|     \\_ \\____ _\\|_______|");
+}
+
 void			bb_free_map(t_map *map)
 {
 	int			i;
@@ -60,6 +92,7 @@ static t_map	bb_parser(t_map *map, char **lines, char **cur)
 	}
 	return (*map);
 }
+
 t_map			bb_parse_map(const char *file)
 {
 	char		buf[4097];

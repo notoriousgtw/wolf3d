@@ -30,7 +30,7 @@ void	kt_vs_color_init(t_vs *vs, double mat[4][4], int color)
 void	kt_vs_color_fnc(t_vs *vs, t_vert *vert)
 {
 	kt_vert_bind_data(vert, vs->data, sizeof(vs->data));
-	vert->print_attr = (t_vert_attr_print) kt_vert_color_print;
+	vert->print_attr = (vert_attr_print) kt_vert_color_print;
 	kt_vec3d_transform(vert->pos, vs->mat, &vert->pos);
 	kt_vert_print(vert);
 	printf("\n");

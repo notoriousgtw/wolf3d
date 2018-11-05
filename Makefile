@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/11/03 21:20:22 by gwood            ###   ########.fr        #
+#    Updated: 2018/11/05 12:36:55 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC		= main.c \
 			vertex_math.c \
 			vertex_attr.c \
 			vertlist.c \
-			vertlist_add.c
+			vertlist_add.c \
+			draw_tri.c
 
 #			drawtri2d.c \
 			drawline2d.c \

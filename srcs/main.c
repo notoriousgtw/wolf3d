@@ -32,10 +32,12 @@ void			kt_create_window(t_data *d)
 	d->x.width = 1000;
 	d->x.height = 1000;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
-									d->x.width, d->x.height, 0, d->x.black_color, d->x.black_color);
+									d->x.width, d->x.height, 0,
+									d->x.black_color, d->x.black_color);
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
-	wa.event_mask = KeyPressMask | KeyReleaseMask | ButtonPressMask | ButtonReleaseMask | StructureNotifyMask | Button1MotionMask
-					| PointerMotionMask;
+	wa.event_mask = KeyPressMask | KeyReleaseMask | ButtonPressMask
+						| ButtonReleaseMask | StructureNotifyMask 
+						| Button1MotionMask | PointerMotionMask;
 	XSelectInput(d->x.dpy, d->x.win, wa.event_mask);
 	XMapWindow(d->x.dpy, d->x.win);
 	d->x.gc = XCreateGC(d->x.dpy, d->x.win, 0, NULL);
@@ -60,6 +62,30 @@ void			kt_draw_cube(t_data *d)
 
 	kt_mat3d_identity(m);
 	kt_tr3d_rotate(m, -45, -45, 0);
+	kt_tr3d_translate(m, 0, 0, 2);
+
+	kt_vs_color_init(&e.vs, m, d->x.white_color);
+	kt_gs_default_init(&e.gs);
+	kt_ps_color_init(&e.ps);
+	e.data = NULL;
+
+	kt_pipeline_init(&p, &d->x);
+	p.effect = &e;
+	kt_pipeline_draw(&p, &cube);
+}
+
+void			bb_draw_cube(t_data *d)
+{
+	t_meshdata	cube;
+	t_pipeline	p;
+	t_effect	e;
+	double		m[4][4];
+
+	printf("draw_cube\n\n");
+	kt_cube_init_plain(1, &cube);
+
+	kt_mat3d_identity(m);
+	kt_tr3d_rotate(m, -90, -90, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
 
 	kt_vs_color_init(&e.vs, m, d->x.white_color);
@@ -136,6 +162,11 @@ void			bb_event_loop(t_data *d)
 		if (e.type == ButtonPress)
 		{
 			printf("ButtonPress == %d\n", e.xkey.keycode);
+			if (e.xkey.keycode == 1)
+			{
+				XClearWindow(d->x.dpy, d->x.win);
+				bb_draw_cube(d);
+			}
 		}
 		// else if (e.type == ButtonRelease)
 		// {

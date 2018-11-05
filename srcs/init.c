@@ -88,6 +88,7 @@ void			bb_redraw(t_data *d, int solid)//, int wire)
 	d->x.white_color = solid;
 	// d->x.black_color = wire;
 	kt_draw_cube(d);
+	// bb_draw_cube(d);
 }
 
 void			bb_init_colors(t_data *data)

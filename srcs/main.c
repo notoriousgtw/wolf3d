@@ -62,7 +62,7 @@ void			kt_draw_cube(t_data *d)
 	kt_tr3d_rotate(m, -45, -45, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
 
-	kt_vs_color_init(&e.vs, m, WHITE);
+	kt_vs_color_init(&e.vs, m, d->x.white_color);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
 	e.data = NULL;
@@ -112,6 +112,8 @@ void			bb_event_loop(t_data *d)
 			// 	XClearWindow(d->x.dpy, d->x.win);
 			// 	bb_draw_rect(d);
 			// }
+			if (e.xkey.keycode == KEY_0)
+				bb_redraw(d, WHITE);
 			if (e.xkey.keycode == KEY_1)
 				bb_redraw(d, RED);
 			if (e.xkey.keycode == KEY_2)

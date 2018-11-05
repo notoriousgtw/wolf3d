@@ -41,12 +41,6 @@ SRC		= main.c \
 			vertlist.c \
 			vertlist_add.c
 
-#			drawtri2d.c \
-			drawline2d.c \
-			drawline3d.c \
-			trilist.c \
-			trilist_add.c
-
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
@@ -109,7 +103,7 @@ clean:
 
 fclean:
 	@rm -rf $(OBJDIR)
-	@rm -rf $(NAME)
+	@rm -rf $(BINDIR)$(NAME)
 	@make --no-print-directory -C ./libft fclean
 
 re: fclean all

@@ -120,6 +120,8 @@ void			bb_event_loop(t_data *d)
 				bb_redraw(d, GREEN);
 			if (e.xkey.keycode == KEY_4)
 				bb_redraw(d, BLUE);
+			// if (e.xkey.keycode == KEY_S)
+			// 	bb_splash();
 			// if (e.xkey.keycode == KEY_I)
 			// 	d->x.c->color_nbr++;
 			// else if (e.xkey.keycode == KEY_O)
@@ -149,7 +151,6 @@ int				main(void)
 
 	if (!(d = (t_data *)ft_memalloc(sizeof(t_data))))
 		ft_error_unknown("wolf3d: ");
-	bb_splash();
 	bb_start(d);
 	// d->map = bb_parse_map("../maps/gj_mod2_f1.map");
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);

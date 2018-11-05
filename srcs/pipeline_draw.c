@@ -34,7 +34,8 @@ static void	kt_pipeline_draw_tri_scanline(t_pipeline *p, t_drawtri *dt, int y)
 		z = 1.0 / dt->i_line.pos.z;
 		kt_vert_dup(&dt->i_line, &tmp);
 		kt_vert_mult(&tmp, z, &tmp);
-		XSetForeground(p->x->dpy, p->x->gc, p->effect->ps.fnc(&(p->effect->ps), &tmp));
+		XSetForeground(p->x->dpy, p->x->gc,
+							p->effect->ps.fnc(&(p->effect->ps), &tmp));
 		XDrawPoint(p->x->dpy, p->x->win, p->x->gc, x, y);
 		kt_vert_add(&dt->i_line, &dt->di_line, &dt->i_line);
 		x++;

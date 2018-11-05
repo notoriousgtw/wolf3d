@@ -13,9 +13,9 @@
 #include "../includes/primitive.h"
 #include "stdio.h"
 
-void	kt_prim_init(t_prim *prim, size_t vert_count, t_vert *verts)
+void			kt_prim_init(t_prim *prim, size_t vert_count, t_vert *verts)
 {
-	int		i;
+	int			i;
 
 	if (prim->vert_count != 0 && prim->verts != NULL)
 		kt_prim_free(prim);
@@ -37,9 +37,9 @@ void	kt_prim_init(t_prim *prim, size_t vert_count, t_vert *verts)
 		kt_vert_dup(&verts[i], &(prim->verts[i]));
 }
 
-void	kt_prim_free(t_prim *prim)
+void			kt_prim_free(t_prim *prim)
 {
-	int	i;
+	int			i;
 
 	i = -1;
 	while (++i < (int) prim->vert_count)
@@ -48,9 +48,9 @@ void	kt_prim_free(t_prim *prim)
 	free(prim->verts);
 }
 
-void	kt_prim_print(const t_prim *prim)
+void			kt_prim_print(const t_prim *prim)
 {
-	int	i;
+	int			i;
 
 	i = -1;
 	while (++i < (int) prim->vert_count)

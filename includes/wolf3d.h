@@ -26,6 +26,7 @@ typedef struct	s_map
 	int			w;
 	int			h;
 	int			**cell;
+	char		**splash;
 }				t_map;
 
 typedef struct	s_data
@@ -45,6 +46,10 @@ void			bb_draw_rect(t_data *d);
 void			bb_menu(t_data *d);
 t_map			bb_parse_map(const char *file);
 void			bb_free_map(t_map *map);
+void			bb_splash_putendl(void);
+void            bb_splash_name(void);
+void            bb_splash(void);
+void			bb_draw_cube(t_data *d);
 
 void			kt_create_window(t_data *d);
 void			kt_draw_cube(t_data *d);

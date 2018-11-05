@@ -15,25 +15,25 @@
 
 #include "vector.h"
 
-typedef void		(*t_vert_attr_vert_math)(const void *a0, const void *a1,
-											 void *a2);
-typedef void		(*t_vert_attr_double_math)(const void *a0, double x,
-											   void *a1);
-typedef void		(*t_vert_attr_print)(void *data);
-typedef void		(*t_vert_attr_free)(void *data);
+typedef void		(*vert_attr_vmath)(const void *a0, const void *a1,
+											void *a2);
+typedef void		(*vert_attr_dmath)(const void *a0, double x,
+											void *a1);
+typedef void		(*vert_attr_print)(void *data);
+typedef void		(*vert_attr_free)(void *data);
 
-typedef struct				s_vert
+typedef struct		s_vert
 {
-	t_vec3d					pos;
-	void					*attr;
-	size_t					attr_size;
-	t_vert_attr_vert_math	add_attr;
-	t_vert_attr_vert_math	sub_attr;
-	t_vert_attr_double_math	mult_attr;
-	t_vert_attr_double_math	div_attr;
-	t_vert_attr_print		print_attr;
-	t_vert_attr_free		free_attr;
-}							t_vert;
+	t_vec3d			pos;
+	void			*attr;
+	size_t			attr_size;
+	vert_attr_vmath	add_attr;
+	vert_attr_vmath	sub_attr;
+	vert_attr_dmath	mult_attr;
+	vert_attr_dmath	div_attr;
+	vert_attr_print	print_attr;
+	vert_attr_free	free_attr;
+}					t_vert;
 
 void				kt_vert_init(t_vert *v, double x, double y, double z);
 void				kt_vert_dup(const t_vert *v0, t_vert *v1);

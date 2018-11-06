@@ -14,6 +14,11 @@
 #include "../includes/vertlist.h"
 #include <stdio.h>
 
+double				bb_vec3d_len(t_vec3d *v)
+{
+	return (sqrt((v->x * v->x) + (v->y + v->y) + (v->z * v->z)));
+}
+
 void				kt_vec3d_swap(t_vec3d *v0, t_vec3d *v1)
 {
 	t_vec3d			swp;

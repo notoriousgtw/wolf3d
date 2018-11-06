@@ -56,9 +56,22 @@ void			bb_close(t_data *d)
 void			bb_start(t_data *d)
 {
 	ft_putendl("start");
-	bb_init_pressed(d);
+	bb_init_data(d);
 	bb_init_colors(d);
 	kt_create_window(d);
+}
+
+void			bb_init_data(t_data *d)
+{
+	d->player.pos.x = 2;
+	d->player.pos.y = 2;
+	d->player.dir.x = -1;
+	d->player.dir.x = 0;
+	d->player.plane.x = 0;
+	d->player.plane.y = 0.66;
+	d->mouse_x = 0;
+	d->mouse_y = 0;
+	bb_init_pressed(d);
 }
 
 void			bb_init_pressed(t_data *d)

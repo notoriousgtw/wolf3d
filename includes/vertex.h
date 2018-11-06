@@ -13,7 +13,7 @@
 #ifndef VERTEX_H
 # define VERTEX_H
 
-#include "vector.h"
+#include "../includes/vector.h"
 
 typedef void		(*t_vert_attr_interpolate)(void *d0, void* d1, void *d2);
 typedef void		(*t_vert_attr_print)(void *data);

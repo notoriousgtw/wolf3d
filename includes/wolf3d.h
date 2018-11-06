@@ -20,19 +20,22 @@
 # include "keys.h"
 # include "color.h"
 # include "pipeline.h"
+# include "raycast.h"
 
-typedef struct	s_map
-{
-	int			w;
-	int			h;
-	int			**cell;
-}				t_map;
+# define TILE_AT(x, y) d->map.cell[(int)(x)][(int)(y)]
 
 typedef struct	s_data
 {
+	t_map		map;
+	t_player	player;
+	t_time		t;
+	int			mouse_x;
+	int			mouse_y;
+	int			tex_h;
+	int			tex_w;
+	double		*z_buf;
 	t_keys		pressed;
 	t_xvars		x;
-	t_map		map;
 }				t_data;
 
 void			bb_start(t_data *d);

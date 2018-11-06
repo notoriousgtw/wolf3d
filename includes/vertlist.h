@@ -13,7 +13,7 @@
 #ifndef VERTLIST_H
 # define VERTLIST_H
 
-# include "vertex.h"
+# include "../includes/vertex.h"
 
 typedef struct	s_vertlist
 {

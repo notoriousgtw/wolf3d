@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/11/05 20:46:27 by gwood            ###   ########.fr        #
+#    Updated: 2018/11/05 21:01:43 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME	= wolf3d
 SRC		= main.c \
 			cube_init.c \
 			default_shaders.c \
+			draw_tri.c \
 			indexlist.c \
 			indexlist_add.c \
 			init.c \
@@ -29,6 +30,7 @@ SRC		= main.c \
 			pipeline_process_tris.c \
 			pipeline_process_verts.c \
 			primitive.c \
+			raycast.c \
 			solid_effect.c \
 			solid_effect_vertex.c \
 			splash.c \

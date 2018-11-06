@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:43 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 20:52:57 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 21:00:34 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 
-typedef struct	s_xvars	t_xvars;
+// typedef struct	s_xvars	t_xvars;
 
 typedef struct	s_vec2d_i
 {
@@ -36,6 +36,8 @@ typedef struct	s_vec3d
 	double		z;
 }				t_vec3d;
 
+# include "graphics.h"
+
 void			kt_vec2d_swap(t_vec2d *v0, t_vec2d *v1);
 double			kt_vec2d_dotproduct(t_vec2d v0, t_vec2d v1);
 void			kt_vec2d_interpolate(t_vec2d v0, t_vec2d v1, double alpha, t_vec2d *v2);
@@ -50,5 +52,8 @@ void			kt_vec3d_interpolate(t_vec3d v0, t_vec3d v1, double alpha, t_vec3d *v2);
 void			kt_vec3d_transform(t_vec3d v0, double m[4][4], t_vec3d *v1);
 void			kt_vec3d_screenify(t_xvars *x, t_vec3d v0, t_vec3d *v1);
 void			kt_vec3d_print_data(t_vec3d v);
+
+double			bb_vec3d_len(t_vec3d *v);
+double			bb_vec2d_len(t_vec2d v);
 
 #endif

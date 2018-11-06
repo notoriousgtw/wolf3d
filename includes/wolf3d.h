@@ -20,20 +20,22 @@
 # include "keys.h"
 # include "color.h"
 # include "pipeline.h"
+# include "raycast.h"
 
-typedef struct	s_map
-{
-	int			w;
-	int			h;
-	int			**cell;
-	char		**splash;
-}				t_map;
+# define TILE_AT(x, y) d->map.cell[(int)(x)][(int)(y)]
 
 typedef struct	s_data
 {
+	t_map		map;
+	t_player	player;
+	t_time		t;
+	int			mouse_x;
+	int			mouse_y;
+	int			tex_h;
+	int			tex_w;
+	double		*z_buf;
 	t_keys		pressed;
 	t_xvars		x;
-	t_map		map;
 }				t_data;
 
 void			bb_start(t_data *d);
@@ -50,6 +52,9 @@ void			bb_splash_putendl(void);
 void            bb_splash_name(void);
 void            bb_splash(void);
 void			bb_draw_cube(t_data *d);
+void			bb_init_data(t_data *d);
+void			bb_raycast_dda(t_data *d, t_raycast *cast);
+void			bb_raycast_init(t_data *d, t_raycast *cast, int x);
 
 void			kt_create_window(t_data *d);
 void			kt_draw_cube(t_data *d, int color);

@@ -15,6 +15,41 @@
 
 # include "mesh.h"
 
+typedef struct	s_map
+{
+	int			h;
+	int			w;
+	int			**cell;
+}				t_map;
+
+typedef struct	s_player
+{
+	t_vec2d		pos;
+	t_vec2d		dir;
+	t_vec2d		plane;
+	double		rot_speed;
+	double		move_speed;
+}				t_player;
+
+typedef struct	s_time
+{
+	int			cur_sec;
+	int			past;
+	double		old;
+	double		cur;
+	double		frame;
+}				t_time;
+
+typedef struct	s_floorcast
+{
+	t_vec2d		wall;
+	t_vec2d		pos;
+	int			tex_x;
+	int			tex_y;
+	int			texture;
+	double		weight;
+}				t_floorcast;
+
 typedef struct	s_raycast
 {
 	int			map_x;
@@ -37,5 +72,8 @@ typedef struct	s_raycast
 	int			draw_start;
 	int			draw_end;
 }				t_raycast;
+
+void			bb_step_and_side_dist(t_raycast *cast);
+void			bb_delta_dist(t_raycast *cast);
 
 #endif

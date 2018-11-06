@@ -29,6 +29,7 @@ void			kt_create_window(t_data *d)
 	d->x.scr = DefaultScreen(d->x.dpy);
 	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
 	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
+	d->x.color = WHITE;
 	d->x.width = 1000;
 	d->x.height = 1000;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
@@ -94,7 +95,7 @@ void			bb_draw_cube(t_data *d)
 	kt_tr3d_rotate(m, -90, -90, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
 
-	kt_vs_color_init(&e.vs, m, d->x.white_color);
+	kt_vs_color_init(&e.vs, m, d->x.color);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
 	e.data = NULL;

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 19:43:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/11/05 12:50:05 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 21:04:05 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void			bb_restart(t_data *d)
 	printf("Restart  *\n*\t    *\n  * * * * *  \n\n");
 	XDestroyWindow(d->x.dpy, d->x.win);
 	XCloseDisplay(d->x.dpy);
-	bb_init_pressed(d);
-	bb_init_colors(d);
+	bb_init_data(d);
 	kt_create_window(d);
 }
 
@@ -63,8 +62,7 @@ void			bb_start(t_data *d)
 	bb_splash();
 	printf("\n  * * * * *  \n*\t    *\n*   ");
 	printf("Start   *\n*\t    *\n  * * * * *  \n\n");
-	bb_init_pressed(d);
-	bb_init_colors(d);
+	bb_init_data(d);
 	kt_create_window(d);
 }
 
@@ -82,21 +80,26 @@ void			bb_init_pressed(t_data *d)
 	d->pressed.space = 0;
 }
 
-void			bb_redraw(t_data *d, int solid)//, int wire)
+void			bb_init_data(t_data *d)
 {
-	XClearWindow(d->x.dpy, d->x.win);
-	// d->x.white_color = solid;
-	// d->x.black_color = wire;
-	kt_draw_cube(d, solid);
-	// bb_draw_cube(d);
+	d->player.pos.x = 2;
+	d->player.pos.y = 2;
+	d->player.dir.x = -1;
+	d->player.dir.x = 0;
+	d->player.plane.x = 0;
+	d->player.plane.y = 0.66;
+	d->mouse_x = 0;
+	d->mouse_y = 0;
+	d->t.cur = 0;
+	d->t.cur_sec = 0;
+	d->t.old = 0;
+	d->t.past = 0;
+	bb_init_pressed(d);
 }
 
-void			bb_init_colors(t_data *data)
+void			bb_redraw(t_data *d, int color)
 {
-	int			color;
-
-	color = 64;
-	if (!(data->x.c = (t_color*)ft_memalloc(sizeof(t_color) * color)))
-		ft_error_unknown("wolf3d: ");
-	bb_init_color_table(data->x.c, color);
+	XClearWindow(d->x.dpy, d->x.win);
+	d->x.color = color;
+	kt_draw_cube(d, color);
 }

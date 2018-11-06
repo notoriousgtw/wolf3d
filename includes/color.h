@@ -25,18 +25,14 @@
 # define B_ORCHID 0x1F45FC
 # define BLACK 0x000000
 
-# include <math.h>
 # include <stdint.h>
 
 typedef struct	s_color
 {
-	u_int8_t	red;
-	u_int8_t	green;
-	u_int8_t	blue;
+	u_int8_t	r;
+	u_int8_t	g;
+	u_int8_t	b;
 	u_int8_t	*color;
-	int			color_nbr;
 }				t_color;
-
-void			bb_init_color_table(t_color *c, int color);
 
 #endif

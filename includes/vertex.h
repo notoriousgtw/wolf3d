@@ -13,7 +13,7 @@
 #ifndef VERTEX_H
 # define VERTEX_H
 
-#include "vector.h"
+#include "../includes/vector.h"
 
 typedef void		(*vert_attr_vmath)(const void *a0, const void *a1,
 											void *a2);

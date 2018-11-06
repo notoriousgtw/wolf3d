@@ -29,6 +29,7 @@ void			kt_create_window(t_data *d)
 	d->x.scr = DefaultScreen(d->x.dpy);
 	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
 	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
+	d->x.color = WHITE;
 	d->x.width = 1000;
 	d->x.height = 1000;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
@@ -36,7 +37,7 @@ void			kt_create_window(t_data *d)
 									d->x.black_color, d->x.black_color);
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
 	wa.event_mask = KeyPressMask | KeyReleaseMask | ButtonPressMask
-						| ButtonReleaseMask | StructureNotifyMask 
+						| ButtonReleaseMask | StructureNotifyMask
 						| Button1MotionMask | PointerMotionMask;
 	XSelectInput(d->x.dpy, d->x.win, wa.event_mask);
 	XMapWindow(d->x.dpy, d->x.win);
@@ -50,7 +51,7 @@ void			kt_create_window(t_data *d)
 	}
 }
 
-void			kt_draw_cube(t_data *d)
+void			kt_draw_cube(t_data *d, int color)
 {
 	t_meshdata	cube;
 	t_pipeline	p;
@@ -64,7 +65,7 @@ void			kt_draw_cube(t_data *d)
 	kt_tr3d_rotate(m, -45, -45, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
 
-	kt_vs_color_init(&e.vs, m, d->x.white_color);
+	kt_vs_color_init(&e.vs, m, color);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
 	e.data = NULL;
@@ -88,7 +89,7 @@ void			bb_draw_cube(t_data *d)
 	kt_tr3d_rotate(m, -90, -90, 0);
 	kt_tr3d_translate(m, 0, 0, 2);
 
-	kt_vs_color_init(&e.vs, m, d->x.white_color);
+	kt_vs_color_init(&e.vs, m, d->x.color);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
 	e.data = NULL;
@@ -131,7 +132,7 @@ void			bb_event_loop(t_data *d)
 			if (e.xkey.keycode == KEY_SPACE)
 			{
 				bb_restart(d);
-				kt_draw_cube(d);
+				kt_draw_cube(d, WHITE);
 			}
 			// if (e.xkey.keycode == KEY_R)
 			// {
@@ -187,7 +188,7 @@ int				main(void)
 	bb_start(d);
 	// d->map = bb_parse_map("../maps/gj_mod2_f1.map");
 	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
-	kt_draw_cube(d);
+	kt_draw_cube(d, WHITE);
 	XFlush(d->x.dpy);
 	bb_event_loop(d);
 	return (0);

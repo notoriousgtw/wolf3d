@@ -73,8 +73,6 @@ typedef struct	s_raycast
 	int			draw_end;
 }				t_raycast;
 
-void			bb_raycast_dda(t_data *d, t_raycast *cast);
-void			bb_raycast_init(t_data *d, t_raycast *cast, int x);
 void			bb_step_and_side_dist(t_raycast *cast);
 void			bb_delta_dist(t_raycast *cast);
 

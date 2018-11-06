@@ -15,6 +15,7 @@ NAME	= wolf3d
 SRC		= main.c \
 			cube_init.c \
 			default_shaders.c \
+			draw_tri.c \
 			indexlist.c \
 			indexlist_add.c \
 			init.c \
@@ -29,6 +30,7 @@ SRC		= main.c \
 			pipeline_process_tris.c \
 			pipeline_process_verts.c \
 			primitive.c \
+			raycast.c \
 			solid_effect.c \
 			solid_effect_vertex.c \
 			splash.c \
@@ -39,8 +41,7 @@ SRC		= main.c \
 			vertex_math.c \
 			vertex_attr.c \
 			vertlist.c \
-			vertlist_add.c \
-			draw_tri.c
+			vertlist_add.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

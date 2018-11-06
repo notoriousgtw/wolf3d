@@ -78,6 +78,10 @@ void			bb_init_data(t_data *d)
 	d->player.plane.y = 0.66;
 	d->mouse_x = 0;
 	d->mouse_y = 0;
+	d->t.cur = 0;
+	d->t.cur_sec = 0;
+	d->t.old = 0;
+	d->t.past = 0;
 	bb_init_pressed(d);
 }
 

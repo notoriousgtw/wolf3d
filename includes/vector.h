@@ -13,8 +13,8 @@
 #ifndef VECTOR_H
 # define VECTOR_H
 
-# include "libft.h"
-# include "graphics.h"
+# include "../libft/includes/libft.h"
+# include "../includes/graphics.h"
 
 typedef struct	s_vec2d_i
 {
@@ -49,5 +49,8 @@ void			kt_vec3d_interpolate(t_vec3d v0, t_vec3d v1, double alpha, t_vec3d *v2);
 void			kt_vec3d_transform(t_vec3d v0, double m[4][4], t_vec3d *v1);
 void			kt_vec3d_screenify(t_xvars *x, t_vec3d v0, t_vec3d *v1);
 void			kt_vec3d_print_data(t_vec3d v);
+
+double			bb_vec3d_len(t_vec3d *v);
+double			bb_vec2d_len(t_vec2d *v);
 
 #endif

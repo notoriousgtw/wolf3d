@@ -52,6 +52,7 @@ void			bb_splash_putendl(void);
 void            bb_splash_name(void);
 void            bb_splash(void);
 void			bb_draw_cube(t_data *d);
+void			bb_init_data(t_data *d);
 
 void			kt_create_window(t_data *d);
 void			kt_draw_cube(t_data *d);

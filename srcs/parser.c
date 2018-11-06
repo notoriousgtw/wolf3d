@@ -60,6 +60,7 @@ static t_map	bb_parser(t_map *map, char **lines, char **cur)
 	}
 	return (*map);
 }
+
 t_map			bb_parse_map(const char *file)
 {
 	char		buf[4097];

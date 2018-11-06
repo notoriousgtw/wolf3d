@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/11/01 04:34:12 by gwood            ###   ########.fr        #
+#    Updated: 2018/11/05 12:36:55 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,17 @@ SRC		= main.c \
 			pipeline_process_verts.c \
 			primitive.c \
 			solid_effect.c \
+			solid_effect_vertex.c \
+			splash.c \
 			triangle.c \
 			vec2d.c \
 			vec3d.c \
 			vertex.c \
+			vertex_math.c \
 			vertex_attr.c \
 			vertlist.c \
-			vertlist_add.c
-
+			vertlist_add.c \
+			draw_tri.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -101,7 +104,7 @@ clean:
 
 fclean:
 	@rm -rf $(OBJDIR)
-	@rm -rf $(NAME)
+	@rm -rf $(BINDIR)$(NAME)
 	@make --no-print-directory -C ./libft fclean
 
 re: fclean all

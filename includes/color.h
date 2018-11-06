@@ -23,15 +23,13 @@
 # define AMETHYST 0x6C2DC7
 # define G_APPLE 0x4CC417
 # define B_ORCHID 0x1F45FC
+# define BLACK 0x000000
 
 # include <math.h>
 # include <stdint.h>
 
 typedef struct	s_color
 {
-	u_int8_t	*r;
-	u_int8_t	*g;
-	u_int8_t	*b;
 	u_int8_t	red;
 	u_int8_t	green;
 	u_int8_t	blue;
@@ -40,6 +38,5 @@ typedef struct	s_color
 }				t_color;
 
 void			bb_init_color_table(t_color *c, int color);
-void			bb_init_color_tab(t_color *c);
 
 #endif

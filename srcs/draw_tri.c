@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipeline_draw.c                                    :+:      :+:    :+:   */
+/*   draw_tri.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 21:29:57 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 12:42:02 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipeline.h"
+#include "triangle.h"
 #include <stdio.h>
 
-static void	kt_pipeline_draw_tri_scanline(t_pipeline *p, t_drawtri *dt, int y)
+static void	kt_draw_tri_scanline(t_xvars *x_vars, t_drawtri *dt, int y, int color)
 {
 	int		x;
 	int		x_end;
@@ -34,15 +34,14 @@ static void	kt_pipeline_draw_tri_scanline(t_pipeline *p, t_drawtri *dt, int y)
 		z = 1.0 / dt->i_line.pos.z;
 		kt_vert_dup(&dt->i_line, &tmp);
 		kt_vert_mult(&tmp, z, &tmp);
-		XSetForeground(p->x->dpy, p->x->gc,
-							p->effect->ps.fnc(&(p->effect->ps), &tmp));
-		XDrawPoint(p->x->dpy, p->x->win, p->x->gc, x, y);
+		XSetForeground(x_vars->dpy, x_vars->gc, color);
+		XDrawPoint(x_vars->dpy, x_vars->win, x_vars->gc, x, y);
 		kt_vert_add(&dt->i_line, &dt->di_line, &dt->i_line);
 		x++;
 	}
 }
 
-static void	kt_pipeline_draw_flat_tri(t_pipeline *p, t_drawtri *dt)
+static void	kt_draw_flat_tri(t_xvars *x_vars, t_drawtri *dt, int color)
 {
 	int		y;
 	int		y_end;
@@ -58,7 +57,7 @@ static void	kt_pipeline_draw_flat_tri(t_pipeline *p, t_drawtri *dt)
 	kt_vert_add(&dt->it_edge1, &tmp, &dt->it_edge1);
 	while (y < y_end)
 	{
-		kt_pipeline_draw_tri_scanline(p, dt, y);
+		kt_draw_tri_scanline(x_vars, dt, y, color);
 		kt_vert_add(&dt->it_edge0, &dt->dit0, &dt->it_edge0);
 		kt_vert_add(&dt->it_edge1, &dt->dit1, &dt->it_edge1);
 		y++;
@@ -66,7 +65,7 @@ static void	kt_pipeline_draw_flat_tri(t_pipeline *p, t_drawtri *dt)
 
 }
 
-static void	kt_pipeline_draw_flat_tri_top(t_pipeline *p, t_drawtri *dt)
+static void	kt_draw_flat_tri_top(t_xvars *x_vars, t_drawtri *dt, int color)
 {
 	double	dy;
 
@@ -78,10 +77,10 @@ static void	kt_pipeline_draw_flat_tri_top(t_pipeline *p, t_drawtri *dt)
 	kt_vert_sub(&dt->dit1, dt->it1, &dt->dit1);
 	kt_vert_div(&dt->dit1, dy, &dt->dit1);
 	kt_vert_dup(dt->it1, &dt->it_edge1);
-	kt_pipeline_draw_flat_tri(p, dt);
+	kt_draw_flat_tri(x_vars, dt, color);
 }
 
-static void	kt_pipeline_draw_flat_tri_bottom(t_pipeline *p, t_drawtri *dt)
+static void	kt_draw_flat_tri_bottom(t_xvars *x_vars, t_drawtri *dt, int color)
 {
 	double	dy;
 
@@ -93,10 +92,10 @@ static void	kt_pipeline_draw_flat_tri_bottom(t_pipeline *p, t_drawtri *dt)
 	kt_vert_sub(&dt->dit1, dt->it0, &dt->dit1);
 	kt_vert_div(&dt->dit1, dy, &dt->dit1);
 	kt_vert_dup(dt->it0, &dt->it_edge1);
-	kt_pipeline_draw_flat_tri(p, dt);
+	kt_draw_flat_tri(x_vars, dt, color);
 }
 
-void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
+void		kt_tri_draw(t_xvars *x_vars, t_tri *tri, int color)
 {
 	t_drawtri	dt;
 	double		alpha_split;
@@ -117,7 +116,7 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 			kt_vec3d_swap(&tri->v0.pos, &tri->v1.pos);
 		kt_tri_print(tri);
 		printf("\n");
-		kt_pipeline_draw_flat_tri_top(p, &dt);
+		kt_draw_flat_tri_top(x_vars, &dt, color);
 	}
 	else if (tri->v1.pos.y == tri->v2.pos.y)
 	{
@@ -125,7 +124,7 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 			kt_vec3d_swap(&tri->v1.pos, &tri->v2.pos);
 		kt_tri_print(tri);
 		printf("\n");
-		kt_pipeline_draw_flat_tri_bottom(p, &dt);
+		kt_draw_flat_tri_bottom(x_vars, &dt, color);
 	}
 	else
 	{
@@ -141,22 +140,22 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 			dt.it0 = &tri->v0;
 			dt.it1 = &tri->v1;
 			dt.it2 = &vi;
-			kt_pipeline_draw_flat_tri_bottom(p, &dt);
+			kt_draw_flat_tri_bottom(x_vars, &dt, color);
 			dt.it0 = &tri->v0;
 			dt.it1 = &vi;
 			dt.it2 = &tri->v2;
-			kt_pipeline_draw_flat_tri_top(p, &dt);
+			kt_draw_flat_tri_top(x_vars, &dt, color);
 		}
 		else
 		{
 			dt.it0 = &tri->v0;
 			dt.it1 = &vi;
 			dt.it2 = &tri->v2;
-			kt_pipeline_draw_flat_tri_bottom(p, &dt);
+			kt_draw_flat_tri_bottom(x_vars, &dt, color);
 			dt.it0 = &vi;
 			dt.it1 = &tri->v1;
 			dt.it2 = &tri->v2;
-			kt_pipeline_draw_flat_tri_top(p, &dt);
+			kt_draw_flat_tri_top(x_vars, &dt, color);
 		}
 	}
 }

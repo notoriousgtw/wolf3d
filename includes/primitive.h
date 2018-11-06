@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 20:36:04 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 04:43:12 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/03 14:40:58 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ typedef struct	s_prim
 
 void			kt_prim_init(t_prim *prim, size_t vert_count, t_vert *verts);
 void			kt_prim_free(t_prim *prim);
+void			kt_prim_print(const t_prim *prim);
 
 #endif

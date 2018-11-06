@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfleisch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 19:43:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/10/22 19:43:29 by jfleisch         ###   ########.fr       */
+/*   Updated: 2018/11/05 12:50:05 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void			bb_menu(t_data *d)
 {
 	XClearWindow(d->x.dpy, d->x.win);
-	kt_draw_cube(d);
+	kt_draw_cube(d, WHITE);
 }
 
 void			bb_init_color_table(t_color *color, int color_nbr)
@@ -85,9 +85,9 @@ void			bb_init_pressed(t_data *d)
 void			bb_redraw(t_data *d, int solid)//, int wire)
 {
 	XClearWindow(d->x.dpy, d->x.win);
-	d->x.white_color = solid;
+	// d->x.white_color = solid;
 	// d->x.black_color = wire;
-	kt_draw_cube(d);
+	kt_draw_cube(d, solid);
 	// bb_draw_cube(d);
 }
 

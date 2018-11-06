@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 19:15:08 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 12:48:44 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void            bb_splash(void);
 void			bb_draw_cube(t_data *d);
 
 void			kt_create_window(t_data *d);
-void			kt_draw_cube(t_data *d);
+void			kt_draw_cube(t_data *d, int color);
 
 #endif

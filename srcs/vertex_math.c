@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 19:30:18 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 19:58:27 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 12:49:47 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			kt_vert_add(const t_vert *v0, const t_vert *v1, t_vert *v2)
 	v2->pos.x = v0->pos.x + v1->pos.x;
 	v2->pos.y = v0->pos.y + v1->pos.y;
 	v2->pos.z = v0->pos.z + v1->pos.z;
-	if (kt_vert_comp_type(v0, v1) && kt_vert_comp_type(v0, v2) 
+	if (kt_vert_comp_type(v0, v1) && kt_vert_comp_type(v0, v2)
 			&& v0->add_attr != NULL)
 		v0->add_attr(v0->attr, v1->attr, v2->attr);
 }

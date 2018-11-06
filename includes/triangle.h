@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 22:08:12 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 12:42:36 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 20:29:30 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ typedef struct	s_tri
 
 typedef struct	s_drawtri
 {
-	t_vert		*it0;
-	t_vert		*it1;
-	t_vert		*it2;
+	t_vert		it0;
+	t_vert		it1;
+	t_vert		it2;
 	t_vert		dit0;
 	t_vert		dit1;
 	t_vert		it_edge0;
@@ -39,6 +39,6 @@ typedef struct	s_drawtri
 void			kt_tri_init(t_tri *tri, const t_vert *v0, const t_vert *v1,
 								const t_vert *v2);
 void			kt_tri_print(const t_tri *tri);
-void			kt_tri_cdraw(t_xvars *x_vars, t_tri *tri, int color);
+void			kt_tri_draw(t_xvars *x_vars, t_tri *tri, int color);
 
 #endif

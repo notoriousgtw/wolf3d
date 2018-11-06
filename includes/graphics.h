@@ -14,6 +14,7 @@
 # define GRAPHICS_H
 
 # include <X11/Xlib.h>
+# include "vector.h"
 # include "color.h"
 
 typedef struct	s_xvars
@@ -28,5 +29,15 @@ typedef struct	s_xvars
 	Window		win;
 	GC			gc;
 }				t_xvars;
+
+typedef struct	s_drawline
+{
+	double	m;
+	int		step;
+	int		dx;
+	int		dy;
+}				t_drawline;
+
+void			kt_drawline3d(t_xvars *x, t_vec3d p0, t_vec3d p1, int color);
 
 #endif

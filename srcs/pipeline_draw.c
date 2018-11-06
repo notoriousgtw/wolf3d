@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 21:29:57 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 20:54:13 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,36 +48,36 @@ static void	kt_pipeline_draw_flat_tri(t_pipeline *p, t_drawtri *dt)
 	int		y_end;
 	t_vert	tmp;
 
-	kt_vert_dup(dt->it0, &dt->it_edge0);
-	kt_vert_dup(dt->it0, &tmp);
-	y = (int) ceil(dt->it0->pos.y - 0.5);
-	y_end = (int) ceil(dt->it2->pos.y - 0.5);
-	kt_vert_mult(&dt->dit0, ((double) y + 0.5 - dt->it0->pos.y), &tmp);
+	kt_vert_dup(&dt->it0, &dt->it_edge0);
+	kt_vert_dup(&dt->it0, &tmp);
+	y = (int) ceil(dt->it0.pos.y - 0.5);
+	y_end = (int) ceil(dt->it2.pos.y - 0.5);
+	kt_vert_mult(&dt->dit0, ((double) y + 0.5 - dt->it0.pos.y), &tmp);
 	kt_vert_add(&dt->it_edge0, &tmp, &dt->it_edge0);
-	kt_vert_mult(&dt->dit1, ((double) y + 0.5 - dt->it0->pos.y), &tmp);
+	kt_vert_mult(&dt->dit1, ((double) y + 0.5 - dt->it0.pos.y), &tmp);
 	kt_vert_add(&dt->it_edge1, &tmp, &dt->it_edge1);
 	while (y < y_end)
 	{
 		kt_pipeline_draw_tri_scanline(p, dt, y);
+		XFlush(p->x->dpy);
 		kt_vert_add(&dt->it_edge0, &dt->dit0, &dt->it_edge0);
 		kt_vert_add(&dt->it_edge1, &dt->dit1, &dt->it_edge1);
 		y++;
 	}
-
 }
 
 static void	kt_pipeline_draw_flat_tri_top(t_pipeline *p, t_drawtri *dt)
 {
 	double	dy;
 
-	dy = dt->it2->pos.y - dt->it0->pos.y;
-	kt_vert_dup(dt->it2, &dt->dit0);
-	kt_vert_sub(&dt->dit0, dt->it0, &dt->dit0);
+	dy = dt->it2.pos.y - dt->it0.pos.y;
+	kt_vert_dup(&dt->it2, &dt->dit0);
+	kt_vert_sub(&dt->it2, &dt->it0, &dt->dit0);
 	kt_vert_div(&dt->dit0, dy, &dt->dit0);
-	kt_vert_dup(dt->it2, &dt->dit1);
-	kt_vert_sub(&dt->dit1, dt->it1, &dt->dit1);
+	kt_vert_dup(&dt->it2, &dt->dit1);
+	kt_vert_sub(&dt->it2, &dt->it1, &dt->dit1);
 	kt_vert_div(&dt->dit1, dy, &dt->dit1);
-	kt_vert_dup(dt->it1, &dt->it_edge1);
+	kt_vert_dup(&dt->it1, &dt->it_edge1);
 	kt_pipeline_draw_flat_tri(p, dt);
 }
 
@@ -85,14 +85,14 @@ static void	kt_pipeline_draw_flat_tri_bottom(t_pipeline *p, t_drawtri *dt)
 {
 	double	dy;
 
-	dy = dt->it2->pos.y - dt->it0->pos.y;
-	kt_vert_dup(dt->it1, &dt->dit0);
-	kt_vert_sub(&dt->dit0, dt->it0, &dt->dit0);
+	dy = dt->it2.pos.y - dt->it0.pos.y;
+	kt_vert_dup(&dt->it1, &dt->dit0);
+	kt_vert_sub(&dt->dit0, &dt->it0, &dt->dit0);
 	kt_vert_div(&dt->dit0, dy, &dt->dit0);
-	kt_vert_dup(dt->it2, &dt->dit1);
-	kt_vert_sub(&dt->dit1, dt->it0, &dt->dit1);
+	kt_vert_dup(&dt->it2, &dt->dit1);
+	kt_vert_sub(&dt->dit1, &dt->it0, &dt->dit1);
 	kt_vert_div(&dt->dit1, dy, &dt->dit1);
-	kt_vert_dup(dt->it0, &dt->it_edge1);
+	kt_vert_dup(&dt->it0, &dt->it_edge1);
 	kt_pipeline_draw_flat_tri(p, dt);
 }
 
@@ -102,9 +102,12 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 	double		alpha_split;
 	t_vert		vi;
 
-	dt.it0 = &tri->v0;
-	dt.it1 = &tri->v1;
-	dt.it2 = &tri->v2;
+	kt_drawline3d(p->x, tri->v0.pos, tri->v1.pos, WHITE);
+	kt_drawline3d(p->x, tri->v1.pos, tri->v2.pos, WHITE);
+	kt_drawline3d(p->x, tri->v2.pos, tri->v0.pos, WHITE);
+	kt_vert_dup(&tri->v0, &dt.it0);
+	kt_vert_dup(&tri->v1, &dt.it1);
+	kt_vert_dup(&tri->v2, &dt.it2);
 	if (tri->v1.pos.y < tri->v0.pos.y)
 		kt_vec3d_swap(&tri->v0.pos, &tri->v1.pos);
 	if (tri->v2.pos.y < tri->v1.pos.y)
@@ -138,24 +141,24 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 		kt_vert_add(&tri->v0, &vi, &vi);
 		if (tri->v1.pos.x < vi.pos.x)
 		{
-			dt.it0 = &tri->v0;
-			dt.it1 = &tri->v1;
-			dt.it2 = &vi;
+			kt_vert_dup(&tri->v0, &dt.it0);
+			kt_vert_dup(&tri->v1, &dt.it1);
+			kt_vert_dup(&vi, &dt.it2);
 			kt_pipeline_draw_flat_tri_bottom(p, &dt);
-			dt.it0 = &tri->v0;
-			dt.it1 = &vi;
-			dt.it2 = &tri->v2;
+			kt_vert_dup(&tri->v1, &dt.it0);
+			kt_vert_dup(&vi, &dt.it1);
+			kt_vert_dup(&tri->v2, &dt.it2);
 			kt_pipeline_draw_flat_tri_top(p, &dt);
 		}
 		else
 		{
-			dt.it0 = &tri->v0;
-			dt.it1 = &vi;
-			dt.it2 = &tri->v2;
+			kt_vert_dup(&tri->v0, &dt.it0);
+			kt_vert_dup(&vi, &dt.it1);
+			kt_vert_dup(&tri->v1, &dt.it2);
 			kt_pipeline_draw_flat_tri_bottom(p, &dt);
-			dt.it0 = &vi;
-			dt.it1 = &tri->v1;
-			dt.it2 = &tri->v2;
+			kt_vert_dup(&vi, &dt.it0);
+			kt_vert_dup(&tri->v1, &dt.it1);
+			kt_vert_dup(&tri->v2, &dt.it2);
 			kt_pipeline_draw_flat_tri_top(p, &dt);
 		}
 	}

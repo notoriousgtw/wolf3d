@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 14:46:43 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/01 05:06:41 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 20:52:57 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define VECTOR_H
 
 # include "libft.h"
-# include "graphics.h"
+
+typedef struct	s_xvars	t_xvars;
 
 typedef struct	s_vec2d_i
 {

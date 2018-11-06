@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 15:45:11 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 15:58:17 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,38 +63,31 @@ void			kt_draw_cube(t_data *d, int color)
 	t_meshdata	p0;
 	t_meshdata	p1;
 	t_pipeline	p;
-	t_effect	e0;
-	t_effect	e1;
-	double		m0[4][4];
-	double		m1[4][4];
+	t_effect	e;
+	double		m[4][4];
 
 	printf("draw_cube\n\n");
 	// kt_cube_init_plain_tris(1, &cube);
 	kt_plane_init_tris(1, 1, &p0);
 	kt_plane_init_tris(1, 1, &p1);
 
-	kt_mat3d_identity(m0);
-	kt_tr3d_rotate(m0, 0, -45, 0);
-	kt_tr3d_translate(m0, -0.5, 0, 2);
+	kt_mat3d_identity(m);
+	kt_tr3d_rotate(m, 0, -45, 0);
+	kt_tr3d_translate(m, -0.5, 0, 2);
 
-	kt_mat3d_identity(m1);
-	kt_tr3d_rotate(m1, 0, 45, 0);
-	kt_tr3d_translate(m1, 0.5, 0, 2);
-
-	kt_vs_color_init(&e0.vs, m0, color);
-	kt_gs_default_init(&e0.gs);
-	kt_ps_color_init(&e0.ps);
-	e0.data = NULL;
-
-	kt_vs_color_init(&e1.vs, m1, color);
-	kt_gs_default_init(&e1.gs);
-	kt_ps_color_init(&e1.ps);
-	e1.data = NULL;
+	kt_vs_color_init(&e.vs, m, color);
+	kt_gs_default_init(&e.gs);
+	kt_ps_color_init(&e.ps);
+	e.data = NULL;
 
 	kt_pipeline_init(&p, &d->x);
-	p.effect = &e0;
+	p.effect = &e;
 	kt_pipeline_draw(&p, &p0);
-	p.effect = &e1;
+
+	kt_mat3d_identity(p.effect->vs.mat);
+	kt_tr3d_rotate(p.effect->vs.mat, 0, 45, 0);
+	kt_tr3d_translate(p.effect->vs.mat, 0.5, 0, 2);
+
 	kt_pipeline_draw(&p, &p1);
 }
 

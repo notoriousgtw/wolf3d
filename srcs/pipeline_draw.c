@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 14:20:20 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 15:45:56 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ static void	kt_pipeline_draw_flat_tri_bottom(t_pipeline *p, const t_vert *it0,
 	kt_vert_dup(it1, &dt.it1);
 	kt_vert_dup(it2, &dt.it2);
 	// kt_drawline3d(p->x, dt.it0.pos, dt.it1.pos, RED);
-	// kt_drawline3d(p->x, dt.it1.pos, dt.it2.pos, GREEN);
-	// kt_drawline3d(p->x, dt.it2.pos, dt.it0.pos, BLUE);
+	// kt_drawline3d(p->x, dt.it1.pos, dt.it2.pos, RED);
+	// kt_drawline3d(p->x, dt.it2.pos, dt.it0.pos, RED);
 	dy = dt.it2.pos.y - dt.it0.pos.y;
 	kt_vert_dup(&dt.it1, &dt.dit0);
 	kt_vert_sub(&dt.it1, &dt.it0, &dt.dit0);

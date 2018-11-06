@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 19:01:11 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 22:12:17 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 15:15:34 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 
 void			kt_cube_init_plain_quads(double size, t_meshdata *m);
 void			kt_cube_init_plain_tris(double size, t_meshdata *m);
+void			kt_plane_init_tris(double x, double y, t_meshdata *m);
 
 #endif

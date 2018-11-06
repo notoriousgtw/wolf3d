@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 18:51:49 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 22:28:56 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 15:38:17 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,18 @@ void			kt_cube_init_plain_tris(double size, t_meshdata *m)
 	kt_indexlist_add(&m->indices, 2, 4, 6);
 	kt_indexlist_add(&m->indices, 0, 1, 4);
 	kt_indexlist_add(&m->indices, 1, 5, 4);
+}
+
+void			kt_plane_init_tris(double x, double y, t_meshdata *m)
+{
+	x /= 2;
+	y /= 2;
+	kt_vertlist_init(&m->verts);
+	kt_vertlist_add(&m->verts, -x, -y, 0);
+	kt_vertlist_add(&m->verts, x, -y, 0);
+	kt_vertlist_add(&m->verts, -x, y, 0);
+	kt_vertlist_add(&m->verts, x, y, 0);
+	kt_indexlist_init(&m->indices, 3);
+	kt_indexlist_add(&m->indices, 0, 2, 1);
+	kt_indexlist_add(&m->indices, 1, 2, 3);
 }

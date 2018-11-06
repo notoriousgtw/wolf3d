@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 19:43:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/11/05 21:04:05 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 21:06:53 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@ void			bb_menu(t_data *d)
 	kt_draw_cube(d, WHITE);
 }
 
-void			bb_init_color_table(t_color *color, int color_nbr)
-{
-	int			i;
-	float		f;
+// void			bb_init_color_table(t_color *color, int color_nbr)
+// {
+// 	int			i;
+// 	float		f;
 
-	color->color = (u_int8_t*)ft_memalloc(sizeof(u_int8_t) * color_nbr);
-	f = 0;
-	i = -1;
-	while (++i < color_nbr)
-	{
-		color->red = (cos(f) + 1) * 127;
-		color->green = (sin(f) + 1) * 127;
-		color->blue = (-cos(f) + 1) * 127;
-		color->color[i] = color->red | color->green << 8 | color->blue << 16;
-		f = M_PI / color_nbr;
-	}
-	color->color_nbr = color_nbr;
-}
+// 	color->color = (u_int8_t*)ft_memalloc(sizeof(u_int8_t) * color_nbr);
+// 	f = 0;
+// 	i = -1;
+// 	while (++i < color_nbr)
+// 	{
+// 		color->r = (cos(f) + 1) * 127;
+// 		color->g = (sin(f) + 1) * 127;
+// 		color->b = (-cos(f) + 1) * 127;
+// 		color->color[i] = color->r | color->g << 8 | color->b << 16;
+// 		f = M_PI / color_nbr;
+// 	}
+// 	color->color_nbr = color_nbr;
+// }
 
 void			bb_restart(t_data *d)
 {

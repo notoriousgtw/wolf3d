@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 21:21:51 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/03 15:37:11 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 21:11:05 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void			kt_pipeline_process_verts(t_pipeline *p,
 	kt_pipeline_process_prims(p, &verts_out, indices);
 }
 
-void			kt_pipeline_process_prims(t_pipeline *p, 
+void			kt_pipeline_process_prims(t_pipeline *p,
 											const t_vertlist *verts,
 											const t_indexlist *indices)
 {
@@ -45,9 +45,9 @@ void			kt_pipeline_process_prims(t_pipeline *p,
 		{
 			kt_prim_init(&prim, 3, NULL);
 			p->effect->gs.fnc(&p->effect->gs, &prim, i,
-								&verts->data[indices->data[i]],
-								&verts->data[indices->data[i + 1]],
-								&verts->data[indices->data[i + 2]]);
+								&verts->data[indices->data[i * 3]],
+								&verts->data[indices->data[i * 3 + 1]],
+								&verts->data[indices->data[i * 3 + 2]]);
 			kt_pipeline_assemble_tris(p, &prim);
 		}
 	}
@@ -57,10 +57,10 @@ void			kt_pipeline_process_prims(t_pipeline *p,
 		{
 			kt_prim_init(&prim, 4, NULL);
 			p->effect->gs.fnc(&p->effect->gs, &prim, i,
-								&verts->data[indices->data[i]],
-								&verts->data[indices->data[i + 1]],
-								&verts->data[indices->data[i + 2]],
-								&verts->data[indices->data[i + 3]]);
+								&verts->data[indices->data[i * 4]],
+								&verts->data[indices->data[i * 4 + 1]],
+								&verts->data[indices->data[i * 4 + 2]],
+								&verts->data[indices->data[i * 4 + 3]]);
 			kt_pipeline_assemble_tris(p, &prim);
 		}
 	}

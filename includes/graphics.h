@@ -14,7 +14,6 @@
 # define GRAPHICS_H
 
 # include <X11/Xlib.h>
-# include "vector.h"
 # include "color.h"
 # include <math.h>
 
@@ -30,6 +29,8 @@ typedef struct	s_xvars
 	Window		win;
 	GC			gc;
 }				t_xvars;
+
+# include "vector.h"
 
 typedef struct	s_drawline
 {

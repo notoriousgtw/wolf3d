@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 20:54:13 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 22:38:50 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ static void	kt_pipeline_draw_flat_tri_top(t_pipeline *p, t_drawtri *dt)
 {
 	double	dy;
 
+	kt_drawline3d(p->x, dt->it0.pos, dt->it1.pos, GREEN);
+	kt_drawline3d(p->x, dt->it1.pos, dt->it2.pos, GREEN);
+	kt_drawline3d(p->x, dt->it2.pos, dt->it0.pos, GREEN);
 	dy = dt->it2.pos.y - dt->it0.pos.y;
 	kt_vert_dup(&dt->it2, &dt->dit0);
 	kt_vert_sub(&dt->it2, &dt->it0, &dt->dit0);
@@ -85,6 +88,9 @@ static void	kt_pipeline_draw_flat_tri_bottom(t_pipeline *p, t_drawtri *dt)
 {
 	double	dy;
 
+	kt_drawline3d(p->x, dt->it0.pos, dt->it1.pos, RED);
+	kt_drawline3d(p->x, dt->it1.pos, dt->it2.pos, RED);
+	kt_drawline3d(p->x, dt->it2.pos, dt->it0.pos, RED);
 	dy = dt->it2.pos.y - dt->it0.pos.y;
 	kt_vert_dup(&dt->it1, &dt->dit0);
 	kt_vert_sub(&dt->dit0, &dt->it0, &dt->dit0);
@@ -102,9 +108,6 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 	double		alpha_split;
 	t_vert		vi;
 
-	kt_drawline3d(p->x, tri->v0.pos, tri->v1.pos, WHITE);
-	kt_drawline3d(p->x, tri->v1.pos, tri->v2.pos, WHITE);
-	kt_drawline3d(p->x, tri->v2.pos, tri->v0.pos, WHITE);
 	kt_vert_dup(&tri->v0, &dt.it0);
 	kt_vert_dup(&tri->v1, &dt.it1);
 	kt_vert_dup(&tri->v2, &dt.it2);
@@ -118,22 +121,16 @@ void			kt_pipeline_draw_tri(t_pipeline *p, t_tri *tri)
 	{
 		if (tri->v1.pos.x < tri->v0.pos.x)
 			kt_vec3d_swap(&tri->v0.pos, &tri->v1.pos);
-		kt_tri_print(tri);
-		printf("\n");
 		kt_pipeline_draw_flat_tri_top(p, &dt);
 	}
 	else if (tri->v1.pos.y == tri->v2.pos.y)
 	{
 		if (tri->v2.pos.x < tri->v1.pos.x)
 			kt_vec3d_swap(&tri->v1.pos, &tri->v2.pos);
-		kt_tri_print(tri);
-		printf("\n");
 		kt_pipeline_draw_flat_tri_bottom(p, &dt);
 	}
 	else
 	{
-		kt_tri_print(tri);
-		printf("\n");
 		alpha_split = (tri->v1.pos.y - tri->v0.pos.y) / (tri->v2.pos.y - tri->v0.pos.y);
 		kt_vert_dup(&tri->v0, &vi);
 		kt_vert_sub(&tri->v2, &tri->v0, &vi);

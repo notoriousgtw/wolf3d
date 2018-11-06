@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 13:11:08 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/05 22:12:51 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void			kt_draw_cube(t_data *d, int color)
 	double		m[4][4];
 
 	printf("draw_cube\n\n");
-	kt_cube_init_plain(1, &cube);
+	kt_cube_init_plain_tris(1, &cube);
 
 	kt_mat3d_identity(m);
 	kt_tr3d_rotate(m, -45, -45, 0);
@@ -89,7 +89,7 @@ void			bb_draw_cube(t_data *d)
 	double		m[4][4];
 
 	printf("draw_cube\n\n");
-	kt_cube_init_plain(1, &cube);
+	kt_cube_init_plain_tris(1, &cube);
 
 	kt_mat3d_identity(m);
 	kt_tr3d_rotate(m, -90, -90, 0);

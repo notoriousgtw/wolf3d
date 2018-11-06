@@ -51,6 +51,6 @@ void			kt_vec3d_screenify(t_xvars *x, t_vec3d v0, t_vec3d *v1);
 void			kt_vec3d_print_data(t_vec3d v);
 
 double			bb_vec3d_len(t_vec3d *v);
-double			bb_vec2d_len(t_vec2d *v);
+double			bb_vec2d_len(t_vec2d v);
 
 #endif

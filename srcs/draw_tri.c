@@ -10,16 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "triangle.h"
+#include "../includes/triangle.h"
 #include <stdio.h>
 
-static void	kt_draw_tri_scanline(t_xvars *x_vars, t_drawtri *dt, int y, int color)
+static void		kt_draw_tri_scanline(t_xvars *x_vars, t_drawtri *dt, int y,
+										int color)
 {
-	int		x;
-	int		x_end;
-	double	dx;
-	double	z;
-	t_vert	tmp;
+	int			x;
+	int			x_end;
+	double		dx;
+	double		z;
+	t_vert		tmp;
 
 	x = (int) ceil(dt->it_edge0.pos.y - 0.5);
 	x_end = (int) ceil(dt->it_edge1.pos.y - 0.5);
@@ -41,11 +42,11 @@ static void	kt_draw_tri_scanline(t_xvars *x_vars, t_drawtri *dt, int y, int colo
 	}
 }
 
-static void	kt_draw_flat_tri(t_xvars *x_vars, t_drawtri *dt, int color)
+static void		kt_draw_flat_tri(t_xvars *x_vars, t_drawtri *dt, int color)
 {
-	int		y;
-	int		y_end;
-	t_vert	tmp;
+	int			y;
+	int			y_end;
+	t_vert		tmp;
 
 	kt_vert_dup(dt->it0, &dt->it_edge0);
 	kt_vert_dup(dt->it0, &tmp);
@@ -65,9 +66,9 @@ static void	kt_draw_flat_tri(t_xvars *x_vars, t_drawtri *dt, int color)
 
 }
 
-static void	kt_draw_flat_tri_top(t_xvars *x_vars, t_drawtri *dt, int color)
+static void		kt_draw_flat_tri_top(t_xvars *x_vars, t_drawtri *dt, int color)
 {
-	double	dy;
+	double		dy;
 
 	dy = dt->it2->pos.y - dt->it0->pos.y;
 	kt_vert_dup(dt->it2, &dt->dit0);
@@ -80,9 +81,9 @@ static void	kt_draw_flat_tri_top(t_xvars *x_vars, t_drawtri *dt, int color)
 	kt_draw_flat_tri(x_vars, dt, color);
 }
 
-static void	kt_draw_flat_tri_bottom(t_xvars *x_vars, t_drawtri *dt, int color)
+static void		kt_draw_flat_tri_bottom(t_xvars *x_vars, t_drawtri *dt, int color)
 {
-	double	dy;
+	double		dy;
 
 	dy = dt->it2->pos.y - dt->it0->pos.y;
 	kt_vert_dup(dt->it1, &dt->dit0);
@@ -95,7 +96,7 @@ static void	kt_draw_flat_tri_bottom(t_xvars *x_vars, t_drawtri *dt, int color)
 	kt_draw_flat_tri(x_vars, dt, color);
 }
 
-void		kt_tri_draw(t_xvars *x_vars, t_tri *tri, int color)
+void			kt_tri_draw(t_xvars *x_vars, t_tri *tri, int color)
 {
 	t_drawtri	dt;
 	double		alpha_split;

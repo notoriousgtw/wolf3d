@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 15:58:17 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 16:00:42 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,6 @@ void			kt_draw_cube(t_data *d, int color)
 	kt_plane_init_tris(1, 1, &p0);
 	kt_plane_init_tris(1, 1, &p1);
 
-	kt_mat3d_identity(m);
-	kt_tr3d_rotate(m, 0, -45, 0);
-	kt_tr3d_translate(m, -0.5, 0, 2);
-
 	kt_vs_color_init(&e.vs, m, color);
 	kt_gs_default_init(&e.gs);
 	kt_ps_color_init(&e.ps);
@@ -82,6 +78,11 @@ void			kt_draw_cube(t_data *d, int color)
 
 	kt_pipeline_init(&p, &d->x);
 	p.effect = &e;
+
+	kt_mat3d_identity(p.effect->vs.mat);
+	kt_tr3d_rotate(p.effect->vs.mat, 0, -45, 0);
+	kt_tr3d_translate(p.effect->vs.mat, -0.5, 0, 2);
+
 	kt_pipeline_draw(&p, &p0);
 
 	kt_mat3d_identity(p.effect->vs.mat);

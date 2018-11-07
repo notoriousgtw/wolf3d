@@ -188,7 +188,7 @@ void			catch_transforms(t_data *d, XEvent e)
 		kt_tr3d_translate(tr, offset.x, offset.y, offset.z);
 	}
 	if (change)
-		bb_redraw(d, d->x.color, tr);void			bb_redraw(t_data *d, int color);
+		bb_redraw(d, d->x.color, tr);
 }
 
 void			bb_event_loop(t_data *d)

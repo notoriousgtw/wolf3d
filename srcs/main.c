@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 17:42:17 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 17:46:02 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void			catch_transforms(t_data *d, XEvent e)
 		kt_tr3d_translate(tr, offset.x, offset.y, offset.z);
 	}
 	if (change)
-		bb_redraw(d, d->x.color, tr);void			bb_redraw(t_data *d, int color);
+		bb_redraw(d, d->x.color, tr);
 }
 
 void			bb_event_loop(t_data *d)

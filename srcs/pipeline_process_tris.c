@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 14:43:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 22:39:24 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 17:31:40 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static t_bool	kt_pipeline_cull_tri(t_pipeline *p, t_tri tri)
 	kt_vec3d_crossproduct(tri.v1.pos, tri.v2.pos, &norm);
 	if (kt_vec3d_dotproduct(norm, tri.v0.pos) <= 0.0)
 	{
+		// kt_drawline3d(p->x, v0, v1, WHITE);
+		// kt_drawline3d(p->x, v1, v2, WHITE);
+		// kt_drawline3d(p->x, v2, v0, WHITE);
 		return (true);
 	}
 	else

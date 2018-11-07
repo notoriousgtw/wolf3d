@@ -280,7 +280,7 @@ int				main(void)
 		ft_error_unknown("wolf3d: ");
 	bb_start(d);
 	// d->map = bb_parse_map("../maps/gj_mod2_f1.map");
-	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
+	// XSetForeground(d->x.dpy, d->x.gc, WHITE);
 	kt_draw_cube(d, WHITE, NULL);
 	XFlush(d->x.dpy);
 	bb_event_loop(d);

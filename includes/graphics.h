@@ -21,8 +21,6 @@ typedef struct	s_xvars
 {
 	Display 	*dpy;
 	int			scr;
-	int			black_color;
-	int			white_color;
 	int			color;
 	int			width;
 	int			height;

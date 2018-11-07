@@ -47,7 +47,7 @@ void			bb_close(t_data *d);
 void			bb_restart(t_data *d);
 void			bb_menu(t_data *d);
 
-void			bb_redraw(t_data *d, int solid, double tr[4][4]);
+void			bb_redraw(t_data *d, int color, double tr[4][4]);
 void			bb_draw_cube(t_data *d);
 void			bb_draw_rect(t_data *d);
 

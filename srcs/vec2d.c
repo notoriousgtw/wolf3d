@@ -14,7 +14,7 @@
 #include "../includes/vertlist.h"
 #include <stdio.h>
 
-double				bb_vec2d_len(t_vec2d v)
+double			bb_vec2d_len(t_vec2d v)
 {
 	return (sqrt((v.x * v.x) + (v.y + v.y)));
 }

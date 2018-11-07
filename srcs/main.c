@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 17:37:25 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 17:42:17 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ void			kt_create_window(t_data *d)
 	if (d->x.dpy == NULL)
 		ft_error("wolf3d: Failed to open display");
 	d->x.scr = DefaultScreen(d->x.dpy);
-	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
-	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
 	d->x.color = WHITE;
 	d->x.width = 1000;
 	d->x.height = 1000;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
 									d->x.width, d->x.height, 0,
-									d->x.black_color, d->x.black_color);
+									BlackPixel(d->x.dpy, d->x.scr),
+									BlackPixel(d->x.dpy, d->x.scr));
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
 	wa.event_mask = KeyPressMask | KeyReleaseMask | ButtonPressMask
 						| ButtonReleaseMask | StructureNotifyMask
@@ -42,7 +41,7 @@ void			kt_create_window(t_data *d)
 	XSelectInput(d->x.dpy, d->x.win, wa.event_mask);
 	XMapWindow(d->x.dpy, d->x.win);
 	d->x.gc = XCreateGC(d->x.dpy, d->x.win, 0, NULL);
-	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
+	XSetForeground(d->x.dpy, d->x.gc, WhitePixel(d->x.dpy, d->x.scr));
 	while (1)
 	{
 		XNextEvent(d->x.dpy, &e);
@@ -189,7 +188,7 @@ void			catch_transforms(t_data *d, XEvent e)
 		kt_tr3d_translate(tr, offset.x, offset.y, offset.z);
 	}
 	if (change)
-		bb_redraw(d, d->x.color, tr);
+		bb_redraw(d, d->x.color, tr);void			bb_redraw(t_data *d, int color);
 }
 
 void			bb_event_loop(t_data *d)

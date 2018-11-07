@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/graphics.h"
-#include "../../includes/vertlist.h"
+#include "../includes/graphics.h"
+#include "../includes/vertlist.h"
 
 
 

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 23:39:53 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 15:45:56 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 17:31:23 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	kt_pipeline_draw_flat_tri(t_pipeline *p, t_drawtri *dt)
 	while (y < y_end)
 	{
 		kt_pipeline_draw_tri_scanline(p, dt, y);
-		XFlush(p->x->dpy);
 		kt_vert_add(&dt->it_edge0, &dt->dit0, &dt->it_edge0);
 		kt_vert_add(&dt->it_edge1, &dt->dit1, &dt->it_edge1);
 		y++;

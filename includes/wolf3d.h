@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/05 12:48:44 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 16:23:56 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			bb_close(t_data *d);
 void			bb_restart(t_data *d);
 void			bb_init_pressed(t_data *d);
 void			bb_init_colors(t_data *data);
-void			bb_redraw(t_data *d, int solid);
+void			bb_redraw(t_data *d, int solid, double tr[4][4]);
 void			bb_draw_rect(t_data *d);
 void			bb_menu(t_data *d);
 t_map			bb_parse_map(const char *file);
@@ -57,6 +57,6 @@ void			bb_raycast_dda(t_data *d, t_raycast *cast);
 void			bb_raycast_init(t_data *d, t_raycast *cast, int x);
 
 void			kt_create_window(t_data *d);
-void			kt_draw_cube(t_data *d, int color);
+void			kt_draw_cube(t_data *d, int color, double tr[4][4]);
 
 #endif

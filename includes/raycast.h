@@ -55,8 +55,8 @@ typedef struct	s_raycast
 	int			map_x;
 	int			map_y;
 	t_vec2d		camera;
-	t_vec2d		ray_pos;
-	t_vec2d		ray_dir;
+	t_vec2d		r_pos;
+	t_vec2d		r_dir;
 	t_vec2d		side_dist;
 	t_vec2d		delta_dist;
 	double		perp_wall_dist;
@@ -73,7 +73,7 @@ typedef struct	s_raycast
 	int			draw_end;
 }				t_raycast;
 
-void			bb_step_and_side_dist(t_raycast *cast);
-void			bb_delta_dist(t_raycast *cast);
+void			bb_step_and_side_dist(t_raycast *rc);
+void			bb_delta_dist(t_raycast *rc);
 
 #endif

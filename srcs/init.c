@@ -20,25 +20,6 @@ void			bb_menu(t_data *d)
 	kt_draw_cube(d, WHITE);
 }
 
-// void			bb_init_color_table(t_color *color, int color_nbr)
-// {
-// 	int			i;
-// 	float		f;
-
-// 	color->color = (u_int8_t*)ft_memalloc(sizeof(u_int8_t) * color_nbr);
-// 	f = 0;
-// 	i = -1;
-// 	while (++i < color_nbr)
-// 	{
-// 		color->r = (cos(f) + 1) * 127;
-// 		color->g = (sin(f) + 1) * 127;
-// 		color->b = (-cos(f) + 1) * 127;
-// 		color->color[i] = color->r | color->g << 8 | color->b << 16;
-// 		f = M_PI / color_nbr;
-// 	}
-// 	color->color_nbr = color_nbr;
-// }
-
 void			bb_restart(t_data *d)
 {
 	printf("\n  * * * * *  \n*\t    *\n*  ");
@@ -80,6 +61,14 @@ void			bb_init_pressed(t_data *d)
 	d->pressed.space = 0;
 }
 
+void			bb_init_time(t_data *d)
+{
+	d->t.cur = 0;
+	d->t.cur_sec = 0;
+	d->t.old = 0;
+	d->t.past = 0;
+}
+
 void			bb_init_data(t_data *d)
 {
 	d->player.pos.x = 2;
@@ -90,10 +79,7 @@ void			bb_init_data(t_data *d)
 	d->player.plane.y = 0.66;
 	d->mouse_x = 0;
 	d->mouse_y = 0;
-	d->t.cur = 0;
-	d->t.cur_sec = 0;
-	d->t.old = 0;
-	d->t.past = 0;
+	bb_init_time(d);
 	bb_init_pressed(d);
 }
 

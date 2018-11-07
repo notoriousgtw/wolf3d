@@ -27,14 +27,13 @@ void			kt_create_window(t_data *d)
 	if (d->x.dpy == NULL)
 		ft_error("wolf3d: Failed to open display");
 	d->x.scr = DefaultScreen(d->x.dpy);
-	d->x.black_color = BlackPixel(d->x.dpy, d->x.scr);
-	d->x.white_color = WhitePixel(d->x.dpy, d->x.scr);
 	d->x.color = WHITE;
 	d->x.width = 1000;
 	d->x.height = 1000;
 	d->x.win = XCreateSimpleWindow(d->x.dpy, DefaultRootWindow(d->x.dpy), 0, 0,
 									d->x.width, d->x.height, 0,
-									d->x.black_color, d->x.black_color);
+									BlackPixel(d->x.dpy, d->x.scr), 
+									BlackPixel(d->x.dpy, d->x.scr));
 	XStoreName(d->x.dpy, d->x.win, "wolf3d");
 	wa.event_mask = KeyPressMask | KeyReleaseMask | ButtonPressMask
 						| ButtonReleaseMask | StructureNotifyMask
@@ -42,7 +41,7 @@ void			kt_create_window(t_data *d)
 	XSelectInput(d->x.dpy, d->x.win, wa.event_mask);
 	XMapWindow(d->x.dpy, d->x.win);
 	d->x.gc = XCreateGC(d->x.dpy, d->x.win, 0, NULL);
-	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
+	XSetForeground(d->x.dpy, d->x.gc, WhitePixel(d->x.dpy, d->x.scr));
 	while (1)
 	{
 		XNextEvent(d->x.dpy, &e);
@@ -53,13 +52,6 @@ void			kt_create_window(t_data *d)
 
 void			kt_draw_cube(t_data *d, int color)
 {
-	// t_tri	tri;
-
-	// kt_vert_init(&tri.v0, 100.0, 100.0, 1.0);
-	// kt_vert_init(&tri.v1, 200.0, 400.0, 1.0);
-	// kt_vert_init(&tri.v2, 400.0, 200.0, 1.0);
-	// kt_tri_draw(&d->x, &tri, color);
-	// t_meshdata	cube;
 	t_meshdata	p0;
 	t_meshdata	p1;
 	t_pipeline	p;
@@ -67,7 +59,6 @@ void			kt_draw_cube(t_data *d, int color)
 	double		m[4][4];
 
 	printf("draw_cube\n\n");
-	// kt_cube_init_plain_tris(1, &cube);
 	kt_plane_init_tris(1, 1, &p0);
 	kt_plane_init_tris(1, 1, &p1);
 
@@ -81,13 +72,13 @@ void			kt_draw_cube(t_data *d, int color)
 
 	kt_mat3d_identity(p.effect->vs.mat);
 	kt_tr3d_rotate(p.effect->vs.mat, 0, -45, 0);
-	kt_tr3d_translate(p.effect->vs.mat, -0.5, 0, 2);
+	kt_tr3d_translate(p.effect->vs.mat, -0.35, 0, 2);
 
 	kt_pipeline_draw(&p, &p0);
 
 	kt_mat3d_identity(p.effect->vs.mat);
 	kt_tr3d_rotate(p.effect->vs.mat, 0, 45, 0);
-	kt_tr3d_translate(p.effect->vs.mat, 0.5, 0, 2);
+	kt_tr3d_translate(p.effect->vs.mat, 0.35, 0, 2);
 
 	kt_pipeline_draw(&p, &p1);
 }
@@ -204,8 +195,8 @@ int				main(void)
 		ft_error_unknown("wolf3d: ");
 	bb_start(d);
 	// d->map = bb_parse_map("../maps/gj_mod2_f1.map");
-	XSetForeground(d->x.dpy, d->x.gc, d->x.white_color);
-	kt_draw_cube(d, WHITE);
+	XSetForeground(d->x.dpy, d->x.gc, WhitePixel(d->x.dpy, d->x.scr));
+	kt_draw_cube(d, d->x.color);
 	XFlush(d->x.dpy);
 	bb_event_loop(d);
 	return (0);

@@ -38,23 +38,29 @@ typedef struct	s_data
 	t_xvars		x;
 }				t_data;
 
+void			bb_init_data(t_data *d);
+void			bb_init_time(t_data *d);
+void			bb_init_pressed(t_data *d);
+
 void			bb_start(t_data *d);
 void			bb_close(t_data *d);
 void			bb_restart(t_data *d);
-void			bb_init_pressed(t_data *d);
-void			bb_init_colors(t_data *data);
-void			bb_redraw(t_data *d, int solid);
-void			bb_draw_rect(t_data *d);
 void			bb_menu(t_data *d);
+
+void			bb_redraw(t_data *d, int color);
+void			bb_draw_cube(t_data *d);
+void			bb_draw_rect(t_data *d);
+
 t_map			bb_parse_map(const char *file);
 void			bb_free_map(t_map *map);
-void			bb_splash_putendl(void);
-void            bb_splash_name(void);
+
 void            bb_splash(void);
-void			bb_draw_cube(t_data *d);
-void			bb_init_data(t_data *d);
-void			bb_raycast_dda(t_data *d, t_raycast *cast);
-void			bb_raycast_init(t_data *d, t_raycast *cast, int x);
+void            bb_splash_name(void);
+void			bb_splash_putendl(void);
+
+void			bb_raycast_dda(t_data *d, t_raycast *rc);
+void			bb_raycast_init(t_data *d, t_raycast *rc, int x);
+
 
 void			kt_create_window(t_data *d);
 void			kt_draw_cube(t_data *d, int color);

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
-#include "../includes/raycast.h"
 
 void			bb_delta_dist(t_raycast *rc)
 {

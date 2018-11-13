@@ -6,24 +6,26 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 18:19:54 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 18:31:07 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 21:33:21 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
+# include "events.h"
 # include "pipeline.h"
 
 typedef struct	s_scenedata
 {
+	size_t		n_meshes;
+	size_t		n_pipelines;
+	size_t		n_effects;
+	size_t		n_events;
 	t_meshdata	*meshes;
 	t_pipeline	*pipelines;
 	t_effect	*effects;
-	void		*data;
+	t_event		*events;
 }				t_scenedata;
-
-void			kt_scenedata_init(t_scenedata *d, t_meshdata *meshes,
-								  t_pipeline *pipelines, t_effect *effects);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 18:31:40 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 18:35:23 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/06 21:04:49 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,4 @@ void	kt_scenedata_init(t_scenedata *scene, t_meshdata *meshes,
 	scene->meshes = meshes;
 	scene->pipelines = pipelines;
 	scene->effects = effects;
-	scene->data = NULL;
 }

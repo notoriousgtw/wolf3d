@@ -1,1 +1,10 @@
-NO
+TODO
+
+Gsvin:
+FRACT'OL
+Implement projection matrices
+Implement texture shader
+
+Josh:
+Catching mutiple keystrokes at same time
+Figure out mlx pixel img equivalent for x11 && see if its faster than XDrawPoint

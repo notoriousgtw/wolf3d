@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:02:24 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 21:48:39 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/13 17:01:44 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct	s_solid_cube_scene
 	double		tr[4][4];
 }				t_solid_cube_scene;
 
-void			kt_solid_cube_scene_init(t_solid_cube_scene *scene, t_xvars *x);
+void			kt_solid_cube_scene_init(t_solid_cube_scene *scene, t_xvars *x,
+										 int color);
 void			kt_solid_cube_scene_draw(t_solid_cube_scene *scene,
 										 double tr[4][4], int color);
 

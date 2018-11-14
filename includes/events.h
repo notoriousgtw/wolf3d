@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 22:37:25 by gwood             #+#    #+#             */
-/*   Updated: 2018/10/23 22:44:11 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/13 17:10:11 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef	enum		e_event_type
 typedef struct		s_event
 {
 	t_event_type	type;
-	t_event			*next;
+	struct s_event	*next;
 }					t_event;
 
 #endif

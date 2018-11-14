@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 19:43:29 by jfleisch          #+#    #+#             */
-/*   Updated: 2018/11/06 16:46:07 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/13 18:05:25 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void			bb_menu(t_data *d)
 {
 	XClearWindow(d->x.dpy, d->x.win);
-	kt_draw_cube(d, WHITE, NULL);
+	kt_solid_cube_scene_draw(&d->scene, NULL, WHITE);
 }
 
 void			bb_restart(t_data *d)
@@ -87,5 +87,5 @@ void			bb_redraw(t_data *d, int color, double tr[4][4])
 {
 	XClearWindow(d->x.dpy, d->x.win);
 	d->x.color = color;
-	kt_draw_cube(d, color, tr);
+	kt_solid_cube_scene_draw(&d->scene, tr, WHITE);
 }

@@ -6,7 +6,7 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 15:08:50 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 17:41:08 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/13 18:06:02 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "color.h"
 # include "pipeline.h"
 # include "raycast.h"
+# include "solid_cube_scene.h"
 
 # define TILE_AT(x, y) d->map.cell[(int)(x)][(int)(y)]
 
@@ -36,6 +37,7 @@ typedef struct	s_data
 	double		*z_buf;
 	t_keys		pressed;
 	t_xvars		x;
+	t_solid_cube_scene	scene;
 }				t_data;
 
 void			bb_init_data(t_data *d);

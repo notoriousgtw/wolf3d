@@ -6,13 +6,14 @@
 /*   By: gwood <gwood@42.us.org>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 14:36:38 by gwood             #+#    #+#             */
-/*   Updated: 2018/11/06 17:46:02 by gwood            ###   ########.fr       */
+/*   Updated: 2018/11/13 18:06:23 by gwood            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 #include "../includes/shapes.h"
 #include "../includes/pipeline.h"
+#include "../includes/solid_cube_scene.h"
 #include <stdio.h>
 
 /*
@@ -48,54 +49,6 @@ void			kt_create_window(t_data *d)
 		if (e.type == MapNotify)
 			break;
 	}
-}
-
-void			kt_draw_cube(t_data *d, int color, double tr[4][4])
-{
-	// t_tri	tri;
-
-	// kt_vert_init(&tri.v0, 100.0, 100.0, 1.0);
-	// kt_vert_init(&tri.v1, 200.0, 400.0, 1.0);
-	// kt_vert_init(&tri.v2, 400.0, 200.0, 1.0);
-	// kt_tri_draw(&d->x, &tri, color);
-	t_meshdata	cube;
-	// t_meshdata	p0;
-	// t_meshdata	p1;
-	t_pipeline	p;
-	t_effect	e;
-	double		m[4][4];
-
-	printf("draw_cube\n\n");
-	kt_cube_init_plain_tris(1, &cube);
-	// kt_plane_init_tris(1, 1, &p0);
-	// kt_plane_init_tris(1, 1, &p1);
-
-	if (tr == NULL)
-		kt_vs_color_init(&e.vs, m, color);
-	else
-		kt_vs_color_init(&e.vs, tr, color);
-	kt_gs_default_init(&e.gs);
-	kt_ps_color_init(&e.ps);
-	e.data = NULL;
-
-	kt_pipeline_init(&p, &d->x);
-	p.effect = &e;
-
-	if (tr == NULL)
-	{
-		kt_mat3d_identity(p.effect->vs.mat);
-		kt_tr3d_rotate(p.effect->vs.mat, 0, -45, 0);
-		kt_tr3d_translate(p.effect->vs.mat, 0, 0, 2);
-	}
-
-	kt_pipeline_draw(&p, &cube);
-	// kt_pipeline_draw(&p, &p0);
-
-	// kt_mat3d_identity(p.effect->vs.mat);
-	// kt_tr3d_rotate(p.effect->vs.mat, 0, 45, 0);
-	// kt_tr3d_translate(p.effect->vs.mat, 0.5, 0, 2);
-
-	// kt_pipeline_draw(&p, &p1);
 }
 
 void			bb_draw_cube(t_data *d)
@@ -224,7 +177,7 @@ void			bb_event_loop(t_data *d)
 			if (e.xkey.keycode == KEY_SPACE)
 			{
 				bb_restart(d);
-				kt_draw_cube(d, WHITE, NULL);
+				kt_solid_cube_scene_draw(&d->scene, NULL, WHITE);
 			}
 			// if (e.xkey.keycode == KEY_R)
 			// {
@@ -281,7 +234,8 @@ int				main(void)
 	bb_start(d);
 	// d->map = bb_parse_map("../maps/gj_mod2_f1.map");
 	// XSetForeground(d->x.dpy, d->x.gc, WHITE);
-	kt_draw_cube(d, WHITE, NULL);
+	kt_solid_cube_scene_init(&d->scene, &d->x, WHITE);
+	kt_solid_cube_scene_draw(&d->scene, NULL, WHITE);
 	XFlush(d->x.dpy);
 	bb_event_loop(d);
 	return (0);

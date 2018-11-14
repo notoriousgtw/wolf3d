@@ -6,7 +6,7 @@
 #    By: gwood <gwood@42.us.org>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/30 14:30:20 by mhurd             #+#    #+#              #
-#    Updated: 2018/11/05 21:01:43 by gwood            ###   ########.fr        #
+#    Updated: 2018/11/13 17:10:59 by gwood            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRC		= main.c \
 			vertex_attr.c \
 			vertlist.c \
 			vertlist_add.c \
-			drawline3d.c
+			drawline3d.c \
+			solid_cube_scene.c
 			# draw_tri.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

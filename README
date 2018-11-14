@@ -1,1 +1,61 @@
-NO
+                                                                                                                                                                              
+                                                                                                                                                                              
+                 _________   ____ ________ __________________                                                                                                                 
+                |\ _______\ |\ __\\ ______\ _________________\                                                                                                                
+                | |       | | |  //       /                  |                                                                                                                
+                | |       | | | //       /                   |                                                                                                                
+                | |       |  \|//       /__         _________|                                                                                                                
+                | |       |   //       / | |       |                                                                                                                          
+                | |       |  //       /  | |       |                                                                                                                          
+                | |       | //       /   | |       |                                                                                                                          
+                | |       |//       /    | |       |                                                                                                                          
+                | |       |/       /     | |       |                                                                                                                          
+                | |               /      | |       |                                                                                                                          
+                | |              /       | |       |                                                                                                                          
+                | |             |        | |       |                                                                                                                          
+                | |              \       | |       |                                                                                                                          
+                | |               \      | |       |                                                                                                                          
+                | |       |\       \     | |       |                                                                                                                          
+                | |       | \       \    | |       |                                                                                                                          
+                | |       |\ \       \   | |       |                                                                                                                          
+                | |       | \ \       \  | |       |                                                                                                                          
+                | |       |  \ \       \ | |       |                                                                                                                          
+                | |       |   \ \       \| |       |                                                                                                                          
+                | |       |    \ \       \ |       |                                                                                                                          
+                 \|_______|     \_\_______\|_______|
+                 
+                   _  __ _____  _   _  _     _   _ 
+                  | |/ /|_   _|| | | || |   | | | |
+                  | ' /   | |  | | | || |   | | | |
+                  | . \   | |  | |_| || |___| |_| |
+                  |_|\_\  |_|   \___/ |_____|\___/ 
+                                                   
+                  ____     _     __  __  _____  ____  
+                 / ___|   / \   |  \/  || ____|/ ___| 
+                | |  _   / _ \  | |\/| ||  _|  \___ \ 
+                | |_| | / ___ \ | |  | || |___  ___) |
+                 \____|/_/   \_\|_|  |_||_____||____/ 
+                                                      
+            __        __ ___   _      _____  _____  ____  
+            \ \      / // _ \ | |    |  ___||___ / |  _ \ 
+             \ \ /\ / /| | | || |    | |_     |_ \ | | | |
+              \ V  V / | |_| || |___ |  _|   ___) || |_| |
+               \_/\_/   \___/ |_____||_|    |____/ |____/ 
+
+                  4E 6F 74 6F 72 69 6F 75 73 47 54 57 
+                  4F 62 6E 6F 78 69 6F 75 73 37 31 33
+
+TODO:: //In order of priority
+
+Gsvin:
+FRACT'OL
+Finish implementing / testing basic scenes
+Implement ZBuffer
+Implement projection matrices
+Implement texture shader
+Research / implement on-the-fly conversion from 4 vert prims to tris
+Implement lighting effects
+
+Josh:
+Figure out mlx pixel img equivalent for x11 && see if its faster than XDrawPoint
+Catching mutiple keystrokes at same time

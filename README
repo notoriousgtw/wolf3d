@@ -49,10 +49,11 @@ TODO:: //In order of priority
 
 Gsvin:
 FRACT'OL
-Finish implementing / testing basic scenes
 Implement ZBuffer
 Implement projection matrices
+Implement clipping
 Implement texture shader
+Implement wireframe drawing into pipeline
 Research / implement on-the-fly conversion from 4 vert prims to tris
 Implement lighting effects
 
